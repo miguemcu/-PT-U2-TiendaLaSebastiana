@@ -12,6 +12,11 @@ import Entities.Empleado;
 public class RegistrarEmpleado extends javax.swing.JFrame {
 
     private Main parent;
+    
+    public RegistrarEmpleado(Main parent) {
+        this.parent = parent;
+        initComponents();
+    }
 
     public Main getParent() {
         return parent;
@@ -20,9 +25,8 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     public void setParent(Main parent) {
         this.parent = parent;
     }
-    public RegistrarEmpleado() {
-        initComponents();
-    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,53 +117,25 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEmpleadoActionPerformed
 
     private void btnRegistroEmpleadoExitosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroEmpleadoExitosoActionPerformed
-        btnRegistroEmpleadoExitoso.addActionListener(e -> {
-            String Nombre = txtNombreEmpleado.getText();
-            String Cedula = txtCedulaEmpleado.getText();
-            Empleado empleado = new Empleado(Nombre, Cedula);
-            parent.getCaja().agregarEmpleado(empleado);
-            this.setVisible(false);
-            this.getParent().setVisible(true);
-        });
+        String nombre = txtNombreEmpleado.getText();
+        String cedula = txtCedulaEmpleado.getText();
+        Empleado empleado = new Empleado(nombre, cedula);
+
+        parent.getCaja().agregarEmpleado(empleado);
+        
+        System.out.println("Empleado registrado correctamente.");
+        for (Empleado emp : parent.getCaja().getEmpleados()) {
+            emp.imprimirFichaEmpleado();
+    }
+
+        this.dispose();
+        parent.setVisible(true);
     }//GEN-LAST:event_btnRegistroEmpleadoExitosoActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrarEmpleado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistroEmpleadoExitoso;

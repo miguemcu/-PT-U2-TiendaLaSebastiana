@@ -15,6 +15,16 @@ public class Main extends javax.swing.JFrame {
     
     private Caja caja;
     
+    private EntrarSistema entrarSistema;
+
+    public EntrarSistema getEntrarSistema() {
+        return entrarSistema;
+    }
+
+    public void setEntrarSistema(EntrarSistema entrarSistema) {
+        this.entrarSistema = entrarSistema;
+    }
+    
     private RegistrarEmpleado registrarEmpleado;
 
     public RegistrarEmpleado getRegistrarEmpleado() {
@@ -140,19 +150,7 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

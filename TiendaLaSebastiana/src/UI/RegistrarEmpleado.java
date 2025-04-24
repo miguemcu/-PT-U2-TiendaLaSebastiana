@@ -26,7 +26,6 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         this.parent = parent;
     }
     
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,20 +36,22 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblRegistroEmpleados = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
         txtNombreEmpleado = new javax.swing.JTextField();
         txtCedulaEmpleado = new javax.swing.JTextField();
         btnRegistroEmpleadoExitoso = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtErrorRegistro = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Registro de empleados:");
+        lblRegistroEmpleados.setText("Registro de empleados:");
 
-        jLabel2.setText("Nombre:");
+        lblNombre.setText("Nombre:");
 
-        jLabel3.setText("Cédula:");
+        lblCedula.setText("Cédula:");
 
         txtNombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,44 +68,51 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        txtErrorRegistro.setColumns(20);
+        txtErrorRegistro.setRows(5);
+        jScrollPane1.setViewportView(txtErrorRegistro);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreEmpleado)
-                            .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)))
-                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegistroEmpleadoExitoso)
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lblRegistroEmpleados))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreEmpleado)
+                            .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1)
+                .addGap(47, 47, 47)
+                .addComponent(lblRegistroEmpleados)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblNombre)
                     .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblCedula)
                     .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(btnRegistroEmpleadoExitoso)
                 .addGap(31, 31, 31))
         );
@@ -117,19 +125,41 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEmpleadoActionPerformed
 
     private void btnRegistroEmpleadoExitosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroEmpleadoExitosoActionPerformed
-        String nombre = txtNombreEmpleado.getText();
-        String cedula = txtCedulaEmpleado.getText();
+        String nombre = txtNombreEmpleado.getText().trim();
+        String cedula = txtCedulaEmpleado.getText().trim();
+        
+        try {
+            
+            if (nombre.isEmpty() || cedula.isEmpty() || nombre.isBlank() || cedula.isBlank()){
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+            }
+            
+            if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")){
+                throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
+            }
+            
+            if (!cedula.matches("\\d+")){
+                throw new IllegalArgumentException("La cedula solo debe contener números.");
+            }
+        
         Empleado empleado = new Empleado(nombre, cedula);
 
         parent.getCaja().agregarEmpleado(empleado);
         
-        System.out.println("Empleado registrado correctamente.");
+        /*System.out.println("Empleado registrado correctamente.");
         for (Empleado emp : parent.getCaja().getEmpleados()) {
             emp.imprimirFichaEmpleado();
-    }
+    }*/
 
         this.dispose();
         parent.setVisible(true);
+        
+        
+       } catch (IllegalArgumentException ex){
+           txtErrorRegistro.setText(ex.getMessage());
+       } catch (Exception ex) {
+           txtErrorRegistro.setText("Error inesperado " + ex.getMessage());
+       }
     }//GEN-LAST:event_btnRegistroEmpleadoExitosoActionPerformed
 
     /**
@@ -139,10 +169,12 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistroEmpleadoExitoso;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblRegistroEmpleados;
     private javax.swing.JTextField txtCedulaEmpleado;
+    private javax.swing.JTextArea txtErrorRegistro;
     private javax.swing.JTextField txtNombreEmpleado;
     // End of variables declaration//GEN-END:variables
 }

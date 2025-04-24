@@ -1,0 +1,89 @@
+package Gestión;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Sebastian
+ */
+import Entities.Empleado;
+import java.util.ArrayList;
+import Entities.Producto;
+
+public class Caja {
+    private Empleado cajero;
+    private ArrayList<Empleado> empleados;
+    private ArrayList<Venta> ventas;
+    private Inventario inventario;
+
+    public Caja() {
+        this.empleados = new ArrayList<>();
+        this.ventas = new ArrayList<>();
+        this.inventario = new Inventario();
+    }
+
+    public Caja(Empleado cajero, ArrayList<Empleado> empleados, Inventario inventario) {
+        this.cajero = cajero;
+        this.empleados = empleados;
+        this.inventario = inventario;
+        this.ventas = new ArrayList<>();
+    }
+
+    // Getters y Setters
+
+    public Empleado getCajero() {
+        return cajero;
+    }
+
+    public void setCajero(Empleado cajero) {
+        this.cajero = cajero;
+    }
+
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    // Métodos públicos (sin implementación aún)
+
+    public Producto modificarProducto() {
+        // Lógica pendiente: buscar y modificar producto
+        return null;
+    }
+
+    public String[] organizarTipo() {
+        // Lógica pendiente: retornar nombres de productos por tipo, por ejemplo
+        return new String[0];
+    }
+
+    public Venta vender() {
+        // Lógica pendiente: realizar una venta, registrar, restar stock
+        return null;
+    }
+    
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.add(empleado);
+    }
+}

@@ -10,8 +10,11 @@ package UI;
  */
 
 import Gestión.Caja;
+
 public class Main extends javax.swing.JFrame {
+    
     private Caja caja;
+    
     private RegistrarEmpleado registrarEmpleado;
 
     public RegistrarEmpleado getRegistrarEmpleado() {
@@ -23,7 +26,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     public Main() {
-        this.caja = caja;
+        this.caja = new Caja();
         initComponents();
     }
 
@@ -104,8 +107,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btnRegisterEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterEmployeeActionPerformed
-        var RegistrarEmpleado = new RegistrarEmpleado();
-        RegistrarEmpleado.setVisible(true);
+        var registrarEmpleado = new RegistrarEmpleado(this);
+        registrarEmpleado.setVisible(true);
     }//GEN-LAST:event_btnRegisterEmployeeActionPerformed
 
     /**
@@ -152,6 +155,7 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
             }

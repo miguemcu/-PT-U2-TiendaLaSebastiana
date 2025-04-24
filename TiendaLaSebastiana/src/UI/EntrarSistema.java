@@ -1,5 +1,7 @@
 package UI;
 
+import Entities.Empleado;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,6 +13,16 @@ package UI;
  */
 public class EntrarSistema extends javax.swing.JFrame {
     private Main parent;
+    private Tienda tienda;
+
+    public Tienda getTienda() {
+        return tienda;
+    }
+
+    public void setTienda(Tienda tienda) {
+        this.tienda = tienda;
+    }
+    
 
     /**
      * Creates new form EntrarSistema
@@ -19,6 +31,15 @@ public class EntrarSistema extends javax.swing.JFrame {
         this.parent = parent;
         initComponents();
     }
+
+    public Main getParent() {
+        return parent;
+    }
+
+    public void setParent(Main parent) {
+        this.parent = parent;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +56,8 @@ public class EntrarSistema extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtErrorRegistro = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,14 +95,17 @@ public class EntrarSistema extends javax.swing.JFrame {
             }
         });
 
+        txtErrorRegistro.setColumns(20);
+        txtErrorRegistro.setRows(5);
+        jScrollPane1.setViewportView(txtErrorRegistro);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIngresar)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -88,7 +114,12 @@ public class EntrarSistema extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnRegresar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIngresar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
@@ -102,10 +133,15 @@ public class EntrarSistema extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnIngresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegresar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnIngresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRegresar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46))
         );
 
@@ -127,6 +163,37 @@ public class EntrarSistema extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String nombre = txtNombreEmpleado.getText();
         String cedula = txtCedulaEmpleado.getText();
+         try {
+            
+            if (nombre.isEmpty() || cedula.isEmpty() || nombre.isBlank() || cedula.isBlank()){
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+            }
+            
+            if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")){
+                throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
+            }
+            
+            if (!cedula.matches("\\d+")){
+                throw new IllegalArgumentException("La cedula solo debe contener números.");
+            }
+            for (Empleado empleado : parent.getCaja().getEmpleados()){
+                if (empleado.getNombre().equals(nombre.trim()) && empleado.getCedula().equals(cedula.trim())){
+                    if(this.getTienda() == null){
+                    this.setTienda(new Tienda());
+                }
+                
+                this.getTienda().setVisible(true);
+                this.setVisible(false);
+                return;
+                }
+            }
+        txtErrorRegistro.setText("The user not exist in the App");
+        } catch (IllegalArgumentException ex){
+           txtErrorRegistro.setText(ex.getMessage());
+       } catch (Exception ex) {
+           txtErrorRegistro.setText("Error inesperado " + ex.getMessage());
+       }
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
@@ -139,7 +206,9 @@ public class EntrarSistema extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCedulaEmpleado;
+    private javax.swing.JTextArea txtErrorRegistro;
     private javax.swing.JTextField txtNombreEmpleado;
     // End of variables declaration//GEN-END:variables
 }

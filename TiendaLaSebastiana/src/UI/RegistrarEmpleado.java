@@ -142,6 +142,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 if (empleado.getCedula().equals(cedula)){
                     throw new IllegalArgumentException("Ya hay un empleado registrado con esa cédula.");
                 }
+                
             }
             
             if (!cedula.matches("\\d+")){

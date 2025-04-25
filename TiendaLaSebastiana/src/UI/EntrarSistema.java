@@ -187,7 +187,7 @@ public class EntrarSistema extends javax.swing.JFrame {
                 return;
                 }
             }
-        txtErrorRegistro.setText("El usuario no existe");
+        txtErrorRegistro.setText("El usuario no existe.");
         } catch (IllegalArgumentException ex){
            txtErrorRegistro.setText(ex.getMessage());
        } catch (Exception ex) {

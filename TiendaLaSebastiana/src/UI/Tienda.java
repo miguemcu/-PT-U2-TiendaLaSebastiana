@@ -65,8 +65,12 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        txtReportes.setSelected(true);
         txtReportes.setText("Reportes");
+        txtReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReportesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +122,11 @@ public class Tienda extends javax.swing.JFrame {
         var inventarioSistema = new InventarioSistema();
         inventarioSistema.setVisible(true);
     }//GEN-LAST:event_txtInventarioActionPerformed
+
+    private void txtReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportesActionPerformed
+        var sistemaReportes = new SistemaReportes();
+        sistemaReportes.setVisible(true);
+    }//GEN-LAST:event_txtReportesActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/EntrarSistema.java</file>
-            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/Main.java</file>
-            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/RegistrarEmpleado.java</file>
             <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/Tienda.java</file>
             <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/Gestión/Caja.java</file>
+            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/InventarioSistema.java</file>
+            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/RegistrarEmpleado.java</file>
+            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/Entities/Producto.java</file>
+            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/CreacionProducto.java</file>
+            <file>file:/C:/Users/Sebastian/OneDrive/Documents/NetBeansProjects/Lab2/-PT-U2-TiendaLaSebastiana/TiendaLaSebastiana/src/UI/Main.java</file>
         </group>
     </open-files>
 </project-private>

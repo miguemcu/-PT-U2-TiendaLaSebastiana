@@ -98,9 +98,11 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnReportes">
       <Properties>
-        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Reportes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReportesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

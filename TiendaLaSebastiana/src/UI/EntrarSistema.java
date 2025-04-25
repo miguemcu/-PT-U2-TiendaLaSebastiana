@@ -161,8 +161,8 @@ public class EntrarSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaEmpleadoActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String nombre = txtNombreEmpleado.getText();
-        String cedula = txtCedulaEmpleado.getText();
+        String nombre = txtNombreEmpleado.getText().trim();
+        String cedula = txtCedulaEmpleado.getText().trim();
          try {
             
             if (nombre.isEmpty() || cedula.isEmpty() || nombre.isBlank() || cedula.isBlank()){
@@ -177,7 +177,7 @@ public class EntrarSistema extends javax.swing.JFrame {
                 throw new IllegalArgumentException("La cedula solo debe contener números.");
             }
             for (Empleado empleado : parent.getCaja().getEmpleados()){
-                if (empleado.getNombre().equals(nombre.trim()) && empleado.getCedula().equals(cedula.trim())){
+                if (empleado.getNombre().equals(nombre) && empleado.getCedula().equals(cedula)){
                     if(this.getTienda() == null){
                     this.setTienda(new Tienda());
                 }

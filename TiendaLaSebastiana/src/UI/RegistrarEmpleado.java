@@ -9,6 +9,11 @@ package UI;
  * @author migue
  */
 import Entities.Empleado;
+import java.awt.Toolkit;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 public class RegistrarEmpleado extends javax.swing.JFrame {
 
     private Main parent;
@@ -16,8 +21,30 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     public RegistrarEmpleado(Main parent) {
         this.parent = parent;
         initComponents();
+        ((AbstractDocument) txtCedulaEmpleado.getDocument()).setDocumentFilter(new DocumentFilter() {
+        private final int maxChars = 10;
+
+        @Override
+        public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+            if ((fb.getDocument().getLength() + string.length()) <= maxChars) {
+                super.insertString(fb, offset, string, attr);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+
+        @Override
+        public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            if ((fb.getDocument().getLength() - length + text.length()) <= maxChars) {
+                super.replace(fb, offset, length, text, attrs);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+    });
     }
 
+    @Override
     public Main getParent() {
         return parent;
     }
@@ -60,6 +87,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         });
 
         txtCedulaEmpleado.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCedulaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaEmpleadoActionPerformed(evt);
+            }
+        });
 
         btnRegistroEmpleadoExitoso.setText("Registrar");
         btnRegistroEmpleadoExitoso.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +193,10 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
            txtErrorRegistro.setText("Error inesperado " + ex.getMessage());
        }
     }//GEN-LAST:event_btnRegistroEmpleadoExitosoActionPerformed
+
+    private void txtCedulaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,11 @@
 package UI;
 
 import Entities.Empleado;
+import java.awt.Toolkit;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,6 +35,50 @@ public class EntrarSistema extends javax.swing.JFrame {
     public EntrarSistema(Main parent) {
         this.parent = parent;
         initComponents();
+        
+        ((AbstractDocument) txtCedulaEmpleado.getDocument()).setDocumentFilter(new DocumentFilter() {
+        private final int maxChars = 10;
+
+        @Override
+        public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+            if ((fb.getDocument().getLength() + string.length()) <= maxChars) {
+                super.insertString(fb, offset, string, attr);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+
+        @Override
+        public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            if ((fb.getDocument().getLength() - length + text.length()) <= maxChars) {
+                super.replace(fb, offset, length, text, attrs);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+    });
+        ((AbstractDocument) txtNombreEmpleado.getDocument()).setDocumentFilter(new DocumentFilter() {
+        private final int maxChars = 35;
+
+        @Override
+        public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+            if ((fb.getDocument().getLength() + string.length()) <= maxChars) {
+                super.insertString(fb, offset, string, attr);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+
+        @Override
+        public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+            if ((fb.getDocument().getLength() - length + text.length()) <= maxChars) {
+                super.replace(fb, offset, length, text, attrs);
+            } else {
+                Toolkit.getDefaultToolkit().beep();
+            }
+        }
+    });
+        
     }
 
     public Main getParent() {

@@ -10,9 +10,16 @@ package UI;
  */
 public class Tienda extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tienda
-     */
+    private InventarioSistema inventarioSistema;
+
+    public InventarioSistema getInventarioSistema() {
+        return inventarioSistema;
+    }
+
+    public void setInventarioSistema(InventarioSistema inventarioSistema) {
+        this.inventarioSistema = inventarioSistema;
+    }
+    
     public Tienda() {
         initComponents();
     }
@@ -27,31 +34,90 @@ public class Tienda extends javax.swing.JFrame {
     private void initComponents() {
 
         txtButtonTienda = new javax.swing.JLabel();
+        txtHacerVenta = new javax.swing.JToggleButton();
+        txtDevolución = new javax.swing.JToggleButton();
+        txtInventario = new javax.swing.JToggleButton();
+        txtReportes = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtButtonTienda.setText("¿Qué desea hacer?");
         txtButtonTienda.setMaximumSize(new java.awt.Dimension(100, 16));
 
+        txtHacerVenta.setText("Hacer Venta");
+        txtHacerVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHacerVentaActionPerformed(evt);
+            }
+        });
+
+        txtDevolución.setText("Devolución");
+        txtDevolución.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDevoluciónActionPerformed(evt);
+            }
+        });
+
+        txtInventario.setText("Inventario");
+        txtInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInventarioActionPerformed(evt);
+            }
+        });
+
+        txtReportes.setSelected(true);
+        txtReportes.setText("Reportes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtButtonTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158))
+                .addGap(145, 145, 145))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHacerVenta)
+                    .addComponent(txtInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(txtButtonTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHacerVenta)
+                    .addComponent(txtDevolución))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtInventario)
+                    .addComponent(txtReportes))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtHacerVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHacerVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHacerVentaActionPerformed
+
+    private void txtDevoluciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDevoluciónActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDevoluciónActionPerformed
+
+    private void txtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInventarioActionPerformed
+        var inventarioSistema = new InventarioSistema();
+        inventarioSistema.setVisible(true);
+    }//GEN-LAST:event_txtInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,5 +156,9 @@ public class Tienda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel txtButtonTienda;
+    private javax.swing.JToggleButton txtDevolución;
+    private javax.swing.JToggleButton txtHacerVenta;
+    private javax.swing.JToggleButton txtInventario;
+    private javax.swing.JToggleButton txtReportes;
     // End of variables declaration//GEN-END:variables
 }

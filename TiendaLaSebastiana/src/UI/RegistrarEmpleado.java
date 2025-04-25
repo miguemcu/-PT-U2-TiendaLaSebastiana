@@ -138,6 +138,12 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
             }
             
+            for (Empleado empleado : parent.getCaja().getEmpleados()){
+                if (empleado.getCedula().equals(cedula)){
+                    throw new IllegalArgumentException("Ya hay un empleado registrado con esa cédula.");
+                }
+            }
+            
             if (!cedula.matches("\\d+")){
                 throw new IllegalArgumentException("La cedula solo debe contener números.");
             }

@@ -31,13 +31,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtHacerVenta" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtInventario" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnHacerVenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnInventario" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="132" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtDevolución" min="-2" pref="95" max="-2" attributes="0"/>
-                  <Component id="txtReportes" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnDevolución" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnReportes" min="-2" pref="95" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
@@ -50,13 +50,13 @@
               <Component id="txtButtonTienda" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtHacerVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDevolución" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHacerVenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDevolución" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtInventario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtReportes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnInventario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnReportes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="90" max="32767" attributes="0"/>
           </Group>
@@ -72,31 +72,31 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="txtHacerVenta">
+    <Component class="javax.swing.JToggleButton" name="btnHacerVenta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hacer Venta"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHacerVentaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHacerVentaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="txtDevoluci&#xf3;n">
+    <Component class="javax.swing.JToggleButton" name="btnDevoluci&#xf3;n">
       <Properties>
         <Property name="text" type="java.lang.String" value="Devoluci&#xf3;n"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDevoluci&#xf3;nActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevoluci&#xf3;nActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="txtInventario">
+    <Component class="javax.swing.JToggleButton" name="btnInventario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inventario"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInventarioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="txtReportes">
+    <Component class="javax.swing.JToggleButton" name="btnReportes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reportes"/>
       </Properties>

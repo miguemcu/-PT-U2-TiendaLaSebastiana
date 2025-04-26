@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -34,43 +35,39 @@ public class Tienda extends javax.swing.JFrame {
     private void initComponents() {
 
         txtButtonTienda = new javax.swing.JLabel();
-        txtHacerVenta = new javax.swing.JToggleButton();
-        txtDevolución = new javax.swing.JToggleButton();
-        txtInventario = new javax.swing.JToggleButton();
-        txtReportes = new javax.swing.JToggleButton();
+        btnHacerVenta = new javax.swing.JToggleButton();
+        btnDevolución = new javax.swing.JToggleButton();
+        btnInventario = new javax.swing.JToggleButton();
+        btnReportes = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtButtonTienda.setText("¿Qué desea hacer?");
         txtButtonTienda.setMaximumSize(new java.awt.Dimension(100, 16));
 
-        txtHacerVenta.setText("Hacer Venta");
-        txtHacerVenta.addActionListener(new java.awt.event.ActionListener() {
+        btnHacerVenta.setText("Hacer Venta");
+        btnHacerVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHacerVentaActionPerformed(evt);
+                btnHacerVentaActionPerformed(evt);
             }
         });
 
-        txtDevolución.setText("Devolución");
-        txtDevolución.addActionListener(new java.awt.event.ActionListener() {
+        btnDevolución.setText("Devolución");
+        btnDevolución.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDevoluciónActionPerformed(evt);
+                btnDevoluciónActionPerformed(evt);
             }
         });
 
-        txtInventario.setText("Inventario");
-        txtInventario.addActionListener(new java.awt.event.ActionListener() {
+        btnInventario.setText("Inventario");
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInventarioActionPerformed(evt);
+                btnInventarioActionPerformed(evt);
             }
         });
 
-        txtReportes.setText("Reportes");
-        txtReportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtReportesActionPerformed(evt);
-            }
-        });
+        btnReportes.setSelected(true);
+        btnReportes.setText("Reportes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,12 +80,12 @@ public class Tienda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHacerVenta)
-                    .addComponent(txtInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHacerVenta)
+                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -98,35 +95,30 @@ public class Tienda extends javax.swing.JFrame {
                 .addComponent(txtButtonTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHacerVenta)
-                    .addComponent(txtDevolución))
+                    .addComponent(btnHacerVenta)
+                    .addComponent(btnDevolución))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInventario)
-                    .addComponent(txtReportes))
+                    .addComponent(btnInventario)
+                    .addComponent(btnReportes))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtHacerVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHacerVentaActionPerformed
+    private void btnHacerVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtHacerVentaActionPerformed
+    }//GEN-LAST:event_btnHacerVentaActionPerformed
 
-    private void txtDevoluciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDevoluciónActionPerformed
+    private void btnDevoluciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevoluciónActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDevoluciónActionPerformed
+    }//GEN-LAST:event_btnDevoluciónActionPerformed
 
-    private void txtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInventarioActionPerformed
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         var inventarioSistema = new InventarioSistema();
         inventarioSistema.setVisible(true);
-    }//GEN-LAST:event_txtInventarioActionPerformed
-
-    private void txtReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportesActionPerformed
-        var sistemaReportes = new SistemaReportes();
-        sistemaReportes.setVisible(true);
-    }//GEN-LAST:event_txtReportesActionPerformed
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,10 +156,11 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnDevolución;
+    private javax.swing.JToggleButton btnHacerVenta;
+    private javax.swing.JToggleButton btnInventario;
+    private javax.swing.JToggleButton btnReportes;
     private javax.swing.JLabel txtButtonTienda;
-    private javax.swing.JToggleButton txtDevolución;
-    private javax.swing.JToggleButton txtHacerVenta;
-    private javax.swing.JToggleButton txtInventario;
-    private javax.swing.JToggleButton txtReportes;
     // End of variables declaration//GEN-END:variables
 }
+

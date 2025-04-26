@@ -4,15 +4,19 @@
  */
 package UI;
 
-/**
- *
- * @author Sebastian
- */
+import Entities.Producto;
+import javax.swing.JToggleButton;
 public class InventarioSistema extends javax.swing.JFrame {
+    private CreacionProducto creacionProducto;
 
-    /**
-     * Creates new form InventarioSistema
-     */
+    public JToggleButton getBtnCrearProducto() {
+        return btnCrearProducto;
+    }
+
+    public void setBtnCrearProducto(JToggleButton btnCrearProducto) {
+        this.btnCrearProducto = btnCrearProducto;
+    }
+    
     public InventarioSistema() {
         initComponents();
     }
@@ -26,40 +30,60 @@ public class InventarioSistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mun = new javax.swing.JToggleButton();
+        btnCrearProducto = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        mun.setText("mun");
-        mun.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearProducto.setText("Crear Producto");
+        btnCrearProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                munActionPerformed(evt);
+                btnCrearProductoActionPerformed(evt);
             }
         });
+
+        jToggleButton1.setText("jToggleButton1");
+
+        jToggleButton2.setText("jToggleButton2");
+
+        jToggleButton3.setText("jToggleButton3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(mun)
-                .addContainerGap(226, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(153, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToggleButton3)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jToggleButton1)
+                    .addComponent(btnCrearProducto, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(mun)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(btnCrearProducto)
+                .addGap(41, 41, 41)
+                .addComponent(jToggleButton1)
+                .addGap(33, 33, 33)
+                .addComponent(jToggleButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jToggleButton3)
+                .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void munActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_munActionPerformed
+    private void btnCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProductoActionPerformed
+        var creacionProducto = new CreacionProducto();
+        creacionProducto.setVisible(true);
+    }//GEN-LAST:event_btnCrearProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +121,9 @@ public class InventarioSistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton mun;
+    private javax.swing.JToggleButton btnCrearProducto;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }

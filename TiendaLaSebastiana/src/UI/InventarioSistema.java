@@ -4,12 +4,13 @@
  */
 package UI;
 
-import Gestión.Inventario;
+import Gestión.Caja;
 import javax.swing.JToggleButton;
 public class InventarioSistema extends javax.swing.JFrame {
     private Main parent;
-    
-    public InventarioSistema(Main parent) {
+    private Caja caja;
+    public InventarioSistema(Main parent, Caja caja) {
+        this.caja = caja;
         this.parent = parent;
         initComponents();
     }
@@ -75,7 +76,7 @@ public class InventarioSistema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProductoActionPerformed
-        var crearProducto = new CreacionProducto(parent, parent.getCaja().getInventario());
+        var crearProducto = new CreacionProducto(parent, parent.getCaja(),parent.getCaja().getInventario());
         crearProducto.setVisible(true);
     }//GEN-LAST:event_btnCrearProductoActionPerformed
 

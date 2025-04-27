@@ -92,7 +92,8 @@ public class SistemaReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteVentasActionPerformed
-        // TODO add your handling code here:
+        var reporteVentas = new ReporteVentas();
+        reporteVentas.setVisible(true);
     }//GEN-LAST:event_btnReporteVentasActionPerformed
 
     private void btnReporteStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteStackActionPerformed
@@ -100,7 +101,7 @@ public class SistemaReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReporteStackActionPerformed
 
     private void btnRegresarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReportesActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnRegresarReportesActionPerformed
 
     /**

@@ -131,6 +131,7 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
+        txtCantidadAjustar.setMaximumSize(new java.awt.Dimension(124, 22));
         txtCantidadAjustar.setMinimumSize(new java.awt.Dimension(124, 22));
         txtCantidadAjustar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,8 +268,7 @@ public class InventarioSistema extends javax.swing.JFrame {
             break;
         }
             int cantidadAjustar = Integer.parseInt(this.txtCantidadAjustar.getText().trim());
-            this.productoBuscado.setCantidad(cantidadAjustar);
-        this.parent.getCaja().getInventario().getProductos().set(i,this.productoBuscado );
+        this.parent.getCaja().getInventario().getProductos().get(i).setCantidad(cantidadAjustar);
     }
     }//GEN-LAST:event_btnAjustarCantidadActionPerformed
 

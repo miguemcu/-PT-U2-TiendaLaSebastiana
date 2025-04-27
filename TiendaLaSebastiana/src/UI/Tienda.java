@@ -5,12 +5,14 @@
  */
 package UI;
 
+import Gestión.Caja;
+
 /**
  *
  * @author Sebastian
  */
 public class Tienda extends javax.swing.JFrame {
-
+    private Caja caja;
     private InventarioSistema inventarioSistema;
     private Main parent;
 
@@ -22,7 +24,8 @@ public class Tienda extends javax.swing.JFrame {
         this.inventarioSistema = inventarioSistema;
     }
     
-    public Tienda(Main parent) {
+    public Tienda(Main parent, Caja caja) {
+        this.caja = caja;
         this.parent = parent;
         initComponents();
     }
@@ -118,7 +121,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDevoluciónActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-        var inventarioSistema = new InventarioSistema(parent);
+        var inventarioSistema = new InventarioSistema(parent, parent.getCaja());
         inventarioSistema.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 

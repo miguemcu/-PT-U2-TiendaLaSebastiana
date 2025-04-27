@@ -8,14 +8,26 @@ package UI;
  *
  * @author migue
  */
-
 import Gestión.Caja;
 
 public class Main extends javax.swing.JFrame {
     
     private Caja caja;
-    
     private EntrarSistema entrarSistema;
+    private CreacionProducto creacionProducto;
+    
+    public Main() {
+        this.caja = new Caja();
+        initComponents();
+    }
+    
+    public CreacionProducto getCreacionProducto() {
+        return creacionProducto;
+    }
+
+    public void setCreacionProducto(CreacionProducto creacionProducto) {
+        this.creacionProducto = creacionProducto;
+    }
 
     public EntrarSistema getEntrarSistema() {
         return entrarSistema;
@@ -35,10 +47,6 @@ public class Main extends javax.swing.JFrame {
         this.registrarEmpleado = registrarEmpleado;
     }
     
-    public Main() {
-        this.caja = new Caja();
-        initComponents();
-    }
 
     public Caja getCaja() {
         return caja;

@@ -19,16 +19,11 @@ public class Caja {
     private ArrayList<Venta> ventas;
     private Inventario inventario;
 
+    
     public Caja() {
         this.empleados = new ArrayList<>();
         this.ventas = new ArrayList<>();
         this.inventario = new Inventario();
-    }
-
-    public Caja(Empleado cajero, ArrayList<Empleado> empleados, Inventario inventario) {
-        this.cajero = cajero;
-        this.empleados = empleados;
-        this.inventario = inventario;
         this.ventas = new ArrayList<>();
     }
 

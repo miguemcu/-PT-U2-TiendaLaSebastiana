@@ -6,15 +6,27 @@ package UI;
 
 import Entities.Aseo;
 import Entities.Bebida;
+import Entities.Enlatado;
 import Entities.EnumTipoProd;
+import Entities.Granos;
+import Entities.Mecato;
+import Gestión.Inventario;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-
-import Entities.Producto;
 public class CreacionProducto extends javax.swing.JFrame {
-    
-    public CreacionProducto() {
-        
-        
+    private Main parent;
+
+    public Main getParent() {
+        return parent;
+    }
+
+    public void setParent(Main parent) {
+        this.parent = parent;
+    }
+    public CreacionProducto(Main parent, Inventario inventario){
+        this.parent = parent;
+        this.parent.getCaja().setInventario(inventario);
         initComponents();
         inicializarComboTipoProd();
     }
@@ -52,10 +64,13 @@ public class CreacionProducto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtDay = new javax.swing.JTextField();
         txtMonth = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtYear = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtEtiquetas = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -127,59 +142,77 @@ public class CreacionProducto extends javax.swing.JFrame {
 
         jLabel8.setText("YYYY");
 
+        txtEtiquetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEtiquetasActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Etiqueta :");
+
+        jLabel10.setText("#Escriba asi: etiqueta1,etiqueta2,...,etiquetak");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnGuardar)
-                        .addGap(194, 194, 194))
-                    .addComponent(jScrollPane4))
-                .addGap(119, 119, 119))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuardar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(104, 104, 104)
+                                .addComponent(txtEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 9, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,16 +246,26 @@ public class CreacionProducto extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(btnGuardar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -248,17 +291,19 @@ public class CreacionProducto extends javax.swing.JFrame {
             String PrecioMayor = txtPrecioMayor.getText().trim();
             String PrecioMenor = txtPrecioMenor.getText().trim();
             String tipoSeleccionado = (String) txtTipoProd.getSelectedItem();
+            String dia = txtDay.getText().trim();
+            String mes = txtMonth.getText().trim();
+            String annio = txtYear.getText().trim();
+            String textoEtiquetas = txtEtiquetas.getText().trim();
         if (nombre.isEmpty() || id.isEmpty() || Cantidad.isEmpty() ||
-        PrecioMayor.isEmpty() || PrecioMenor.isEmpty() || tipoSeleccionado == null) {
+        PrecioMayor.isEmpty() || PrecioMenor.isEmpty() || tipoSeleccionado == null || 
+                dia.isEmpty() || mes.isEmpty() || annio.isEmpty() || textoEtiquetas.isEmpty()) {
         throw new IllegalArgumentException("Todos los campos son obligatorios.");
     }
-
-    // Validar que el nombre contenga solo letras y espacios
     if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
         throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
     }
 
-    // Validar que ID solo contenga números
     if (!id.matches("\\d+")) {
         throw new IllegalArgumentException("El ID solo debe contener números.");
     }
@@ -277,18 +322,54 @@ public class CreacionProducto extends javax.swing.JFrame {
     if (!PrecioMenor.matches("\\d+(\\.\\d+)?")) {
         throw new IllegalArgumentException("El precio menor debe ser un número válido.");
     }
+    if (!dia.matches("\\d+")){
+        throw new IllegalArgumentException("El día solo debe contener números.");
+    }
+    if (!mes.matches("\\d+")){
+        throw new IllegalArgumentException("El mes solo debe contener números.");
+    }
+    if (!annio.matches("\\d+")){
+        throw new IllegalArgumentException("El año solo debe contener números.");
+    }
+    if (!textoEtiquetas.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s,]+")) {
+        throw new IllegalArgumentException("Las etiquetas solo puede contener letras y espacios.");
+    }
     long Id = Long.parseLong(id);
     double cantidad = Double.parseDouble(Cantidad);
     double preciomenor = Double.parseDouble(PrecioMenor);
     double preciomayor = Double.parseDouble(PrecioMayor);
-    EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO; 
+    EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
+    int Dia = Integer.parseInt(dia);
+    int Mes = Integer.parseInt(mes);
+    int Annio = Integer.parseInt(annio);
+    LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
+    ArrayList<String> etiquetas = new ArrayList<>();
+    String[] etiquetasArray = textoEtiquetas.split(",");
+    for (String etiqueta : etiquetasArray) {
+        etiquetas.add(etiqueta.trim());
+}
     if (preciomenor>preciomayor){
         throw new IllegalArgumentException("El precio mayor debe ser mayor o igual al precio menor.");
     }
     switch(tipoSeleccionado){
         case "Aseo":
-            producto = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, tiposeleccionado);
+           Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+           parent.getCaja().getInventario().crearProductos(aseo);
+        case "Bebida":
+           Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+           parent.getCaja().getInventario().crearProductos(bebida);
+        case "Mecato":
+           Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+           parent.getCaja().getInventario().crearProductos(mecato);
+        case "Enlatado":
+            Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+            parent.getCaja().getInventario().crearProductos(enlatado);
+        case "Grano":
+           Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+           parent.getCaja().getInventario().crearProductos(granos);
     }
+    this.dispose();
+    parent.setVisible(true);
 
 } catch (IllegalArgumentException ex) {
     txtErrorRegistro.setText(ex.getMessage());
@@ -305,44 +386,19 @@ public class CreacionProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMonthActionPerformed
 
+    private void txtEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEtiquetasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEtiquetasActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreacionProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreacionProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreacionProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreacionProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreacionProducto().setVisible(true);
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnGuardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -350,19 +406,21 @@ public class CreacionProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblPrecioMayor;
     private javax.swing.JLabel lblPrecioMenor;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDay;
     private javax.swing.JTextArea txtErrorRegistro;
+    private javax.swing.JTextField txtEtiquetas;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMonth;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecioMayor;
     private javax.swing.JTextField txtPrecioMenor;
     private javax.swing.JComboBox<String> txtTipoProd;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
 }

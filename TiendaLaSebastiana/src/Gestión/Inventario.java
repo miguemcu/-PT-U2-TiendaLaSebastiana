@@ -7,6 +7,7 @@ package Gestión;
 
 import Entities.Producto;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Inventario {
@@ -14,11 +15,8 @@ public class Inventario {
     private Map<Long, Double> cantidades;
 
     public Inventario() {
-    }
-
-    public Inventario(ArrayList<Producto> productos, Map<Long, Double> cantidades) {
-        this.productos = productos;
-        this.cantidades = cantidades;
+        this.productos = new ArrayList<>();
+        this.cantidades = new HashMap<>();
     }
 
     public ArrayList<Producto> getProductos() {
@@ -29,6 +27,7 @@ public class Inventario {
         this.productos = productos;
     }
 
+    
     public Map<Long, Double> getCantidades() {
         return cantidades;
     }
@@ -37,6 +36,8 @@ public class Inventario {
         this.cantidades = cantidades;
     }
     
-    
+    public void crearProductos(Producto producto){
+        productos.add(producto);
+    }
 
 }

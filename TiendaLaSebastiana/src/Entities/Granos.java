@@ -2,7 +2,7 @@ package Entities;
 
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -10,24 +10,24 @@ import java.util.Date;
  */
 
 public class Granos extends Producto {
-    private Date fechaDeVencimiento;
+    private LocalDate fechaDeVencimiento;
     private ArrayList<String> etiquetas;
 
     public Granos() {
     }
     
     public Granos(String nombre, long id, double cantidad, double precioMenor, double precioMayor,
-                  Date fechaDeVencimiento, ArrayList<String> etiquetas) {
+                  LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
         super(nombre,id,cantidad,precioMenor, precioMayor, EnumTipoProd.GRANOS);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
 
-    public Date getFechaDeVencimiento() {
+    public LocalDate getFechaDeVencimiento() {
         return fechaDeVencimiento;
     }
 
-    public void setFechaDeVencimiento(Date fechaDeVencimiento) {
+    public void setFechaDeVencimiento(LocalDate fechaDeVencimiento) {
         this.fechaDeVencimiento = fechaDeVencimiento;
     }
 

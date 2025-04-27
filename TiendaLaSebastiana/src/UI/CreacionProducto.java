@@ -4,6 +4,7 @@
  */
 package UI;
 import Gestión.Caja;
+import Entities.Producto;
 import Entities.Aseo;
 import Entities.Bebida;
 import Entities.Enlatado;
@@ -12,8 +13,11 @@ import Entities.Granos;
 import Entities.Mecato;
 import Gestión.Inventario;
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+
 public class CreacionProducto extends javax.swing.JFrame {
     private Main parent;
     private Caja caja;
@@ -286,6 +290,7 @@ public class CreacionProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTipoProdActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Map<Long, Double> cantidades = parent.getCaja().getInventario().getCantidades();
         try {
             String nombre = txtNombre.getText().trim();
             String id = txtID.getText().trim();
@@ -301,88 +306,103 @@ public class CreacionProducto extends javax.swing.JFrame {
         PrecioMayor.isBlank() || PrecioMenor.isBlank() || tipoSeleccionado == null || 
                 dia.isBlank() || mes.isBlank() || annio.isBlank()) {
         throw new IllegalArgumentException("Todos los campos son obligatorios.");
-    }
-    if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-        throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
-    }
+        }
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+")) {
+            throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
+        }
 
-    if (!id.matches("\\d+")) {
-        throw new IllegalArgumentException("El ID solo debe contener números.");
-    }
+        if (!id.matches("\\d+")) {
+            throw new IllegalArgumentException("El ID solo debe contener números.");
+        }
 
-    // Validar que Cantidad solo contenga números (y opcionalmente punto decimal)
-    if (!Cantidad.matches("\\d+(\\.\\d+)?")) {
-        throw new IllegalArgumentException("La cantidad debe ser un número válido.");
-    }
+        // Validar que Cantidad solo contenga números (y opcionalmente punto decimal)
+        if (!Cantidad.matches("\\d+(\\.\\d+)?")) {
+            throw new IllegalArgumentException("La cantidad debe ser un número válido.");
+        }
 
-    // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
-    if (!PrecioMayor.matches("\\d+(\\.\\d+)?")) {
-        throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
-    }
+        // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
+        if (!PrecioMayor.matches("\\d+(\\.\\d+)?")) {
+            throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
+        }
 
-    // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
-    if (!PrecioMenor.matches("\\d+(\\.\\d+)?")) {
-        throw new IllegalArgumentException("El precio menor debe ser un número válido.");
+        // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
+        if (!PrecioMenor.matches("\\d+(\\.\\d+)?")) {
+            throw new IllegalArgumentException("El precio menor debe ser un número válido.");
+        }
+        if (!dia.matches("\\d+")){
+            throw new IllegalArgumentException("El día solo debe contener números.");
+        }
+        if (!mes.matches("\\d+")){
+            throw new IllegalArgumentException("El mes solo debe contener números.");
+        }
+        if (!annio.matches("\\d+")){
+            throw new IllegalArgumentException("El año solo debe contener números.");
+        }
+        if (!textoEtiquetas.isBlank() && !textoEtiquetas.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s,]*")) {
+            throw new IllegalArgumentException("Las etiquetas solo puede contener letras y espacios.");
+        }
+        
+        long Id = Long.parseLong(id);
+        double cantidad = Double.parseDouble(Cantidad);
+        double preciomenor = Double.parseDouble(PrecioMenor);
+        double preciomayor = Double.parseDouble(PrecioMayor);
+        EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
+        int Dia = Integer.parseInt(dia);
+        int Mes = Integer.parseInt(mes);
+        int Annio = Integer.parseInt(annio);
+        LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
+        ArrayList<String> etiquetas = new ArrayList<>();
+        String[] etiquetasArray = textoEtiquetas.split(",");
+        for (String etiqueta : etiquetasArray) {
+            etiquetas.add(etiqueta.trim());
     }
-    if (!dia.matches("\\d+")){
-        throw new IllegalArgumentException("El día solo debe contener números.");
+        if (preciomenor<preciomayor){
+            throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
+        }
+        
+        if (Annio < Year.now().getValue()){
+            throw new IllegalArgumentException("La fecha de vencimiento es incorrecta.");
+        }
+        switch(tipoSeleccionado){
+            case "Aseo":
+               Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               parent.getCaja().getInventario().crearProductos(aseo);
+               cantidades.put(Id, cantidad);
+            case "Bebida":
+               Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               parent.getCaja().getInventario().crearProductos(bebida);
+               cantidades.put(Id, cantidad);
+            case "Mecato":
+               Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               parent.getCaja().getInventario().crearProductos(mecato);
+               cantidades.put(Id, cantidad);
+            case "Enlatado":
+                Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+                parent.getCaja().getInventario().crearProductos(enlatado);
+                cantidades.put(Id, cantidad);
+            case "Grano":
+               Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               parent.getCaja().getInventario().crearProductos(granos);
+               cantidades.put(Id, cantidad);
+        }
+        
+        /*System.out.println("Producto creado correctamente.");
+        for (Producto p : parent.getCaja().getInventario().getProductos()) {
+            p.imprimirFicha();
     }
-    if (!mes.matches("\\d+")){
-        throw new IllegalArgumentException("El mes solo debe contener números.");
-    }
-    if (!annio.matches("\\d+")){
-        throw new IllegalArgumentException("El año solo debe contener números.");
-    }
-    if (!textoEtiquetas.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s,]+")) {
-        throw new IllegalArgumentException("Las etiquetas solo puede contener letras y espacios.");
-    }
-    long Id = Long.parseLong(id);
-    double cantidad = Double.parseDouble(Cantidad);
-    double preciomenor = Double.parseDouble(PrecioMenor);
-    double preciomayor = Double.parseDouble(PrecioMayor);
-    EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
-    int Dia = Integer.parseInt(dia);
-    int Mes = Integer.parseInt(mes);
-    int Annio = Integer.parseInt(annio);
-    LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
-    ArrayList<String> etiquetas = new ArrayList<>();
-    String[] etiquetasArray = textoEtiquetas.split(",");
-    for (String etiqueta : etiquetasArray) {
-        etiquetas.add(etiqueta.trim());
-}
-    if (preciomenor<preciomayor){
-        throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
-    }
-    switch(tipoSeleccionado){
-        case "Aseo":
-           Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
-           parent.getCaja().getInventario().crearProductos(aseo);
-           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
-        case "Bebida":
-           Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
-           parent.getCaja().getInventario().crearProductos(bebida);
-           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
-        case "Mecato":
-           Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
-           parent.getCaja().getInventario().crearProductos(mecato);
-           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
-        case "Enlatado":
-            Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
-            parent.getCaja().getInventario().crearProductos(enlatado);
-            parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
-        case "Grano":
-           Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
-           parent.getCaja().getInventario().crearProductos(granos);
-           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
-    }
-    this.dispose();
-    InventarioSistema inventarioSistema = new InventarioSistema(parent);
-    inventarioSistema.setVisible(true);
+        for (Long idProd: cantidades.keySet()){
+            Double cantidadProd = cantidades.get(idProd);
+            System.out.println("ID Producto: " + idProd + ", Cantidad: " + cantidadProd);
+        }*/
+        
+        this.dispose();
+        InventarioSistema inventarioSistema = new InventarioSistema(parent);
+        inventarioSistema.setVisible(true);
 
-} catch (IllegalArgumentException ex) {
-    txtErrorRegistro.setText(ex.getMessage());
-} catch (Exception ex) {
-    txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
+    } catch (IllegalArgumentException ex) {
+        txtErrorRegistro.setText(ex.getMessage());
+    } catch (Exception ex) {
+        txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
 }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

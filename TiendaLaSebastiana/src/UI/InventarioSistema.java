@@ -228,7 +228,6 @@ public class InventarioSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecioMenorActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
         String busqueda = txtBuscar.getText();
         try {
     if (busqueda.isEmpty() || busqueda.isBlank()) {

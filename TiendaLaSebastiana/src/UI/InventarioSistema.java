@@ -27,6 +27,14 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
         txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
     }
+    private void limpiarCampos() {
+    txtNombre.setText("");
+    txtCantidad.setText("");
+    txtPrecioMayor.setText("");
+    txtPrecioMenor.setText("");
+    txtID.setText("");
+    txtTipo.setText("");
+}
     private Main parent;
     private Producto productoBuscado;
 
@@ -258,6 +266,7 @@ public class InventarioSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearProductoActionPerformed
 
     private void btnAjustarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarCantidadActionPerformed
+
         int i = -1;
         for (Producto p : this.parent.getCaja().getInventario().getProductos()) {
             i += 1;
@@ -281,6 +290,7 @@ public class InventarioSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecioMenorActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        limpiarCampos();
         String busqueda = txtBuscar.getText();
         try {
             if (busqueda.isEmpty() || busqueda.isBlank()) {

@@ -23,14 +23,24 @@ public class Venta {
     private double totalDescuento;
     private double totalIva;
     private LocalDateTime fecha;
+    private long ID;
 
-    public Venta(ArrayList<DetalleVenta> detalles, double totalVenta, double totalBruto, double totalDescuento, double totalIva, LocalDateTime fecha) {
+    public Venta(ArrayList<DetalleVenta> detalles, double totalVenta, double totalBruto, double totalDescuento, double totalIva, LocalDateTime fecha, long ID) {
+        this.ID = ID;
         this.detalles = detalles;
         this.totalVenta = totalVenta;
         this.totalBruto = totalBruto;
         this.totalDescuento = totalDescuento;
         this.totalIva = totalIva;
         this.fecha = fecha;
+    }
+
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
     }
 
     public ArrayList<DetalleVenta> getDetalles() {

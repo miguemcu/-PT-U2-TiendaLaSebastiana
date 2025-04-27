@@ -5,12 +5,12 @@
  */
 package UI;
 
-
 /**
  *
  * @author Sebastian
  */
 public class Tienda extends javax.swing.JFrame {
+
     private InventarioSistema inventarioSistema;
     private Main parent;
 
@@ -21,7 +21,7 @@ public class Tienda extends javax.swing.JFrame {
     public void setInventarioSistema(InventarioSistema inventarioSistema) {
         this.inventarioSistema = inventarioSistema;
     }
-    
+
     public Tienda(Main parent) {
         this.parent = parent;
         initComponents();
@@ -120,7 +120,8 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHacerVentaActionPerformed
 
     private void btnDevoluciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevoluciónActionPerformed
-        // TODO add your handling code here:
+        Devolucion dev = new Devolucion(this.parent);
+        dev.setVisible(true);
     }//GEN-LAST:event_btnDevoluciónActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
@@ -145,4 +146,3 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JLabel txtButtonTienda;
     // End of variables declaration//GEN-END:variables
 }
-

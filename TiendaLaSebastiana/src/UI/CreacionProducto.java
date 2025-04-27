@@ -297,7 +297,7 @@ public class CreacionProducto extends javax.swing.JFrame {
             String textoEtiquetas = txtEtiquetas.getText().trim();
         if (nombre.isEmpty() || id.isEmpty() || Cantidad.isEmpty() ||
         PrecioMayor.isEmpty() || PrecioMenor.isEmpty() || tipoSeleccionado == null || 
-                dia.isEmpty() || mes.isEmpty() || annio.isEmpty() || textoEtiquetas.isEmpty()) {
+                dia.isEmpty() || mes.isEmpty() || annio.isEmpty()) {
         throw new IllegalArgumentException("Todos los campos son obligatorios.");
     }
     if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
@@ -348,8 +348,8 @@ public class CreacionProducto extends javax.swing.JFrame {
     for (String etiqueta : etiquetasArray) {
         etiquetas.add(etiqueta.trim());
 }
-    if (preciomenor>preciomayor){
-        throw new IllegalArgumentException("El precio mayor debe ser mayor o igual al precio menor.");
+    if (preciomenor<preciomayor){
+        throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
     }
     switch(tipoSeleccionado){
         case "Aseo":

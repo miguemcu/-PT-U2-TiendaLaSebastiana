@@ -376,7 +376,8 @@ public class CreacionProducto extends javax.swing.JFrame {
            parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
     }
     this.dispose();
-    parent.setVisible(true);
+    InventarioSistema inventarioSistema = new InventarioSistema(parent);
+    inventarioSistema.setVisible(true);
 
 } catch (IllegalArgumentException ex) {
     txtErrorRegistro.setText(ex.getMessage());

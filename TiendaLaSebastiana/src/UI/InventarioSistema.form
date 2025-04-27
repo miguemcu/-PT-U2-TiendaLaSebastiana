@@ -137,7 +137,6 @@
     <Component class="javax.swing.JToggleButton" name="btnAjustarInventario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajustar Inventario"/>
-        <Property name="actionCommand" type="java.lang.String" value="Ajustar Inventario"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjustarInventarioActionPerformed"/>

@@ -9,7 +9,7 @@ import javax.swing.JToggleButton;
 public class InventarioSistema extends javax.swing.JFrame {
     private Main parent;
     private Caja caja;
-    public InventarioSistema(Main parent, Caja caja) {
+    public InventarioSistema(Main parent) {
         this.caja = caja;
         this.parent = parent;
         initComponents();
@@ -167,6 +167,7 @@ public class InventarioSistema extends javax.swing.JFrame {
     private void btnCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProductoActionPerformed
         var crearProducto = new CreacionProducto(parent, parent.getCaja(),parent.getCaja().getInventario());
         crearProducto.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCrearProductoActionPerformed
 
     private void btnAjustarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarInventarioActionPerformed

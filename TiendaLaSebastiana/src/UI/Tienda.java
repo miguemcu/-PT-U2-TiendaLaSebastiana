@@ -121,7 +121,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDevoluciónActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-        var inventarioSistema = new InventarioSistema(parent, parent.getCaja());
+        var inventarioSistema = new InventarioSistema(parent);
         inventarioSistema.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 

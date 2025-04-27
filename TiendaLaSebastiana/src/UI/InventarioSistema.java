@@ -9,41 +9,47 @@ import Gestión.Caja;
 import java.util.List;
 import java.util.NoSuchElementException;
 import javax.swing.JToggleButton;
+
+
 public class InventarioSistema extends javax.swing.JFrame {
+
     private void setearCampos(Producto producto) {
-    txtNombre.setEditable(false);
-    txtTipo.setEditable(false);
-    txtID.setEditable(false);
-    txtCantidad.setEditable(false);
-    txtPrecioMenor.setEditable(false);
-    txtPrecioMayor.setEditable(false);
-    txtNombre.setText(producto.getNombre());
-    txtTipo.setText(String.valueOf(producto.getTipoProducto()));
-    txtID.setText(String.valueOf(producto.getId()));
-    txtCantidad.setText(String.valueOf(producto.getCantidad()));
-    txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
-    txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
-}
+        txtNombre.setEditable(false);
+        txtTipo.setEditable(false);
+        txtID.setEditable(false);
+        txtCantidad.setEditable(false);
+        txtPrecioMenor.setEditable(false);
+        txtPrecioMayor.setEditable(false);
+        txtNombre.setText(producto.getNombre());
+        txtTipo.setText(String.valueOf(producto.getTipoProducto()));
+        txtID.setText(String.valueOf(producto.getId()));
+        txtCantidad.setText(String.valueOf(producto.getCantidad()));
+        txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
+        txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
+    }
     private Main parent;
-    private Caja caja;
+    private Producto productoBuscado;
+
     public InventarioSistema(Main parent) {
-        this.caja = caja;
+        this.productoBuscado = null;
         this.parent = parent;
         initComponents();
     }
-     public JToggleButton getBtnCrearProducto() {
+
+    public JToggleButton getBtnCrearProducto() {
         return btnCrearProducto;
     }
 
     public void setBtnCrearProducto(JToggleButton btnCrearProducto) {
         this.btnCrearProducto = btnCrearProducto;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         btnCrearProducto = new javax.swing.JToggleButton();
-        btnAjustarInventario = new javax.swing.JToggleButton();
+        btnAjustarCantidad = new javax.swing.JToggleButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -61,6 +67,7 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JToggleButton();
+        txtCantidadAjustar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +78,10 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
-        btnAjustarInventario.setText("Ajustar Inventario");
-        btnAjustarInventario.addActionListener(new java.awt.event.ActionListener() {
+        btnAjustarCantidad.setText("Ajustar cantidad");
+        btnAjustarCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjustarInventarioActionPerformed(evt);
+                btnAjustarCantidadActionPerformed(evt);
             }
         });
 
@@ -124,6 +131,13 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
+        txtCantidadAjustar.setMinimumSize(new java.awt.Dimension(124, 22));
+        txtCantidadAjustar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadAjustarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,23 +167,29 @@ public class InventarioSistema extends javax.swing.JFrame {
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtID)
                                 .addGap(182, 182, 182)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAjustarInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAjustarCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                             .addComponent(btnCrearProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(135, 135, 135))
+                        .addGap(143, 143, 143))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtPrecioMayor, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTipo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPrecioMenor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(173, 173, 173)
+                                .addComponent(txtCantidadAjustar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -193,26 +213,30 @@ public class InventarioSistema extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnCrearProducto)
                         .addGap(43, 43, 43)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAjustarInventario)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAjustarCantidad)
                         .addGap(18, 18, 18)
+                        .addComponent(txtCantidadAjustar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
@@ -220,9 +244,7 @@ public class InventarioSistema extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
@@ -230,14 +252,25 @@ public class InventarioSistema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProductoActionPerformed
-        var crearProducto = new CreacionProducto(parent, parent.getCaja(),parent.getCaja().getInventario());
+        var crearProducto = new CreacionProducto(parent, parent.getCaja(), parent.getCaja().getInventario());
         crearProducto.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCrearProductoActionPerformed
 
-    private void btnAjustarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarInventarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAjustarInventarioActionPerformed
+    private void btnAjustarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarCantidadActionPerformed
+        int i = -1;
+        for (Producto p : this.parent.getCaja().getInventario().getProductos()) {
+            i += 1;
+            if(p.getId() == this.productoBuscado.getId()){
+                
+
+            break;
+        }
+            int cantidadAjustar = Integer.parseInt(this.txtCantidadAjustar.getText().trim());
+            this.productoBuscado.setCantidad(cantidadAjustar);
+        this.parent.getCaja().getInventario().getProductos().set(i,this.productoBuscado );
+    }
+    }//GEN-LAST:event_btnAjustarCantidadActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -250,41 +283,45 @@ public class InventarioSistema extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String busqueda = txtBuscar.getText();
         try {
-    if (busqueda.isEmpty() || busqueda.isBlank()) {
-        throw new IllegalArgumentException("Todos los campos son obligatorios.");
-    }
-
-    boolean encontrado = false;
-
-    // Obtenemos la lista de productos
-    List<Producto> productos = parent.getCaja().getInventario().getProductos();
-
-    if (busqueda.matches("\\d+")) {
-        long id = Long.parseLong(busqueda);
-        for (Producto producto : productos) {
-            if (producto.getId() == id) {
-                setearCampos(producto);
-                encontrado = true;
-                break;
+            if (busqueda.isEmpty() || busqueda.isBlank()) {
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
             }
-        }
-    } else {
-        for (Producto producto : productos) {
-            if (producto.getNombre().equalsIgnoreCase(busqueda)) {
-                setearCampos(producto);
-                encontrado = true;
-                break;
+
+            boolean encontrado = false;
+
+            // Obtenemos la lista de productos
+            List<Producto> productos = parent.getCaja().getInventario().getProductos();
+
+            if (busqueda.matches("\\d+")) {
+                long id = Long.parseLong(busqueda);
+                for (Producto producto : productos) {
+                    if (producto.getId() == id) {
+                        this.productoBuscado = producto;
+                        setearCampos(this.productoBuscado);
+                        encontrado = true;
+                        break;
+                    }
+                }
+            } else {
+                for (Producto producto : productos) {
+                    if (producto.getNombre().equalsIgnoreCase(busqueda)) {
+                        this.productoBuscado = producto;
+                        setearCampos(producto);
+                        encontrado = true;
+                        break;
+                    }
+                }
             }
+
+            if (!encontrado) {
+                throw new NoSuchElementException("Producto no encontrado.");
+            }
+
+        } catch (IllegalArgumentException ex) {
+            txtErrorRegistro.setText(ex.getMessage());
+        } catch (Exception ex) {
+            txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
         }
-    }
-
-    if (!encontrado) {
-        throw new NoSuchElementException("Producto no encontrado.");
-    }
-
-} catch (Exception e) {
-    e.printStackTrace();
-}
 
 // Método para setear los campos del formulario
 
@@ -296,12 +333,16 @@ public class InventarioSistema extends javax.swing.JFrame {
         tienda.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void txtCantidadAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadAjustarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadAjustarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnAjustarInventario;
+    private javax.swing.JToggleButton btnAjustarCantidad;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JToggleButton btnCrearProducto;
     private javax.swing.JToggleButton btnRegresar;
@@ -314,6 +355,7 @@ public class InventarioSistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtCantidadAjustar;
     private javax.swing.JTextArea txtErrorRegistro;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;

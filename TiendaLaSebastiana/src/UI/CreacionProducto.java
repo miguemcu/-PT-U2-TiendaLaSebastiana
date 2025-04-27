@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
-
+import Gestión.Caja;
 import Entities.Aseo;
 import Entities.Bebida;
 import Entities.Enlatado;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 public class CreacionProducto extends javax.swing.JFrame {
     private Main parent;
+    private Caja caja;
 
     public Main getParent() {
         return parent;
@@ -24,7 +25,8 @@ public class CreacionProducto extends javax.swing.JFrame {
     public void setParent(Main parent) {
         this.parent = parent;
     }
-    public CreacionProducto(Main parent, Inventario inventario){
+    public CreacionProducto(Main parent, Caja caja, Inventario inventario){
+        this.caja = caja;
         this.parent = parent;
         this.parent.getCaja().setInventario(inventario);
         initComponents();
@@ -355,18 +357,23 @@ public class CreacionProducto extends javax.swing.JFrame {
         case "Aseo":
            Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
            parent.getCaja().getInventario().crearProductos(aseo);
+           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
         case "Bebida":
            Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
            parent.getCaja().getInventario().crearProductos(bebida);
+           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
         case "Mecato":
            Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
            parent.getCaja().getInventario().crearProductos(mecato);
+           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
         case "Enlatado":
             Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
             parent.getCaja().getInventario().crearProductos(enlatado);
+            parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
         case "Grano":
            Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
            parent.getCaja().getInventario().crearProductos(granos);
+           parent.getCaja().getInventario().getCantidades().put(Id, cantidad);
     }
     this.dispose();
     parent.setVisible(true);

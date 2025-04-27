@@ -14,6 +14,7 @@ public class Tienda extends javax.swing.JFrame {
     private InventarioSistema inventarioSistema;
     private Main parent;
 
+    
     public InventarioSistema getInventarioSistema() {
         return inventarioSistema;
     }

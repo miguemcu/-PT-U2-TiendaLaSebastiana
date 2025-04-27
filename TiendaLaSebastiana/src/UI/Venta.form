@@ -28,7 +28,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAgregarVenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnAgregarVenta" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="lblInsucienteStock" min="-2" pref="178" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -134,7 +138,10 @@
                   <Component id="txtDescuentoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="btnAgregarVenta" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAgregarVenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblInsucienteStock" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -199,6 +206,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar a la Venta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarVentaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreProducto">
       <Properties>
@@ -306,6 +316,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Finalizar Venta"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblInsucienteStock">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Insuficiente Stock"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="lblInsucienteStock.setVisible(false);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

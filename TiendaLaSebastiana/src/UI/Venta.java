@@ -16,20 +16,29 @@ import java.util.NoSuchElementException;
  */
 public class Venta extends javax.swing.JFrame {
     private Main parent;
-    private Caja caja;
-   private void setearCampos(Producto producto) {
+    private void setearCampos(Producto producto) {
     txtNombreProducto.setEditable(false);
     txtCantidadDisponible.setEditable(false);
     txtPrecioUnitario.setEditable(false);
+    txtCantidadVender.setEditable(true);
+    txtDescuentoProducto.setEditable(true);
     txtNombreProducto.setText(producto.getNombre());
     txtCantidadDisponible.setText(String.valueOf(producto.getCantidad()));
     txtPrecioUnitario.setText(String.valueOf(producto.getPrecioMenor()));
 }
-    public Venta(Main Parent) {
-        this.caja = caja;
+    public Venta(Main parent) {
         this.parent = parent;     
         initComponents();
     }
+
+    public Main getParent() {
+        return parent;
+    }
+
+    public void setParent(Main parent) {
+        this.parent = parent;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +72,7 @@ public class Venta extends javax.swing.JFrame {
         txtTotalVenta = new javax.swing.JTextField();
         btnCancelarVenta = new javax.swing.JButton();
         btnFinalizarVenta = new javax.swing.JButton();
+        lblInsucienteStock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +94,11 @@ public class Venta extends javax.swing.JFrame {
         jLabel5.setText("Cantidad a vender:");
 
         btnAgregarVenta.setText("Agregar a la Venta");
+        btnAgregarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarVentaActionPerformed(evt);
+            }
+        });
 
         txtNombreProducto.setText("#NO editable#");
 
@@ -145,6 +160,9 @@ public class Venta extends javax.swing.JFrame {
 
         btnFinalizarVenta.setText("Finalizar Venta");
 
+        lblInsucienteStock.setVisible(false);
+        lblInsucienteStock.setText("Insuficiente Stock");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +172,10 @@ public class Venta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregarVenta)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAgregarVenta)
+                                .addGap(64, 64, 64)
+                                .addComponent(lblInsucienteStock, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -234,7 +255,9 @@ public class Venta extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtDescuentoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(btnAgregarVenta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarVenta)
+                    .addComponent(lblInsucienteStock))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -294,7 +317,7 @@ public class Venta extends javax.swing.JFrame {
         for (Producto producto : productos) {
             if (producto.getNombre().equalsIgnoreCase(busqueda)) {
                 setearCampos(producto);
-                encontrado = true;
+                encontrado = true;               
                 break;
             }
         }
@@ -308,6 +331,14 @@ public class Venta extends javax.swing.JFrame {
     e.printStackTrace();
 }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVentaActionPerformed
+        double cantidadDisponible = Double.parseDouble(txtCantidadDisponible.getText());
+        double cantidadVender = Double.parseDouble(txtCantidadVender.getText());
+        if(cantidadDisponible<cantidadVender){
+            this.lblInsucienteStock.setVisible(true);
+        }
+    }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,6 +360,7 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblInsucienteStock;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidadDisponible;
     private javax.swing.JTextField txtCantidadVender;

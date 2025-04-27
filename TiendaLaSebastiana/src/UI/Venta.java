@@ -159,6 +159,11 @@ public class Venta extends javax.swing.JFrame {
         btnCancelarVenta.setText("Cancelar Venta");
 
         btnFinalizarVenta.setText("Finalizar Venta");
+        btnFinalizarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarVentaActionPerformed(evt);
+            }
+        });
 
         lblInsucienteStock.setVisible(false);
         lblInsucienteStock.setText("Insuficiente Stock");
@@ -338,7 +343,14 @@ public class Venta extends javax.swing.JFrame {
         if(cantidadDisponible<cantidadVender){
             this.lblInsucienteStock.setVisible(true);
         }
+        else {
+            
+        }
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
+
+    private void btnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarVentaActionPerformed
+        
+    }//GEN-LAST:event_btnFinalizarVentaActionPerformed
 
     /**
      * @param args the command line arguments

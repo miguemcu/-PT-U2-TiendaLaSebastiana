@@ -43,7 +43,7 @@ public class Tienda extends javax.swing.JFrame {
         btnHacerVenta = new javax.swing.JToggleButton();
         btnDevolución = new javax.swing.JToggleButton();
         btnInventario = new javax.swing.JToggleButton();
-        btnReportes = new javax.swing.JToggleButton();
+        btnReportes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,8 +71,12 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        btnReportes.setSelected(true);
         btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,7 +94,9 @@ public class Tienda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDevolución, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnReportes)
+                        .addGap(9, 9, 9)))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -125,6 +131,11 @@ public class Tienda extends javax.swing.JFrame {
         inventarioSistema.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        var sistemaReportes = new SistemaReportes();
+        sistemaReportes.setVisible(true);
+    }//GEN-LAST:event_btnReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -133,7 +144,7 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnDevolución;
     private javax.swing.JToggleButton btnHacerVenta;
     private javax.swing.JToggleButton btnInventario;
-    private javax.swing.JToggleButton btnReportes;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JLabel txtButtonTienda;
     // End of variables declaration//GEN-END:variables
 }

@@ -349,7 +349,8 @@ public class Venta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
     private void btnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarVentaActionPerformed
-        
+        var recibo = new Recibo(parent);
+        recibo.setVisible(true);
     }//GEN-LAST:event_btnFinalizarVentaActionPerformed
 
     /**

@@ -3,12 +3,7 @@ package UI;
 import Entities.Empleado;
 import Entities.utilJtextField;
 import Gestión.Caja;
-import java.awt.Toolkit;
 import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -34,6 +29,8 @@ public class EntrarSistema extends javax.swing.JFrame {
 
     /**
      * Creates new form EntrarSistema
+     * @param parent
+     * @param caja
      */
     public EntrarSistema(Main parent, Caja caja) {
         this.caja = caja;
@@ -43,6 +40,7 @@ public class EntrarSistema extends javax.swing.JFrame {
         ((AbstractDocument) txtNombreEmpleado.getDocument()).setDocumentFilter(new utilJtextField(35));
     }
 
+    @Override
     public Main getParent() {
         return parent;
     }

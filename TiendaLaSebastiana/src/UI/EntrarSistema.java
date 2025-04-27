@@ -2,6 +2,7 @@ package UI;
 
 import Entities.Empleado;
 import Entities.utilJtextField;
+import Gestión.Caja;
 import java.awt.Toolkit;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
@@ -20,6 +21,7 @@ import javax.swing.text.DocumentFilter;
 public class EntrarSistema extends javax.swing.JFrame {
     private Main parent;
     private Tienda tienda;
+    private Caja caja;
 
     public Tienda getTienda() {
         return tienda;
@@ -33,7 +35,8 @@ public class EntrarSistema extends javax.swing.JFrame {
     /**
      * Creates new form EntrarSistema
      */
-    public EntrarSistema(Main parent) {
+    public EntrarSistema(Main parent, Caja caja) {
+        this.caja = caja;
         this.parent = parent;
         initComponents();
         ((AbstractDocument) txtCedulaEmpleado.getDocument()).setDocumentFilter(new utilJtextField(10));
@@ -187,7 +190,7 @@ public class EntrarSistema extends javax.swing.JFrame {
             for (Empleado empleado : parent.getCaja().getEmpleados()){
                 if (empleado.getNombre().equals(nombre) && empleado.getCedula().equals(cedula)){
                     if(this.getTienda() == null){
-                    this.setTienda(new Tienda(parent));
+                    this.setTienda(new Tienda(parent, parent.getCaja()));
                 }
                 
                 this.getTienda().setVisible(true);

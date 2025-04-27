@@ -44,7 +44,7 @@ public class Aseo extends Producto {
 
     @Override
       public void imprimirFicha() {
-        System.out.println("=== Ficha Bebida ===");
+        System.out.println("=== Ficha Aseo ===");
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
         System.out.println("Cantidad: " + getCantidad());

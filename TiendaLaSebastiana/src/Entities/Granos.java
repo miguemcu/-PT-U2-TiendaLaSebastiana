@@ -41,7 +41,7 @@ public class Granos extends Producto {
     
     @Override
       public void imprimirFicha() {
-        System.out.println("=== Ficha Bebida ===");
+        System.out.println("=== Ficha Granos ===");
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
         System.out.println("Cantidad: " + getCantidad());

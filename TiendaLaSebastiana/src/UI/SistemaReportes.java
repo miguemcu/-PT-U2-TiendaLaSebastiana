@@ -98,7 +98,9 @@ public class SistemaReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReporteVentasActionPerformed
 
     private void btnReporteStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteStackActionPerformed
-        // TODO add your handling code here:
+       var reporteStack = new ReporteStack(parent);
+       reporteStack.setVisible(true);
+       reporteStack.mostrarVentasEnTabla();
     }//GEN-LAST:event_btnReporteStackActionPerformed
 
     private void btnRegresarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReportesActionPerformed

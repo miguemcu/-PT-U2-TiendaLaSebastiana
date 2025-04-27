@@ -77,6 +77,7 @@ public class CreacionProducto extends javax.swing.JFrame {
         txtEtiquetas = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        btnRegresarCreacion = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -158,6 +159,14 @@ public class CreacionProducto extends javax.swing.JFrame {
 
         jLabel10.setText("#Escriba asi: etiqueta1,etiqueta2,...,etiquetak");
 
+        btnRegresarCreacion.setBackground(new java.awt.Color(247, 84, 73));
+        btnRegresarCreacion.setText("Regresar");
+        btnRegresarCreacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarCreacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,6 +228,10 @@ public class CreacionProducto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegresarCreacion)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +275,7 @@ public class CreacionProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txtEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +284,10 @@ public class CreacionProducto extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(btnGuardar))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRegresarCreacion)))
+                .addContainerGap())
         );
 
         pack();
@@ -419,6 +435,10 @@ public class CreacionProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEtiquetasActionPerformed
 
+    private void btnRegresarCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarCreacionActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarCreacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -426,6 +446,7 @@ public class CreacionProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnGuardar;
+    private javax.swing.JButton btnRegresarCreacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

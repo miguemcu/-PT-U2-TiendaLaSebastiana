@@ -269,8 +269,9 @@ public class ReporteVentas extends javax.swing.JFrame {
         
         var ventasAMostrar = this.parent.getCaja().obtenerVentasSegunPeriodo(fechaInicio, fechaFin);
         
-        var VentasPeriodo = new VentasPeriodo(ventasAMostrar);
-        VentasPeriodo.setVisible(true);
+        var ventasPeriodo = new VentasPeriodo(ventasAMostrar);
+        ventasPeriodo.setVisible(true);
+        ventasPeriodo.mostrarVentasEnTabla(ventasAMostrar);
         
         
     }//GEN-LAST:event_btnConsultarActionPerformed

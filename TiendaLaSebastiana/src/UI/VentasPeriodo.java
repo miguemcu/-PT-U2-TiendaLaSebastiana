@@ -21,10 +21,10 @@ public class VentasPeriodo extends javax.swing.JFrame {
     /**
      * Creates new form VentasPeriodo
      */
-    public VentasPeriodo(ArrayList<Venta> ventasFiltradas) {
+    public VentasPeriodo(ArrayList<Venta> ventasAMotrar) {
         modeloTabla = (DefaultTableModel) tblVentasFiltradas.getModel();
-        this.ventasAMostrar = ventasFiltradas;
-        mostrarVentasEnTabla(ventasFiltradas);
+        this.ventasAMostrar = ventasAMotrar;
+        mostrarVentasEnTabla(ventasAMotrar);
         initComponents();
     }
     

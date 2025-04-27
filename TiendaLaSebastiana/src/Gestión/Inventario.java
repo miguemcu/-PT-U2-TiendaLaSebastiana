@@ -40,33 +40,30 @@ public class Inventario {
         productos.add(producto);
     }
     
-    public ArrayList<Producto> filtrarProductos() {
-        
-        ArrayList<Producto> productosFiltrados = new ArrayList<>();
-
-        for (Producto producto : this.productos) {
-            Long productoId = producto.getId();
-            
-            double cantidad = this.cantidades.get(productoId);
-            if (cantidad < 5 || cantidad > 20) {
-                productosFiltrados.add(producto);
-            }
-            
-        }
-
-        return productosFiltrados;
-    }
-    
-    public Map<Long, Double> filtrarStack(ArrayList<Producto> productosFiltrados) {
+    public Map<Long, Double> filtrarStack() {
         Map<Long, Double> cantidadesFiltradas = new HashMap<>();
 
-        for (Producto producto : productosFiltrados) {
-            Long productoId = producto.getId();
-                cantidadesFiltradas.put(productoId, this.cantidades.get(productoId));
+        for (Map.Entry<Long, Double> entry : this.cantidades.entrySet()) {
+            Long productoId = entry.getKey();
+            Double cantidad = entry.getValue();
+            if (cantidad < 5 || cantidad > 20) {
+                cantidadesFiltradas.put(productoId, cantidad);
+            }
         }
 
         return cantidadesFiltradas;
     }
     
+    public ArrayList<Producto> filtrarProductos(Map<Long, Double> cantidadesFiltradas) {
+        ArrayList<Producto> productosFiltrados = new ArrayList<>();
 
+        for (Producto producto : this.productos) {
+            Long productoId = producto.getId();
+            if (cantidadesFiltradas.containsKey(productoId)) {
+                productosFiltrados.add(producto);
+            }
+        }
+
+        return productosFiltrados;
+    }
 }

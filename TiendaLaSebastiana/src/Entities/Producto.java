@@ -13,13 +13,13 @@ public abstract class Producto {
     }
 
     public Producto(String nombre, long id, double cantidad, double precioMayor, double precioMenor, EnumTipoProd tipoProducto) {
-    this.nombre = nombre;
-    this.id = id;
-    this.cantidad = cantidad;
-    this.precioMayor = precioMayor;
-    this.precioMenor = precioMenor;
-    this.tipoProducto = tipoProducto;
-}
+        this.nombre = nombre;
+        this.id = id;
+        this.cantidad = cantidad;
+        this.precioMayor = precioMayor;
+        this.precioMenor = precioMenor;
+        this.tipoProducto = tipoProducto;
+    }
 
     public EnumTipoProd getTipoProducto() {
         return tipoProducto;

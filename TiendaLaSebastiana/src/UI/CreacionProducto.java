@@ -297,9 +297,9 @@ public class CreacionProducto extends javax.swing.JFrame {
             String mes = txtMonth.getText().trim();
             String annio = txtYear.getText().trim();
             String textoEtiquetas = txtEtiquetas.getText().trim();
-        if (nombre.isEmpty() || id.isEmpty() || Cantidad.isEmpty() ||
-        PrecioMayor.isEmpty() || PrecioMenor.isEmpty() || tipoSeleccionado == null || 
-                dia.isEmpty() || mes.isEmpty() || annio.isEmpty()) {
+        if (nombre.isBlank() || id.isBlank() || Cantidad.isBlank() ||
+        PrecioMayor.isBlank() || PrecioMenor.isBlank() || tipoSeleccionado == null || 
+                dia.isBlank() || mes.isBlank() || annio.isBlank()) {
         throw new IllegalArgumentException("Todos los campos son obligatorios.");
     }
     if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {

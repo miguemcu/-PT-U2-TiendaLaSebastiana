@@ -11,6 +11,7 @@ package Gestión;
  */
 import Entities.DetalleVenta;
 import Entities.Producto;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import java.util.ArrayList;
@@ -21,18 +22,15 @@ public class Venta {
     private double totalBruto;
     private double totalDescuento;
     private double totalIva;
+    private LocalDateTime fecha;
 
-    public Venta() {
-        this.detalles = new ArrayList<>();
-    }
-
-    public Venta(ArrayList<DetalleVenta> detalles, double totalVenta, double totalBruto,
-                 double totalDescuento, double totalIva) {
+    public Venta(ArrayList<DetalleVenta> detalles, double totalVenta, double totalBruto, double totalDescuento, double totalIva, LocalDateTime fecha) {
         this.detalles = detalles;
         this.totalVenta = totalVenta;
         this.totalBruto = totalBruto;
         this.totalDescuento = totalDescuento;
         this.totalIva = totalIva;
+        this.fecha = fecha;
     }
 
     public ArrayList<DetalleVenta> getDetalles() {
@@ -75,11 +73,16 @@ public class Venta {
         this.totalIva = totalIva;
     }
 
-    public String generarRecibo() {
-        // Implementación pendiente
-        return null;
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 }
+
+    
 
 
 

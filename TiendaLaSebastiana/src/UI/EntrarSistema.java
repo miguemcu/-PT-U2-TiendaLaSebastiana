@@ -176,7 +176,7 @@ public class EntrarSistema extends javax.swing.JFrame {
         String cedula = txtCedulaEmpleado.getText().trim();
          try {
             
-            if (nombre.isEmpty() || cedula.isEmpty() || nombre.isBlank() || cedula.isBlank()){
+            if (nombre.isBlank() || cedula.isBlank() || nombre.isBlank() || cedula.isBlank()){
                 throw new IllegalArgumentException("Todos los campos son obligatorios.");
             }
             
@@ -190,7 +190,7 @@ public class EntrarSistema extends javax.swing.JFrame {
             for (Empleado empleado : parent.getCaja().getEmpleados()){
                 if (empleado.getNombre().equals(nombre) && empleado.getCedula().equals(cedula)){
                     if(this.getTienda() == null){
-                    this.setTienda(new Tienda(parent, parent.getCaja()));
+                    this.setTienda(new Tienda(parent));
                 }
                 
                 this.getTienda().setVisible(true);

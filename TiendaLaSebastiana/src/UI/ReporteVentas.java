@@ -4,6 +4,9 @@
  */
 package UI;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+
 /**
  *
  * @author migue
@@ -27,30 +30,238 @@ public class ReporteVentas extends javax.swing.JFrame {
     private void initComponents() {
 
         lblSelecPeriodoTiempo = new javax.swing.JLabel();
+        lblFechaInicioConsultar = new javax.swing.JLabel();
+        lblFechaFinConsultar = new javax.swing.JLabel();
+        txtDiaInicio = new javax.swing.JTextField();
+        txtMesInicio = new javax.swing.JTextField();
+        txtAnioInicio = new javax.swing.JTextField();
+        txtDiaFin = new javax.swing.JTextField();
+        txtMesFin = new javax.swing.JTextField();
+        txtAnioFin = new javax.swing.JTextField();
+        lblDiaInicio = new javax.swing.JLabel();
+        lblDiaFin = new javax.swing.JLabel();
+        lblMesInicio = new javax.swing.JLabel();
+        lblMesFin = new javax.swing.JLabel();
+        lblAnioInicio = new javax.swing.JLabel();
+        lblAnioFin = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        lblFechaInicio = new javax.swing.JLabel();
+        lblFechaFin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblSelecPeriodoTiempo.setText("Seleccione el periodo de tiempo a consultar:");
 
+        lblFechaInicioConsultar.setText("Fecha Inicio:");
+
+        lblFechaFinConsultar.setText("Fecha fin:");
+
+        txtMesInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMesInicioActionPerformed(evt);
+            }
+        });
+
+        txtAnioInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnioInicioActionPerformed(evt);
+            }
+        });
+
+        txtMesFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMesFinActionPerformed(evt);
+            }
+        });
+
+        txtAnioFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnioFinActionPerformed(evt);
+            }
+        });
+
+        lblDiaInicio.setText("DD");
+
+        lblDiaFin.setText("DD");
+
+        lblMesInicio.setText("MM");
+
+        lblMesFin.setText("MM");
+
+        lblAnioInicio.setText("AAAA");
+
+        lblAnioFin.setText("AAAA");
+
+        btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRegresar)
+                .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(lblSelecPeriodoTiempo)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSelecPeriodoTiempo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFechaFinConsultar)
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDiaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblDiaFin)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtMesFin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtAnioFin, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblMesFin, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(lblAnioFin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 51, Short.MAX_VALUE))
+                                    .addComponent(lblFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFechaInicioConsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDiaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblDiaInicio)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMesInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblMesInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtAnioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(lblAnioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lblFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(30, 30, 30)
                 .addComponent(lblSelecPeriodoTiempo)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaInicioConsultar)
+                    .addComponent(txtDiaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMesInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDiaInicio)
+                    .addComponent(lblMesInicio)
+                    .addComponent(lblAnioInicio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFechaInicio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaFinConsultar)
+                    .addComponent(txtDiaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMesFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnioFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDiaFin)
+                    .addComponent(lblMesFin)
+                    .addComponent(lblAnioFin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblFechaFin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(btnConsultar))
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtAnioInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnioInicioActionPerformed
+
+    private void txtMesInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMesInicioActionPerformed
+
+    private void txtMesFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesFinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMesFinActionPerformed
+
+    private void txtAnioFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioFinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnioFinActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        String diaInicioStr = txtDiaInicio.getText().trim();
+        String mesInicioStr = txtMesInicio.getText().trim();
+        String anioInicioStr = txtAnioInicio.getText().trim();
+        String diaFinStr = txtDiaFin.getText().trim();
+        String mesFinStr = txtMesFin.getText().trim();
+        String anioFinStr = txtAnioFin.getText().trim();
+        
+        try {
+            int diaInicio = Integer.parseInt(diaInicioStr);
+            int mesInicio = Integer.parseInt(mesInicioStr);
+            int anioInicio = Integer.parseInt(anioInicioStr);
+            int diaFin = Integer.parseInt(diaFinStr);
+            int mesFin = Integer.parseInt(mesFinStr);
+            int anioFin = Integer.parseInt(anioFinStr);
+
+            LocalDate fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
+            LocalDate fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
+            
+            lblFechaInicio.setText("Fecha de inicio: "+ fechaInicio);
+            lblFechaFin.setText("Fecha de fin: "+ fechaFin);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Debe ingresar valores numéricos válidos.");
+        } catch (DateTimeException e) {
+            System.err.println("Fecha inválida: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +299,24 @@ public class ReporteVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblAnioFin;
+    private javax.swing.JLabel lblAnioInicio;
+    private javax.swing.JLabel lblDiaFin;
+    private javax.swing.JLabel lblDiaInicio;
+    private javax.swing.JLabel lblFechaFin;
+    private javax.swing.JLabel lblFechaFinConsultar;
+    private javax.swing.JLabel lblFechaInicio;
+    private javax.swing.JLabel lblFechaInicioConsultar;
+    private javax.swing.JLabel lblMesFin;
+    private javax.swing.JLabel lblMesInicio;
     private javax.swing.JLabel lblSelecPeriodoTiempo;
+    private javax.swing.JTextField txtAnioFin;
+    private javax.swing.JTextField txtAnioInicio;
+    private javax.swing.JTextField txtDiaFin;
+    private javax.swing.JTextField txtDiaInicio;
+    private javax.swing.JTextField txtMesFin;
+    private javax.swing.JTextField txtMesInicio;
     // End of variables declaration//GEN-END:variables
 }

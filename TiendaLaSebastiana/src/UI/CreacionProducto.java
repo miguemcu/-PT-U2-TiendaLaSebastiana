@@ -290,7 +290,8 @@ public class CreacionProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTipoProdActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Map<Long, Double> cantidades = parent.getCaja().getInventario().getCantidades();
+        Map<Long, Double> cantidades = parent.getCaja().getInventario().getCantidades(); //Atajo
+        
         try {
             String nombre = txtNombre.getText().trim();
             String id = txtID.getText().trim();

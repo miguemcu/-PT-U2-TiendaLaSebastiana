@@ -62,10 +62,6 @@ public class SistemaReportes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegresarReportes)
-                .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,6 +69,10 @@ public class SistemaReportes extends javax.swing.JFrame {
                     .addComponent(btnReporteVentas)
                     .addComponent(btnReporteStack))
                 .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegresarReportes)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,9 +83,9 @@ public class SistemaReportes extends javax.swing.JFrame {
                 .addComponent(btnReporteVentas)
                 .addGap(18, 18, 18)
                 .addComponent(btnReporteStack)
-                .addGap(47, 47, 47)
+                .addGap(57, 57, 57)
                 .addComponent(btnRegresarReportes)
-                .addGap(32, 32, 32))
+                .addGap(22, 22, 22))
         );
 
         pack();

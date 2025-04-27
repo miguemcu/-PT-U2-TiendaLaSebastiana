@@ -6,8 +6,18 @@ package UI;
 
 import Entities.Producto;
 import Gestión.Caja;
+import java.util.List;
+import java.util.NoSuchElementException;
 import javax.swing.JToggleButton;
 public class InventarioSistema extends javax.swing.JFrame {
+    private void setearCampos(Producto producto) {
+    txtNombre.setText(producto.getNombre());
+    txtTipo.setText(String.valueOf(producto.getTipoProducto()));
+    txtID.setText(String.valueOf(producto.getId()));
+    txtCantidad.setText(String.valueOf(producto.getCantidad()));
+    txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
+    txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
+}
     private Main parent;
     private Caja caja;
     public InventarioSistema(Main parent) {
@@ -219,41 +229,48 @@ public class InventarioSistema extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-        String busqueda = txtBuscar.getText().trim();
+        String busqueda = txtBuscar.getText();
         try {
-        if (busqueda.isEmpty() || busqueda.isBlank()){
-                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+    if (busqueda.isEmpty() || busqueda.isBlank()) {
+        throw new IllegalArgumentException("Todos los campos son obligatorios.");
+    }
+
+    boolean encontrado = false;
+
+    // Obtenemos la lista de productos
+    List<Producto> productos = parent.getCaja().getInventario().getProductos();
+
+    if (busqueda.matches("\\d+")) {
+        // Buscar por ID
+        long id = Long.parseLong(busqueda);
+        for (Producto producto : productos) {
+            if (producto.getId() == id) {
+                setearCampos(producto);
+                encontrado = true;
+                break;
             }
-        if (busqueda.matches("\\d+")){
-            long id = Long.parseLong(busqueda);
-            for (Producto identificador : parent.getCaja().getInventario().getProductos()){
-                if (identificador.getId() == id){
-                    txtNombre.setText(identificador.getNombre());
-                    txtTipo.setText(String.valueOf(identificador.getTipoProducto()));
-                    txtID.setText(String.valueOf(identificador.getId()));
-                    txtCantidad.setText(String.valueOf(identificador.getCantidad()));
-                    txtPrecioMenor.setText(String.valueOf(identificador.getPrecioMenor()));
-                    txtPrecioMayor.setText(String.valueOf(identificador.getPrecioMayor()));
-                    
-                } else {
-                    for (Producto name : parent.getCaja().getInventario().getProductos() ){
-                        if (name.getNombre().equals(busqueda)){
-                        txtNombre.setText(identificador.getNombre());
-                        txtTipo.setText(String.valueOf(identificador.getTipoProducto()));
-                        txtID.setText(String.valueOf(identificador.getId()));
-                        txtCantidad.setText(String.valueOf(identificador.getCantidad()));
-                        txtPrecioMenor.setText(String.valueOf(identificador.getPrecioMenor()));
-                        txtPrecioMayor.setText(String.valueOf(identificador.getPrecioMayor()));  
-                        }
-                    }
-                }
+        }
+    } else {
+        // Buscar por nombre
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(busqueda)) {
+                setearCampos(producto);
+                encontrado = true;
+                break;
             }
-        } 
-     } catch (IllegalArgumentException ex){
-           txtErrorRegistro.setText(ex.getMessage());
-       } catch (Exception ex) {
-           txtErrorRegistro.setText("Error inesperado " + ex.getMessage());
-       }
+        }
+    }
+
+    if (!encontrado) {
+        throw new NoSuchElementException("Producto no encontrado.");
+    }
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+// Método para setear los campos del formulario
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**

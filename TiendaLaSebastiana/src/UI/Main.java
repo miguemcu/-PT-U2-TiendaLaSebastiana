@@ -8,15 +8,26 @@ package UI;
  *
  * @author migue
  */
+import Entities.Empleado;
 import Gestión.Caja;
 
 public class Main extends javax.swing.JFrame {
     
     private Caja caja;
+    private Empleado userAuth;
     
     public Main() {
+        this.userAuth = null;
         this.caja = new Caja();
         initComponents();
+    }
+
+    public Empleado getUserAuth() {
+        return userAuth;
+    }
+
+    public void setUserAuth(Empleado userAuth) {
+        this.userAuth = userAuth;
     }
     
     private RegistrarEmpleado registrarEmpleado;

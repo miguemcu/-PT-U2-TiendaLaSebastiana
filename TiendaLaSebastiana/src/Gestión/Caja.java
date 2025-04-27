@@ -12,6 +12,8 @@ package Gestión;
 import Entities.Empleado;
 import java.util.ArrayList;
 import Entities.Producto;
+import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class Caja {
     private Empleado cajero;
@@ -80,5 +82,16 @@ public class Caja {
     
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
+    }
+    
+    public ArrayList<Venta> obtenerVentasSegunPeriodo(LocalDate fechaInicio, LocalDate fechaFin){
+        ArrayList<Venta> ventasFiltradas = ventas.stream()
+        .filter(v -> {
+            LocalDate fechaVenta = v.getFecha().toLocalDate();
+            return !fechaVenta.isBefore(fechaInicio) && !fechaVenta.isAfter(fechaFin);
+        })
+        .collect(Collectors.toCollection(ArrayList::new));
+        
+        return ventasFiltradas;
     }
 }

@@ -12,11 +12,12 @@ import java.time.LocalDate;
  * @author migue
  */
 public class ReporteVentas extends javax.swing.JFrame {
-
+    private Main parent;
     /**
      * Creates new form ReporteVentas
      */
-    public ReporteVentas() {
+    public ReporteVentas(Main parent) {
+        this.parent = parent;
         initComponents();
     }
 
@@ -237,14 +238,19 @@ public class ReporteVentas extends javax.swing.JFrame {
         String diaFinStr = txtDiaFin.getText().trim();
         String mesFinStr = txtMesFin.getText().trim();
         String anioFinStr = txtAnioFin.getText().trim();
+        int diaInicio = Integer.parseInt(diaInicioStr);
+        int mesInicio = Integer.parseInt(mesInicioStr);
+        int anioInicio = Integer.parseInt(anioInicioStr);
+        int diaFin = Integer.parseInt(diaFinStr);
+        int mesFin = Integer.parseInt(mesFinStr);
+        int anioFin = Integer.parseInt(anioFinStr);
         
         try {
-            int diaInicio = Integer.parseInt(diaInicioStr);
-            int mesInicio = Integer.parseInt(mesInicioStr);
-            int anioInicio = Integer.parseInt(anioInicioStr);
-            int diaFin = Integer.parseInt(diaFinStr);
-            int mesFin = Integer.parseInt(mesFinStr);
-            int anioFin = Integer.parseInt(anioFinStr);
+            
+            if (diaInicioStr.isBlank() || mesInicioStr.isBlank() || anioInicioStr.isBlank() 
+                    || diaFinStr.isBlank() || mesFinStr.isBlank() || anioFinStr.isBlank()){
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+            }
 
             LocalDate fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
             LocalDate fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
@@ -257,6 +263,16 @@ public class ReporteVentas extends javax.swing.JFrame {
         } catch (DateTimeException e) {
             System.err.println("Fecha inválida: " + e.getMessage());
         }
+        
+        LocalDate fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
+        LocalDate fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
+        
+        var ventasAMostrar = this.parent.getCaja().obtenerVentasSegunPeriodo(fechaInicio, fechaFin);
+        
+        var VentasPeriodo = new VentasPeriodo(ventasAMostrar);
+        VentasPeriodo.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -266,37 +282,6 @@ public class ReporteVentas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReporteVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReporteVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReporteVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReporteVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ReporteVentas().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;

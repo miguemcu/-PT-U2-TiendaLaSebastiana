@@ -141,7 +141,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         
         try {
             
-            if (nombre.isEmpty() || cedula.isEmpty() || nombre.isBlank() || cedula.isBlank()){
+            if (nombre.isBlank() || cedula.isBlank()){
                 throw new IllegalArgumentException("Todos los campos son obligatorios.");
             }
             

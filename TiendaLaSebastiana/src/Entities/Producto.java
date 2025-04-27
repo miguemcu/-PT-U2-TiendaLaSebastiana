@@ -4,7 +4,6 @@ package Entities;
 public abstract class Producto {
     private String nombre;
     private long id;
-    private double cantidad;
     private double precioMayor;
     private double precioMenor;
     private EnumTipoProd tipoProducto;
@@ -12,10 +11,9 @@ public abstract class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, long id, double cantidad, double precioMayor, double precioMenor, EnumTipoProd tipoProducto) {
+    public Producto(String nombre, long id, double precioMayor, double precioMenor, EnumTipoProd tipoProducto) {
         this.nombre = nombre;
         this.id = id;
-        this.cantidad = cantidad;
         this.precioMayor = precioMayor;
         this.precioMenor = precioMenor;
         this.tipoProducto = tipoProducto;
@@ -43,14 +41,6 @@ public abstract class Producto {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public double getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
     }
 
     public double getPrecioMayor() {

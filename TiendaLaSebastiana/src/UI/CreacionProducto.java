@@ -361,8 +361,8 @@ public class CreacionProducto extends javax.swing.JFrame {
         
         long Id = Long.parseLong(id);
         double cantidad = Double.parseDouble(Cantidad);
-        double preciomenor = Double.parseDouble(PrecioMenor);
-        double preciomayor = Double.parseDouble(PrecioMayor);
+        double precioMenor = Double.parseDouble(PrecioMenor);
+        double precioMayor = Double.parseDouble(PrecioMayor);
         EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
         int Dia = Integer.parseInt(dia);
         int Mes = Integer.parseInt(mes);
@@ -373,7 +373,7 @@ public class CreacionProducto extends javax.swing.JFrame {
         for (String etiqueta : etiquetasArray) {
             etiquetas.add(etiqueta.trim());
     }
-        if (preciomenor<preciomayor){
+        if (precioMenor<precioMayor){
             throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
         }
         
@@ -382,23 +382,23 @@ public class CreacionProducto extends javax.swing.JFrame {
         }
         switch(tipoSeleccionado){
             case "Aseo":
-               Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Aseo aseo = new Aseo (nombre, Id, precioMenor, precioMayor, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(aseo);
                cantidades.put(Id, cantidad);
             case "Bebida":
-               Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Bebida bebida = new Bebida(nombre, Id, precioMenor, precioMayor, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(bebida);
                cantidades.put(Id, cantidad);
             case "Mecato":
-               Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Mecato mecato = new Mecato (nombre, Id, precioMenor, precioMayor, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(mecato);
                cantidades.put(Id, cantidad);
             case "Enlatado":
-                Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+                Enlatado enlatado = new Enlatado (nombre, Id, precioMenor, precioMayor, fechaVencimiento, etiquetas);
                 parent.getCaja().getInventario().crearProductos(enlatado);
                 cantidades.put(Id, cantidad);
             case "Grano":
-               Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Granos granos = new Granos (nombre, Id, precioMenor, precioMayor, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(granos);
                cantidades.put(Id, cantidad);
         }

@@ -19,9 +19,8 @@ public class Aseo extends Producto {
     public Aseo() {
     }
     
-    public Aseo(String nombre, long id, double cantidad, double precioMenor, double precioMayor,
-                  LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
-        super(nombre,id,cantidad,precioMenor, precioMayor, EnumTipoProd.ASEO);
+    public Aseo(String nombre, long id, double precioMenor, double precioMayor, LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
+        super(nombre,id,precioMenor, precioMayor, EnumTipoProd.ASEO);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
@@ -47,7 +46,6 @@ public class Aseo extends Producto {
         System.out.println("=== Ficha Aseo ===");
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
-        System.out.println("Cantidad: " + getCantidad());
         System.out.println("Precio Mayor: " + getPrecioMayor());
         System.out.println("Precio Menor: " + getPrecioMenor());
         System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());

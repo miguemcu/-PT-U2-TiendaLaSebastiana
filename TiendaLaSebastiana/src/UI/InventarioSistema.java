@@ -23,7 +23,8 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtNombre.setText(producto.getNombre());
         txtTipo.setText(String.valueOf(producto.getTipoProducto()));
         txtID.setText(String.valueOf(producto.getId()));
-        txtCantidad.setText(String.valueOf(producto.getCantidad()));
+        Double cantidad = parent.getCaja().getInventario().getCantidades().get(producto.getId());
+        txtCantidad.setText(Double.toString(cantidad));
         txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
         txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
     }
@@ -276,8 +277,8 @@ public class InventarioSistema extends javax.swing.JFrame {
 
             break;
         }
-            int cantidadAjustar = Integer.parseInt(this.txtCantidadAjustar.getText().trim());
-        this.parent.getCaja().getInventario().getProductos().get(i).setCantidad(cantidadAjustar);
+            double cantidadAjustar = Double.parseDouble(this.txtCantidadAjustar.getText().trim());
+        parent.getCaja().getInventario().getCantidades().replace(this.productoBuscado.getId(), cantidadAjustar);
     }
     }//GEN-LAST:event_btnAjustarCantidadActionPerformed
 

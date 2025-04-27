@@ -121,7 +121,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        var ingresar = new EntrarSistema(this);
+        var ingresar = new EntrarSistema(this, this.caja);
         ingresar.setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 

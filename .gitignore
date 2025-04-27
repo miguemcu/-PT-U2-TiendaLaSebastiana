@@ -26,3 +26,5 @@ replay_pid*
 /TiendaLaSebastiana/dist/
 TiendaLaSebastiana\nbproject\private\
 TiendaLaSebastiana\nbproject\private\private.properties
+
+nbproject/private/

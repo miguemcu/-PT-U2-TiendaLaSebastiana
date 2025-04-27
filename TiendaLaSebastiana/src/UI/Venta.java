@@ -1,5 +1,10 @@
 package UI;
 
+import Entities.Producto;
+import Gestión.Caja;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,11 +15,19 @@ package UI;
  * @author DELL
  */
 public class Venta extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Caja
-     */
-    public Venta() {
+    private Main parent;
+    private Caja caja;
+   private void setearCampos(Producto producto) {
+    txtNombreProducto.setEditable(false);
+    txtCantidadDisponible.setEditable(false);
+    txtPrecioUnitario.setEditable(false);
+    txtNombreProducto.setText(producto.getNombre());
+    txtCantidadDisponible.setText(String.valueOf(producto.getCantidad()));
+    txtPrecioUnitario.setText(String.valueOf(producto.getPrecioMenor()));
+}
+    public Venta(Main Parent) {
+        this.caja = caja;
+        this.parent = parent;     
         initComponents();
     }
 
@@ -54,6 +67,11 @@ public class Venta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Buscar Producto:");
 
@@ -251,41 +269,49 @@ public class Venta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescuentoVentaActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String busqueda = txtBuscar.getText();
+        try {
+    if (busqueda.isEmpty() || busqueda.isBlank()) {
+        throw new IllegalArgumentException("Todos los campos son obligatorios.");
+    }
+
+    boolean encontrado = false;
+
+    // Obtenemos la lista de productos
+    List<Producto> productos = parent.getCaja().getInventario().getProductos();
+
+    if (busqueda.matches("\\d+")) {
+        long id = Long.parseLong(busqueda);
+        for (Producto producto : productos) {
+            if (producto.getId() == id) {
+                setearCampos(producto);
+                encontrado = true;
+                break;
+            }
+        }
+    } else {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(busqueda)) {
+                setearCampos(producto);
+                encontrado = true;
+                break;
+            }
+        }
+    }
+
+    if (!encontrado) {
+        throw new NoSuchElementException("Producto no encontrado.");
+    }
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Venta().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarVenta;

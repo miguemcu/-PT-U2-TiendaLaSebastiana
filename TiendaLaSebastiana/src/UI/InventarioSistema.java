@@ -11,6 +11,12 @@ import java.util.NoSuchElementException;
 import javax.swing.JToggleButton;
 public class InventarioSistema extends javax.swing.JFrame {
     private void setearCampos(Producto producto) {
+    txtNombre.setEditable(false);
+    txtTipo.setEditable(false);
+    txtID.setEditable(false);
+    txtCantidad.setEditable(false);
+    txtPrecioMenor.setEditable(false);
+    txtPrecioMayor.setEditable(false);
     txtNombre.setText(producto.getNombre());
     txtTipo.setText(String.valueOf(producto.getTipoProducto()));
     txtID.setText(String.valueOf(producto.getId()));
@@ -240,7 +246,6 @@ public class InventarioSistema extends javax.swing.JFrame {
     List<Producto> productos = parent.getCaja().getInventario().getProductos();
 
     if (busqueda.matches("\\d+")) {
-        // Buscar por ID
         long id = Long.parseLong(busqueda);
         for (Producto producto : productos) {
             if (producto.getId() == id) {
@@ -250,7 +255,6 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         }
     } else {
-        // Buscar por nombre
         for (Producto producto : productos) {
             if (producto.getNombre().equalsIgnoreCase(busqueda)) {
                 setearCampos(producto);

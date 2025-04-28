@@ -53,6 +53,26 @@ public class MenuVenta extends javax.swing.JFrame {
         public void setParent(Main parent) {
             this.parent = parent;
         }
+
+        public JTable getTblProductosAgregados() {
+            return tblProductosAgregados;
+        }
+
+        public void setTblProductosAgregados(JTable tblProductosAgregados) {
+            this.tblProductosAgregados = tblProductosAgregados;
+        }
+        
+        
+
+    public ArrayList<DetalleVenta> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(ArrayList<DetalleVenta> detalles) {
+        this.detalles = detalles;
+    }
+        
+        
     
 
     /**
@@ -502,7 +522,7 @@ public class MenuVenta extends javax.swing.JFrame {
         var detalleVenta = new DetalleVenta(producto, cantidadVender, precio, total, 0, 0);
         detalles.add(detalleVenta);
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
-    
+
     public double sumarColumnaDouble(JTable tabla, int columnIndex) {
         double suma = 0.0;;
         int rowCount = modeloTabla.getRowCount();
@@ -517,7 +537,7 @@ public class MenuVenta extends javax.swing.JFrame {
     }
     
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        System.out.println("Vendiendo...");
+
         double totalVenta = sumarColumnaDouble(tblProductosAgregados, 4);
         txtTotalVenta.setText(String.valueOf(totalVenta));
         Long id = generarIdUnico();
@@ -531,15 +551,19 @@ public class MenuVenta extends javax.swing.JFrame {
         
         for (DetalleVenta detalle: detalles){
             producto = detalle.getProducto();
-            ajuste = detalle.getCantidad();
+            ajuste = detalle.getCantidad()*(-1);
             parent.getCaja().getInventario().ajustarCantidadProducto(producto.getId(), ajuste);
         }
         
         parent.getCaja().agregarVenta(venta);
         
-        var recibo = new Recibo(parent);
+        var recibo = new Recibo(parent, this);
+        recibo.mostrarVentaEnRecibo();
+        recibo.setVisible(true);
     }//GEN-LAST:event_btnVenderActionPerformed
 
+    
+   
     private LocalDateTime capturarFecha(){
         String diaStr = txtDia.getText().trim();
         String mesStr = txtMes.getText().trim();

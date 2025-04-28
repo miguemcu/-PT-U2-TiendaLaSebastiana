@@ -4,18 +4,57 @@
  */
 package UI;
 
+import Entities.DetalleVenta;
+import Entities.Producto;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class Recibo extends javax.swing.JFrame {
 
     private Main parent;
+    private DefaultTableModel modeloTabla;
+    private MenuVenta venta;
+    private double total;
     
-    public Recibo(Main parent) {
-        this.parent = parent;
+    public Recibo(Main parent, MenuVenta venta) {
         initComponents();
+        this.parent = parent;
+        this.venta = venta;
+        modeloTabla = (DefaultTableModel)tblFactura.getModel();
         mostrarFecha();
         mostrarEmpleado();
+        this.total = venta.sumarColumnaDouble(venta.getTblProductosAgregados(), 4);
+        String totalstr = String.valueOf(this.total);
+        txtPrecio.setText(totalstr);
+        
     }
+    public void agregarFilaProducto(String descripcion, double cantidad, double precioUni, double precioTotal){
+        Object[] nuevaFila = {descripcion, cantidad, precioUni, precioTotal};
+        modeloTabla.addRow(nuevaFila);
+    }
+    public void mostrarVentaEnRecibo() {
+
+        ArrayList<DetalleVenta> detalles = venta.getDetalles();
+        String producto = null;
+        double cantidad = 0.0;
+        double precioUni = 0.0;
+        double precioTotal = 0.0;
+        for (DetalleVenta detalle: detalles){
+            producto = detalle.getProducto().getNombre();
+            cantidad = detalle.getCantidad();
+            precioUni = detalle.getProducto().getPrecio();
+            precioTotal = (precioUni * cantidad);
+        }
+        
+        modeloTabla.setRowCount(0);
+
+       
+
+        agregarFilaProducto(producto, cantidad, precioUni, precioTotal);
+        }
+  
     private void mostrarFecha(){
         LocalDateTime ahora = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -77,7 +116,15 @@ public class Recibo extends javax.swing.JFrame {
             new String [] {
                 "Descripción", "Unidades", "Precio Unitario", "Precio"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblFactura);
 
         jLabel7.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N

@@ -46,9 +46,9 @@ public class ReporteStock extends javax.swing.JFrame {
             String alerta = "";
 
             if (cantidad < 5) {
-                alerta = "⚠️ Stack Critico";
+                alerta = "⚠️ Stock Critico";
             } else if (cantidad > 20) {
-                alerta = "Sobrestack";
+                alerta = "Sobrestock";
             } else {
                 alerta = "Normal";
             }
@@ -79,7 +79,7 @@ public class ReporteStock extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblReporteStock.setText("Reporte Stack de Productos:");
+        lblReporteStock.setText("Reporte Stock de Productos:");
 
         tblReporteStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

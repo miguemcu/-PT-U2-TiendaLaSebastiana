@@ -27,7 +27,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="lblReporteStack" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblReporteStock" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -37,7 +37,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRegresarReporteStack" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRegresarReporteStock" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -48,9 +48,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Component id="btnRegresarReporteStack" min="-2" max="-2" attributes="0"/>
+              <Component id="btnRegresarReporteStock" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblReporteStack" min="-2" max="-2" attributes="0"/>
+              <Component id="lblReporteStock" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="366" max="-2" attributes="0"/>
@@ -62,9 +62,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblReporteStack">
+    <Component class="javax.swing.JLabel" name="lblReporteStock">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Reporte Stack de Productos:"/>
+        <Property name="text" type="java.lang.String" value="Reporte Stock de Productos:"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -74,7 +74,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblReporteStack">
+        <Component class="javax.swing.JTable" name="tblReporteStock">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="4">
@@ -89,7 +89,7 @@
     </Container>
     <Component class="javax.swing.JScrollBar" name="jScrollBar1">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnRegresarReporteStack">
+    <Component class="javax.swing.JToggleButton" name="btnRegresarReporteStock">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="49" green="54" red="f7" type="rgb"/>
@@ -97,7 +97,7 @@
         <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarReporteStackActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarReporteStockActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

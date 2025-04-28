@@ -303,7 +303,7 @@ public class Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMesActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**

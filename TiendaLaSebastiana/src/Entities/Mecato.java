@@ -21,9 +21,9 @@ public class Mecato extends Producto {
     public Mecato() {
     }
     
-    public Mecato(String nombre, long id, double precioMenor, double precioMayor,
+    public Mecato(String nombre, long id, double precio, double precioMayorista,
                   LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
-        super(nombre,id,precioMenor, precioMayor, EnumTipoProd.MECATO);
+        super(nombre,id,precio, precioMayorista, EnumTipoProd.MECATO);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
@@ -49,8 +49,8 @@ public class Mecato extends Producto {
         System.out.println("=== Ficha Mecato ===");
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
-        System.out.println("Precio Mayor: " + getPrecioMayor());
-        System.out.println("Precio Menor: " + getPrecioMenor());
+        System.out.println("Precio Mayor: " + getPrecioMayorista());
+        System.out.println("Precio Menor: " + getPrecio());
         System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());
         System.out.println("Etiquetas:");
         for (String etiqueta : etiquetas){

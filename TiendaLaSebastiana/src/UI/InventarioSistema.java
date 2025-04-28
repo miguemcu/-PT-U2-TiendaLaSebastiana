@@ -18,21 +18,21 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtTipo.setEditable(false);
         txtID.setEditable(false);
         txtCantidad.setEditable(false);
-        txtPrecioMenor.setEditable(false);
-        txtPrecioMayor.setEditable(false);
+        txtPrecio.setEditable(false);
+        txtPrecioMayorista.setEditable(false);
         txtNombre.setText(producto.getNombre());
         txtTipo.setText(String.valueOf(producto.getTipoProducto()));
         txtID.setText(String.valueOf(producto.getId()));
         Double cantidad = parent.getCaja().getInventario().getCantidades().get(producto.getId());
         txtCantidad.setText(Double.toString(cantidad));
-        txtPrecioMenor.setText(String.valueOf(producto.getPrecioMenor()));
-        txtPrecioMayor.setText(String.valueOf(producto.getPrecioMayor()));
+        txtPrecio.setText(String.valueOf(producto.getPrecio()));
+        txtPrecioMayorista.setText(String.valueOf(producto.getPrecioMayorista()));
     }
     private void limpiarCampos() {
     txtNombre.setText("");
     txtCantidad.setText("");
-    txtPrecioMayor.setText("");
-    txtPrecioMenor.setText("");
+    txtPrecioMayorista.setText("");
+    txtPrecio.setText("");
     txtID.setText("");
     txtTipo.setText("");
 }
@@ -60,20 +60,20 @@ public class InventarioSistema extends javax.swing.JFrame {
         btnCrearProducto = new javax.swing.JToggleButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblTipo = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
+        lblPrecioMayorista = new javax.swing.JLabel();
+        lblPrecioMenor = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
-        txtPrecioMayor = new javax.swing.JTextField();
-        txtPrecioMenor = new javax.swing.JTextField();
+        txtPrecioMayorista = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtErrorRegistro = new javax.swing.JTextArea();
         txtID = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JToggleButton();
         txtCantidadAjustar = new javax.swing.JTextField();
         btnAjustarCantidad = new javax.swing.JToggleButton();
@@ -94,15 +94,15 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre");
+        lblNombre.setText("Nombre");
 
-        jLabel2.setText("Tipo");
+        lblTipo.setText("Tipo");
 
-        jLabel3.setText("Cantidad");
+        lblCantidad.setText("Cantidad");
 
-        jLabel5.setText("Precio Mayor");
+        lblPrecioMayorista.setText("Precio Mayor");
 
-        jLabel6.setText("Precio Menor");
+        lblPrecioMenor.setText("Precio Menor");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,9 +110,9 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
-        txtPrecioMenor.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioMenorActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
 
@@ -123,7 +123,7 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtErrorRegistro.setRows(5);
         jScrollPane1.setViewportView(txtErrorRegistro);
 
-        jLabel4.setText("       ID");
+        lblID.setText("       ID");
 
         btnRegresar.setBackground(new java.awt.Color(255, 0, 0));
         btnRegresar.setText("Regresar");
@@ -157,18 +157,18 @@ public class InventarioSistema extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
+                            .addComponent(lblCantidad)
+                            .addComponent(lblNombre)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblTipo)
                                 .addGap(13, 13, 13))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel5))
+                        .addComponent(lblPrecioMayorista))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6)))
+                        .addComponent(lblPrecioMenor)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -185,10 +185,10 @@ public class InventarioSistema extends javax.swing.JFrame {
                         .addGap(143, 143, 143))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtPrecioMayor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrecioMayorista, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrecioMenor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,35 +211,36 @@ public class InventarioSistema extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRegresar)
-                        .addGap(38, 38, 38)
+                        .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(lblNombre)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCrearProducto)
                         .addGap(43, 43, 43)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(lblID))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(lblTipo))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(lblCantidad)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAjustarCantidad)
                         .addGap(18, 18, 18)
@@ -248,12 +249,12 @@ public class InventarioSistema extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(txtPrecioMayorista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecioMayorista))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecioMenor)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
@@ -271,9 +272,9 @@ public class InventarioSistema extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void txtPrecioMenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioMenorActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioMenorActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         limpiarCampos();
@@ -325,8 +326,6 @@ public class InventarioSistema extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.dispose();
-        Tienda tienda = new Tienda(parent);
-        tienda.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtCantidadAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadAjustarActionPerformed
@@ -362,21 +361,21 @@ public class InventarioSistema extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JToggleButton btnCrearProducto;
     private javax.swing.JToggleButton btnRegresar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPrecioMayorista;
+    private javax.swing.JLabel lblPrecioMenor;
+    private javax.swing.JLabel lblTipo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCantidadAjustar;
     private javax.swing.JTextArea txtErrorRegistro;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecioMayor;
-    private javax.swing.JTextField txtPrecioMenor;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtPrecioMayorista;
     private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

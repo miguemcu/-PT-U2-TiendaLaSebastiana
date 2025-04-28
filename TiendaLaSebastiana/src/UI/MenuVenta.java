@@ -4,10 +4,11 @@ import Entities.DetalleVenta;
 import Entities.Producto;
 import Gestión.Caja;
 import Gestión.Venta;
-import static java.lang.Math.random;
+import java.util.Random;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,7 @@ public class MenuVenta extends javax.swing.JFrame {
     private Main parent;
     private DefaultTableModel modeloTabla;
     private ArrayList<DetalleVenta> detalles;
+    private Random random = new Random();
     
     private void setearCampos(Producto producto) {
         txtNombreProducto.setEditable(false);
@@ -41,6 +43,7 @@ public class MenuVenta extends javax.swing.JFrame {
             this.parent = parent;     
             initComponents();
             modeloTabla = (DefaultTableModel)tblProductosAgregados.getModel();
+            this.detalles = new ArrayList<DetalleVenta>();
         }
 
         public Main getParent() {
@@ -131,7 +134,6 @@ public class MenuVenta extends javax.swing.JFrame {
             }
         });
 
-        txtCantidadVender.setText("#Editable#");
         txtCantidadVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadVenderActionPerformed(evt);
@@ -142,7 +144,6 @@ public class MenuVenta extends javax.swing.JFrame {
 
         lblDescuentoProducto.setText("Descuento Producto:");
 
-        txtDescuentoProducto.setText("#Editable#");
         txtDescuentoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescuentoProductoActionPerformed(evt);
@@ -169,7 +170,6 @@ public class MenuVenta extends javax.swing.JFrame {
 
         lblDescuentoVenta.setText("Descuento Venta:");
 
-        txtDescuentoVenta.setText("#Editable#");
         txtDescuentoVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescuentoVentaActionPerformed(evt);
@@ -178,7 +178,11 @@ public class MenuVenta extends javax.swing.JFrame {
 
         lblCantidadDisponible.setText("Cantidad Disponible:");
 
-        txtTotalVenta.setText("#NO editable#");
+        txtTotalVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalVentaActionPerformed(evt);
+            }
+        });
 
         btnCancelarVenta.setText("Cancelar Venta");
         btnCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -420,10 +424,6 @@ public class MenuVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescuentoProductoActionPerformed
 
-    private void txtDescuentoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescuentoVentaActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.buscarAction();
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -517,11 +517,27 @@ public class MenuVenta extends javax.swing.JFrame {
     }
     
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        double totalVenta = sumarColumnaDouble(tblProductosAgregados, 5);
+        System.out.println("Vendiendo...");
+        double totalVenta = sumarColumnaDouble(tblProductosAgregados, 4);
         txtTotalVenta.setText(String.valueOf(totalVenta));
+        Long id = generarIdUnico();
+        LocalDateTime fecha = capturarFecha();
         
+        var venta = new Venta(detalles, totalVenta, totalVenta, 0, 0, fecha, id);
+        this.dispose();
         
-        var venta = new Venta(detalles, totalVenta, totalVenta, 0, 0, fecha );
+        double ajuste = 0;
+        Producto producto = null;
+        
+        for (DetalleVenta detalle: detalles){
+            producto = detalle.getProducto();
+            ajuste = detalle.getCantidad();
+            parent.getCaja().getInventario().ajustarCantidadProducto(producto.getId(), ajuste);
+        }
+        
+        parent.getCaja().agregarVenta(venta);
+        
+        var recibo = new Recibo(parent);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private LocalDateTime capturarFecha(){
@@ -569,8 +585,8 @@ public class MenuVenta extends javax.swing.JFrame {
             }
 
             existe = false;
-            for (Venta venta : ventasExistentes) {
-                if (venta.getIdVenta().equals(nuevoId)) {
+            for (Venta venta : parent.getCaja().getVentas()) {
+                if (venta.getID() == nuevoId) {
                     existe = true;
                     break;
                 }
@@ -603,6 +619,14 @@ public class MenuVenta extends javax.swing.JFrame {
     private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
+
+    private void txtTotalVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalVentaActionPerformed
+
+    private void txtDescuentoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescuentoVentaActionPerformed
 
     /**
      * @param args the command line arguments

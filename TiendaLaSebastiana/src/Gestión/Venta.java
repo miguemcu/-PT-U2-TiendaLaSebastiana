@@ -28,7 +28,7 @@ public class Venta {
     public Venta(ArrayList<DetalleVenta> detalles, double totalVenta, double totalBruto,
             double totalDescuento, double totalIva, LocalDateTime fecha, long ID) {
         this.ID = ID;
-        this.detalles = detalles;
+        this.detalles = new ArrayList<DetalleVenta>();
         this.totalVenta = totalVenta;
         this.totalBruto = totalBruto;
         this.totalDescuento = totalDescuento;

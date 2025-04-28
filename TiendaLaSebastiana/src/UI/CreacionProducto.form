@@ -35,23 +35,23 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPrecioMayor" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblID" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="lblPrecioMenor" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="lblPrecio" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPrecioMayorista" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPrecioMenor" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="txtPrecio" min="-2" pref="163" max="-2" attributes="0"/>
                                   <Component id="txtID" min="-2" pref="163" max="-2" attributes="0"/>
                                   <Component id="txtNombre" min="-2" pref="163" max="-2" attributes="0"/>
                                   <Component id="txtCantidad" min="-2" pref="163" max="-2" attributes="0"/>
-                                  <Component id="txtPrecioMayor" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="txtPrecioMayorista" min="-2" pref="163" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -134,13 +134,13 @@
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPrecioMayor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPrecioMayor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPrecioMayorista" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrecioMayorista" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPrecioMenor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPrecioMenor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -213,19 +213,19 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCantidad">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrecioMayor">
+    <Component class="javax.swing.JLabel" name="lblPrecioMayorista">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio Mayor :"/>
+        <Property name="text" type="java.lang.String" value="Precio Mayorista :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrecioMayor">
+    <Component class="javax.swing.JTextField" name="txtPrecioMayorista">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrecioMenor">
+    <Component class="javax.swing.JLabel" name="lblPrecio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio Menor :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrecioMenor">
+    <Component class="javax.swing.JTextField" name="txtPrecio">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>

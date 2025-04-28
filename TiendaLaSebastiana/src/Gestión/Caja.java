@@ -63,18 +63,6 @@ public class Caja {
         this.inventario = inventario;
     }
 
-    // Métodos públicos (sin implementación aún)
-
-    public Producto modificarProducto() {
-        // Lógica pendiente: buscar y modificar producto
-        return null;
-    }
-
-    public String[] organizarTipo() {
-        // Lógica pendiente: retornar nombres de productos por tipo, por ejemplo
-        return new String[0];
-    }
-
     public Venta vender() {
         // Lógica pendiente: realizar una venta, registrar, restar stock
         return null;
@@ -93,5 +81,9 @@ public class Caja {
         .collect(Collectors.toCollection(ArrayList::new));
         
         return ventasFiltradas;
+    }
+    
+    public void agregarVenta(Venta venta) {
+        this.ventas.add(venta);
     }
 }

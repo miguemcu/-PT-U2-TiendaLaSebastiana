@@ -296,9 +296,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCantidadVender">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="#Editable#"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCantidadVenderActionPerformed"/>
       </Events>
@@ -314,9 +311,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescuentoProducto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="#Editable#"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescuentoProductoActionPerformed"/>
       </Events>
@@ -349,9 +343,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescuentoVenta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="#Editable#"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescuentoVentaActionPerformed"/>
       </Events>
@@ -362,9 +353,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTotalVenta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="#NO editable#"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTotalVentaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelarVenta">
       <Properties>

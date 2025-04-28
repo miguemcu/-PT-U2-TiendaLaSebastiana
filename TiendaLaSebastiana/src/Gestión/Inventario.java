@@ -67,11 +67,18 @@ public class Inventario {
         return productosFiltrados;
     }
     
-    public Double getCantidadProducto(Long idProd) {
+    public double getCantidadProducto(Long idProd) {
         if (this.cantidades.containsKey(idProd)) {
             return this.cantidades.get(idProd);
         } else {
-            return 4.0;
+            return 4;
         }
-}
+    }
+    
+    public double ajustarCantidadProducto(Long idProd, double ajuste){
+            double cantidadActual = cantidades.get(idProd);
+            double nuevaCantidad = cantidadActual + ajuste;
+            cantidades.put(idProd, nuevaCantidad);
+            return nuevaCantidad;
+    }
 }

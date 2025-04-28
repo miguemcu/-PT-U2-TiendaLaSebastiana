@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import javax.swing.JToggleButton;
 
-
 public class InventarioSistema extends javax.swing.JFrame {
 
     private void setearCampos(Producto producto) {
@@ -28,14 +27,15 @@ public class InventarioSistema extends javax.swing.JFrame {
         txtPrecio.setText(String.valueOf(producto.getPrecio()));
         txtPrecioMayorista.setText(String.valueOf(producto.getPrecioMayorista()));
     }
+
     private void limpiarCampos() {
-    txtNombre.setText("");
-    txtCantidad.setText("");
-    txtPrecioMayorista.setText("");
-    txtPrecio.setText("");
-    txtID.setText("");
-    txtTipo.setText("");
-}
+        txtNombre.setText("");
+        txtCantidad.setText("");
+        txtPrecioMayorista.setText("");
+        txtPrecio.setText("");
+        txtID.setText("");
+        txtTipo.setText("");
+    }
     private Main parent;
     private Producto productoBuscado;
 
@@ -333,23 +333,32 @@ public class InventarioSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidadAjustarActionPerformed
 
     private void btnAjustarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarCantidadActionPerformed
-        String cantidad = txtCantidadAjustar.getText().trim();
-        try{
-        Double cantidadAjustar = Double.valueOf(cantidad);
-        parent.getCaja().getInventario().getCantidades().replace(this.productoBuscado.getId(), cantidadAjustar);
-        if(cantidad.isBlank()){
-            throw new IllegalArgumentException("Todos los campos son obligatorios.");
+
+        try {
+            String cantidad = txtCantidadAjustar.getText().trim();
+            String busqueda = txtBuscar.getText();
+
+
             
-        }
-        if (this.productoBuscado == null) {
+            if (busqueda.isEmpty() || busqueda.isBlank() || cantidad.isBlank() || cantidad.isEmpty()) {
                 throw new IllegalArgumentException("Todos los campos son obligatorios.");
+
+            } else {
+                if (!cantidad.matches("\\d+")) {
+                throw new IllegalArgumentException("La cantidad solo debe contener números.");
+            }
+                if (this.productoBuscado == null) {
+                    throw new IllegalArgumentException("Producto no encontrado.");
+                }
+            }
+            Double cantidadAjustar = Double.valueOf(cantidad);
+            parent.getCaja().getInventario().getCantidades().replace(this.productoBuscado.getId(), cantidadAjustar);
+            
+        } catch (IllegalArgumentException ex) {
+            txtErrorRegistro.setText(ex.getMessage());
+        } catch (Exception ex) {
+            txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
         }
-        }
-         catch (IllegalArgumentException ex) {
-        txtErrorRegistro.setText(ex.getMessage());
-    } catch (Exception ex) {
-        txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
-    }
     }//GEN-LAST:event_btnAjustarCantidadActionPerformed
 
     /**

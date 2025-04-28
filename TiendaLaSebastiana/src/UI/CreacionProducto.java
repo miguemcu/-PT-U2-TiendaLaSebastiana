@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+
 import Gestión.Caja;
 import Entities.Producto;
 import Entities.Aseo;
@@ -11,14 +12,17 @@ import Entities.Enlatado;
 import Entities.EnumTipoProd;
 import Entities.Granos;
 import Entities.Mecato;
+import Entities.utilJtextField;
 import Gestión.Inventario;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.text.AbstractDocument;
 
 public class CreacionProducto extends javax.swing.JFrame {
+
     private Main parent;
     private Caja caja;
 
@@ -29,18 +33,23 @@ public class CreacionProducto extends javax.swing.JFrame {
     public void setParent(Main parent) {
         this.parent = parent;
     }
-    public CreacionProducto(Main parent, Caja caja, Inventario inventario){
+
+    public CreacionProducto(Main parent, Caja caja, Inventario inventario) {
         this.caja = caja;
         this.parent = parent;
         this.parent.getCaja().setInventario(inventario);
         initComponents();
         inicializarComboTipoProd();
+        ((AbstractDocument) txtDay.getDocument()).setDocumentFilter(new utilJtextField(2));
+        ((AbstractDocument) txtMonth.getDocument()).setDocumentFilter(new utilJtextField(2));
+        ((AbstractDocument) txtYear.getDocument()).setDocumentFilter(new utilJtextField(5));
     }
-        private void inicializarComboTipoProd() {
-    txtTipoProd.setModel(new DefaultComboBoxModel<>(new String[]{
-        "Bebida", "Mecato", "Aseo", "Enlatado", "Grano"
-    }));
-}
+
+    private void inicializarComboTipoProd() {
+        txtTipoProd.setModel(new DefaultComboBoxModel<>(new String[]{
+            "Bebida", "Mecato", "Aseo", "Enlatado", "Grano"
+        }));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -308,16 +317,16 @@ public class CreacionProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtTipoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoProdActionPerformed
-        
+
     }//GEN-LAST:event_txtTipoProdActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Map<Long, Double> cantidades = parent.getCaja().getInventario().getCantidades(); //Atajo
-        
+
         try {
             String nombre = txtNombre.getText().trim();
             String id = txtID.getText().trim();
-            String Cantidad  = txtCantidad.getText().trim();
+            String Cantidad = txtCantidad.getText().trim();
             String PrecioMayorista = txtPrecioMayorista.getText().trim();
             String Precio = txtPrecio.getText().trim();
             String tipoSeleccionado = (String) txtTipoProd.getSelectedItem();
@@ -325,105 +334,140 @@ public class CreacionProducto extends javax.swing.JFrame {
             String mes = txtMonth.getText().trim();
             String annio = txtYear.getText().trim();
             String textoEtiquetas = txtEtiquetas.getText().trim();
-        if (nombre.isBlank() || id.isBlank() || Cantidad.isBlank() ||
-        PrecioMayorista.isBlank() || Precio.isBlank() || tipoSeleccionado == null || 
-                dia.isBlank() || mes.isBlank() || annio.isBlank()) {
-        throw new IllegalArgumentException("Todos los campos son obligatorios.");
-        }
-        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+")) {
-            throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
-        }
+            if (nombre.isBlank() || id.isBlank() || Cantidad.isBlank()
+                    || PrecioMayorista.isBlank() || Precio.isBlank() || tipoSeleccionado == null
+                    || dia.isBlank() || mes.isBlank() || annio.isBlank()) {
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+            }
+            if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\\s]+")) {
+                throw new IllegalArgumentException("El nombre solo puede contener letras y espacios.");
+            }
 
-        if (!id.matches("\\d+")) {
-            throw new IllegalArgumentException("El ID solo debe contener números.");
-        }
+            if (!id.matches("\\d+")) {
+                throw new IllegalArgumentException("El ID solo debe contener números.");
+            }
 
-        // Validar que Cantidad solo contenga números (y opcionalmente punto decimal)
-        if (!Cantidad.matches("\\d+(\\.\\d+)?")) {
-            throw new IllegalArgumentException("La cantidad debe ser un número válido.");
-        }
+            // Validar que Cantidad solo contenga números (y opcionalmente punto decimal)
+            if (!Cantidad.matches("\\d+(\\.\\d+)?")) {
+                throw new IllegalArgumentException("La cantidad debe ser un número válido.");
+            }
 
-        // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
-        if (!PrecioMayorista.matches("\\d+(\\.\\d+)?")) {
-            throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
-        }
+            // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
+            if (!PrecioMayorista.matches("\\d+(\\.\\d+)?")) {
+                throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
+            }
 
-        // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
-        if (!Precio.matches("\\d+(\\.\\d+)?")) {
-            throw new IllegalArgumentException("El precio menor debe ser un número válido.");
-        }
-        if (!dia.matches("\\d+")){
-            throw new IllegalArgumentException("El día solo debe contener números.");
-        }
-        if (!mes.matches("\\d+")){
-            throw new IllegalArgumentException("El mes solo debe contener números.");
-        }
-        if (!annio.matches("\\d+")){
-            throw new IllegalArgumentException("El año solo debe contener números.");
-        }
-        if (!textoEtiquetas.isBlank() && !textoEtiquetas.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s,]*")) {
-            throw new IllegalArgumentException("Las etiquetas solo puede contener letras y espacios.");
-        }
-        
-        long Id = Long.parseLong(id);
-        double cantidad = Double.parseDouble(Cantidad);
-        double precio = Double.parseDouble(Precio);
-        double precioMayorista = Double.parseDouble(PrecioMayorista);
-        EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
-        int Dia = Integer.parseInt(dia);
-        int Mes = Integer.parseInt(mes);
-        int Annio = Integer.parseInt(annio);
-        LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
-        ArrayList<String> etiquetas = new ArrayList<>();
-        String[] etiquetasArray = textoEtiquetas.split(",");
-        for (String etiqueta : etiquetasArray) {
-            etiquetas.add(etiqueta.trim());
-    }
-        if (precio<precioMayorista){
-            throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
-        }
-        
-        if (Annio < Year.now().getValue()){
-            throw new IllegalArgumentException("La fecha de vencimiento es incorrecta.");
-        }
-        switch(tipoSeleccionado){
-            case "Aseo":
-               Aseo aseo = new Aseo (nombre, Id, precioMayorista, precio, 
-                       fechaVencimiento, etiquetas);
-               parent.getCaja().getInventario().crearProductos(aseo);
-               cantidades.put(Id, cantidad);
-            case "Bebida":
-               Bebida bebida = new Bebida(nombre, Id, precioMayorista, precio, 
-                       fechaVencimiento, etiquetas);
-               parent.getCaja().getInventario().crearProductos(bebida);
-               cantidades.put(Id, cantidad);
-            case "Mecato":
-               Mecato mecato = new Mecato (nombre, Id, precioMayorista, precio, 
-                       fechaVencimiento, etiquetas);
-               parent.getCaja().getInventario().crearProductos(mecato);
-               cantidades.put(Id, cantidad);
-            case "Enlatado":
-                Enlatado enlatado = new Enlatado (nombre, Id, precioMayorista, precio, 
-                        fechaVencimiento, etiquetas);
-                parent.getCaja().getInventario().crearProductos(enlatado);
-                cantidades.put(Id, cantidad);
-            case "Grano":
-               Granos granos = new Granos (nombre, Id, precioMayorista, precio, 
-                       fechaVencimiento, etiquetas);
-               parent.getCaja().getInventario().crearProductos(granos);
-               cantidades.put(Id, cantidad);
-        }
- 
-        
-        this.dispose();
-        InventarioSistema inventarioSistema = new InventarioSistema(parent);
-        inventarioSistema.setVisible(true);
+            // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
+            if (!Precio.matches("\\d+(\\.\\d+)?")) {
+                throw new IllegalArgumentException("El precio menor debe ser un número válido.");
+            }
+            if (!dia.matches("\\d+")) {
+                throw new IllegalArgumentException("El día solo debe contener números.");
+            }
+            if (!mes.matches("\\d+")) {
+                throw new IllegalArgumentException("El mes solo debe contener números.");
+            }
+            if (!annio.matches("\\d+")) {
+                throw new IllegalArgumentException("El año solo debe contener números.");
+            }
+            if (!textoEtiquetas.isBlank() && !textoEtiquetas.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s,]*")) {
+                throw new IllegalArgumentException("Las etiquetas solo puede contener letras y espacios.");
+            }
 
-    } catch (IllegalArgumentException ex) {
-        txtErrorRegistro.setText(ex.getMessage());
-    } catch (Exception ex) {
-        txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
-}
+            long Id = Long.parseLong(id);
+            double cantidad = Double.parseDouble(Cantidad);
+            double precio = Double.parseDouble(Precio);
+            double precioMayorista = Double.parseDouble(PrecioMayorista);
+            EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
+            int Dia = Integer.parseInt(dia);
+            int Mes = Integer.parseInt(mes);
+            int Annio = Integer.parseInt(annio);
+            if (Mes > 12) {
+                throw new IllegalArgumentException("El mes debe ser menor o igual a 12");
+            }
+            if ((Annio % 100 == 0 && Annio % 400 == 0)) {
+                if (Mes == 2) {
+                    if (Dia >= 30) {
+                        throw new IllegalArgumentException("El día debe ser menor o igual a 29");
+                    }
+
+                } else {
+                    if (Annio % 4 == 0) {
+                        if (Mes == 2) {
+                            if (Dia > 29) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 29");
+                            }
+                        }
+                    } else {
+
+                        if (Mes == 2) {
+                            if (Dia > 28) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 28");
+                            }
+                        }
+                        if (Mes == 1 || Mes == 3 || Mes == 5 || Mes == 7 || Mes == 8 || Mes == 10 || Mes == 12) {
+                            if (Dia > 31) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 31");
+                            }
+                        }
+                        if (Mes == 4 || Mes == 6 || Mes == 9 || Mes == 11) {
+                            if (Dia > 30) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 30");
+                            }
+                        }
+                    }
+                }
+            }
+            LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
+            ArrayList<String> etiquetas = new ArrayList<>();
+            String[] etiquetasArray = textoEtiquetas.split(",");
+            for (String etiqueta : etiquetasArray) {
+                etiquetas.add(etiqueta.trim());
+            }
+            if (precio < precioMayorista) {
+                throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
+            }
+
+            if (Annio < Year.now().getValue()) {
+                throw new IllegalArgumentException("La fecha de vencimiento es incorrecta.");
+            }
+            switch (tipoSeleccionado) {
+                case "Aseo":
+                    Aseo aseo = new Aseo(nombre, Id, precioMayorista, precio,
+                            fechaVencimiento, etiquetas);
+                    parent.getCaja().getInventario().crearProductos(aseo);
+                    cantidades.put(Id, cantidad);
+                case "Bebida":
+                    Bebida bebida = new Bebida(nombre, Id, precioMayorista, precio,
+                            fechaVencimiento, etiquetas);
+                    parent.getCaja().getInventario().crearProductos(bebida);
+                    cantidades.put(Id, cantidad);
+                case "Mecato":
+                    Mecato mecato = new Mecato(nombre, Id, precioMayorista, precio,
+                            fechaVencimiento, etiquetas);
+                    parent.getCaja().getInventario().crearProductos(mecato);
+                    cantidades.put(Id, cantidad);
+                case "Enlatado":
+                    Enlatado enlatado = new Enlatado(nombre, Id, precioMayorista, precio,
+                            fechaVencimiento, etiquetas);
+                    parent.getCaja().getInventario().crearProductos(enlatado);
+                    cantidades.put(Id, cantidad);
+                case "Grano":
+                    Granos granos = new Granos(nombre, Id, precioMayorista, precio,
+                            fechaVencimiento, etiquetas);
+                    parent.getCaja().getInventario().crearProductos(granos);
+                    cantidades.put(Id, cantidad);
+            }
+
+            this.dispose();
+            InventarioSistema inventarioSistema = new InventarioSistema(parent);
+            inventarioSistema.setVisible(true);
+
+        } catch (IllegalArgumentException ex) {
+            txtErrorRegistro.setText(ex.getMessage());
+        } catch (Exception ex) {
+            txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDayActionPerformed
@@ -449,7 +493,6 @@ public class CreacionProducto extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnGuardar;

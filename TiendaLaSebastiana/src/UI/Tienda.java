@@ -117,7 +117,7 @@ public class Tienda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHacerVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHacerVentaActionPerformed
-        var venta = new Venta(parent);
+        var venta = new MenuVenta(parent);
         venta.setVisible(true);
     }//GEN-LAST:event_btnHacerVentaActionPerformed
 

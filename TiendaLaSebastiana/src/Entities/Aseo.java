@@ -19,9 +19,9 @@ public class Aseo extends Producto {
     public Aseo() {
     }
     
-    public Aseo(String nombre, long id, double cantidad, double precioMenor, double precioMayor,
+    public Aseo(String nombre, long id, double cantidad, double precio, double precioMayorista,
                   LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
-        super(nombre,id,cantidad,precioMenor, precioMayor, EnumTipoProd.ASEO);
+        super(nombre,id,cantidad,precio, precioMayorista, EnumTipoProd.ASEO);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
@@ -48,8 +48,8 @@ public class Aseo extends Producto {
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
         System.out.println("Cantidad: " + getCantidad());
-        System.out.println("Precio Mayor: " + getPrecioMayor());
-        System.out.println("Precio Menor: " + getPrecioMenor());
+        System.out.println("Precio Mayor: " + getPrecioMayorista());
+        System.out.println("Precio Menor: " + getPrecio());
         System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());
         System.out.println("Etiquetas:");
         for (String etiqueta : etiquetas){

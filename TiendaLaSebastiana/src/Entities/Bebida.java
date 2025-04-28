@@ -10,9 +10,9 @@ import java.time.LocalDate;
     public Bebida() {
     }
     
-    public Bebida(String nombre, long id, double cantidad, double precioMenor, double precioMayor,
+    public Bebida(String nombre, long id, double cantidad, double precio, double precioMayorista,
                   LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
-        super(nombre,id,cantidad,precioMenor, precioMayor, EnumTipoProd.BEBIDA);
+        super(nombre,id,cantidad,precio, precioMayorista, EnumTipoProd.BEBIDA);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
@@ -39,8 +39,8 @@ import java.time.LocalDate;
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
         System.out.println("Cantidad: " + getCantidad());
-        System.out.println("Precio Mayor: " + getPrecioMayor());
-        System.out.println("Precio Menor: " + getPrecioMenor());
+        System.out.println("Precio Mayor: " + getPrecioMayorista());
+        System.out.println("Precio Menor: " + getPrecio());
         System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());
         System.out.println("Etiquetas:");
         for (String etiqueta : etiquetas){

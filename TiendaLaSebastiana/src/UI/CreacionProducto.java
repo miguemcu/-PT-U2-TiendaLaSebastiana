@@ -58,10 +58,10 @@ public class CreacionProducto extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        lblPrecioMayor = new javax.swing.JLabel();
-        txtPrecioMayor = new javax.swing.JTextField();
-        lblPrecioMenor = new javax.swing.JLabel();
-        txtPrecioMenor = new javax.swing.JTextField();
+        lblPrecioMayorista = new javax.swing.JLabel();
+        txtPrecioMayorista = new javax.swing.JTextField();
+        lblPrecio = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTipoProd = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JToggleButton();
@@ -101,9 +101,9 @@ public class CreacionProducto extends javax.swing.JFrame {
 
         jLabel2.setText("Cantidad :");
 
-        lblPrecioMayor.setText("Precio Mayor :");
+        lblPrecioMayorista.setText("Precio Mayor :");
 
-        lblPrecioMenor.setText("Precio Menor :");
+        lblPrecio.setText("Precio Menor :");
 
         jLabel5.setText("Tipo Producto :");
 
@@ -176,22 +176,22 @@ public class CreacionProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecioMayorista, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPrecioMayorista, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,12 +250,12 @@ public class CreacionProducto extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrecioMayor)
-                    .addComponent(txtPrecioMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrecioMayorista)
+                    .addComponent(txtPrecioMayorista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrecioMenor)
-                    .addComponent(txtPrecioMenor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrecio)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -312,15 +312,15 @@ public class CreacionProducto extends javax.swing.JFrame {
             String nombre = txtNombre.getText().trim();
             String id = txtID.getText().trim();
             String Cantidad  = txtCantidad.getText().trim();
-            String PrecioMayor = txtPrecioMayor.getText().trim();
-            String PrecioMenor = txtPrecioMenor.getText().trim();
+            String PrecioMayorista = txtPrecioMayorista.getText().trim();
+            String Precio = txtPrecio.getText().trim();
             String tipoSeleccionado = (String) txtTipoProd.getSelectedItem();
             String dia = txtDay.getText().trim();
             String mes = txtMonth.getText().trim();
             String annio = txtYear.getText().trim();
             String textoEtiquetas = txtEtiquetas.getText().trim();
         if (nombre.isBlank() || id.isBlank() || Cantidad.isBlank() ||
-        PrecioMayor.isBlank() || PrecioMenor.isBlank() || tipoSeleccionado == null || 
+        PrecioMayorista.isBlank() || Precio.isBlank() || tipoSeleccionado == null || 
                 dia.isBlank() || mes.isBlank() || annio.isBlank()) {
         throw new IllegalArgumentException("Todos los campos son obligatorios.");
         }
@@ -338,12 +338,12 @@ public class CreacionProducto extends javax.swing.JFrame {
         }
 
         // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
-        if (!PrecioMayor.matches("\\d+(\\.\\d+)?")) {
+        if (!PrecioMayorista.matches("\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
         }
 
         // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
-        if (!PrecioMenor.matches("\\d+(\\.\\d+)?")) {
+        if (!Precio.matches("\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException("El precio menor debe ser un número válido.");
         }
         if (!dia.matches("\\d+")){
@@ -361,8 +361,8 @@ public class CreacionProducto extends javax.swing.JFrame {
         
         long Id = Long.parseLong(id);
         double cantidad = Double.parseDouble(Cantidad);
-        double preciomenor = Double.parseDouble(PrecioMenor);
-        double preciomayor = Double.parseDouble(PrecioMayor);
+        double precio = Double.parseDouble(Precio);
+        double precioMayorista = Double.parseDouble(PrecioMayorista);
         EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
         int Dia = Integer.parseInt(dia);
         int Mes = Integer.parseInt(mes);
@@ -373,7 +373,7 @@ public class CreacionProducto extends javax.swing.JFrame {
         for (String etiqueta : etiquetasArray) {
             etiquetas.add(etiqueta.trim());
     }
-        if (preciomenor<preciomayor){
+        if (precio<precioMayorista){
             throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
         }
         
@@ -382,23 +382,23 @@ public class CreacionProducto extends javax.swing.JFrame {
         }
         switch(tipoSeleccionado){
             case "Aseo":
-               Aseo aseo = new Aseo (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Aseo aseo = new Aseo (nombre, Id, cantidad, precio, precioMayorista, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(aseo);
                cantidades.put(Id, cantidad);
             case "Bebida":
-               Bebida bebida = new Bebida (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Bebida bebida = new Bebida (nombre, Id, cantidad, precio, precioMayorista, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(bebida);
                cantidades.put(Id, cantidad);
             case "Mecato":
-               Mecato mecato = new Mecato (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Mecato mecato = new Mecato (nombre, Id, cantidad, precio, precioMayorista, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(mecato);
                cantidades.put(Id, cantidad);
             case "Enlatado":
-                Enlatado enlatado = new Enlatado (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+                Enlatado enlatado = new Enlatado (nombre, Id, cantidad, precio, precioMayorista, fechaVencimiento, etiquetas);
                 parent.getCaja().getInventario().crearProductos(enlatado);
                 cantidades.put(Id, cantidad);
             case "Grano":
-               Granos granos = new Granos (nombre, Id, cantidad, preciomenor, preciomayor, fechaVencimiento, etiquetas);
+               Granos granos = new Granos (nombre, Id, cantidad, precio, precioMayorista, fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(granos);
                cantidades.put(Id, cantidad);
         }
@@ -406,7 +406,8 @@ public class CreacionProducto extends javax.swing.JFrame {
         /*System.out.println("Producto creado correctamente.");
         for (Producto p : parent.getCaja().getInventario().getProductos()) {
             p.imprimirFicha();
-    }
+        }
+        
         for (Long idProd: cantidades.keySet()){
             Double cantidadProd = cantidades.get(idProd);
             System.out.println("ID Producto: " + idProd + ", Cantidad: " + cantidadProd);
@@ -459,8 +460,8 @@ public class CreacionProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblPrecioMayor;
-    private javax.swing.JLabel lblPrecioMenor;
+    private javax.swing.JLabel lblPrecioMayorista;
+    private javax.swing.JLabel lblPrecio;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDay;
     private javax.swing.JTextArea txtErrorRegistro;
@@ -468,8 +469,8 @@ public class CreacionProducto extends javax.swing.JFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMonth;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecioMayor;
-    private javax.swing.JTextField txtPrecioMenor;
+    private javax.swing.JTextField txtPrecioMayorista;
+    private javax.swing.JTextField txtPrecio;
     private javax.swing.JComboBox<String> txtTipoProd;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables

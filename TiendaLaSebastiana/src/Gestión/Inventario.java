@@ -43,9 +43,9 @@ public class Inventario {
     public Map<Long, Double> filtrarStack() {
         Map<Long, Double> cantidadesFiltradas = new HashMap<>();
 
-        for (Map.Entry<Long, Double> entry : this.cantidades.entrySet()) {
-            Long productoId = entry.getKey();
-            Double cantidad = entry.getValue();
+        for (Map.Entry<Long, Double> acceso : this.cantidades.entrySet()) {
+            Long productoId = acceso.getKey();
+            Double cantidad = acceso.getValue();
             if (cantidad < 5 || cantidad > 20) {
                 cantidadesFiltradas.put(productoId, cantidad);
             }
@@ -66,4 +66,12 @@ public class Inventario {
 
         return productosFiltrados;
     }
+    
+    public Double getCantidadProducto(Long idProd) {
+        if (this.cantidades.containsKey(idProd)) {
+            return this.cantidades.get(idProd);
+        } else {
+            return 4.0;
+        }
+}
 }

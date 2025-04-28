@@ -29,7 +29,7 @@ public class SistemaReportes extends javax.swing.JFrame {
 
         lblReportesDeseaHacer = new javax.swing.JLabel();
         btnReporteVentas = new javax.swing.JButton();
-        btnReporteStack = new javax.swing.JButton();
+        btnReporteStock = new javax.swing.JButton();
         btnRegresarReportes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,11 +44,11 @@ public class SistemaReportes extends javax.swing.JFrame {
             }
         });
 
-        btnReporteStack.setText("Reporte de Stack");
-        btnReporteStack.setToolTipText("");
-        btnReporteStack.addActionListener(new java.awt.event.ActionListener() {
+        btnReporteStock.setText("Reporte de Stack");
+        btnReporteStock.setToolTipText("");
+        btnReporteStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteStackActionPerformed(evt);
+                btnReporteStockActionPerformed(evt);
             }
         });
 
@@ -68,7 +68,7 @@ public class SistemaReportes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblReportesDeseaHacer)
                     .addComponent(btnReporteVentas)
-                    .addComponent(btnReporteStack))
+                    .addComponent(btnReporteStock))
                 .addContainerGap(147, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -83,7 +83,7 @@ public class SistemaReportes extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(btnReporteVentas)
                 .addGap(18, 18, 18)
-                .addComponent(btnReporteStack)
+                .addComponent(btnReporteStock)
                 .addGap(57, 57, 57)
                 .addComponent(btnRegresarReportes)
                 .addGap(22, 22, 22))
@@ -97,11 +97,11 @@ public class SistemaReportes extends javax.swing.JFrame {
         reporteVentas.setVisible(true);
     }//GEN-LAST:event_btnReporteVentasActionPerformed
 
-    private void btnReporteStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteStackActionPerformed
-       var reporteStack = new ReporteStack(parent);
-       reporteStack.setVisible(true);
-       reporteStack.mostrarVentasEnTabla();
-    }//GEN-LAST:event_btnReporteStackActionPerformed
+    private void btnReporteStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteStockActionPerformed
+       var ReporteStock = new ReporteStock(parent);
+       ReporteStock.setVisible(true);
+       ReporteStock.mostrarVentasEnTabla();
+    }//GEN-LAST:event_btnReporteStockActionPerformed
 
     private void btnRegresarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReportesActionPerformed
         this.dispose();
@@ -113,7 +113,7 @@ public class SistemaReportes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresarReportes;
-    private javax.swing.JButton btnReporteStack;
+    private javax.swing.JButton btnReporteStock;
     private javax.swing.JButton btnReporteVentas;
     private javax.swing.JLabel lblReportesDeseaHacer;
     // End of variables declaration//GEN-END:variables

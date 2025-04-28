@@ -15,16 +15,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author migue
  */
-public class ReporteStack extends javax.swing.JFrame {
+public class ReporteStock extends javax.swing.JFrame {
     private Main parent;
     private DefaultTableModel modeloTabla;
     /**
-     * Creates new form ReporteStack
+     * Creates new form ReporteStock
      */
-    public ReporteStack(Main parent) {
+    public ReporteStock(Main parent) {
         this.parent = parent;
         initComponents();
-        modeloTabla = (DefaultTableModel)tblReporteStack.getModel();
+        modeloTabla = (DefaultTableModel)tblReporteStock.getModel();
     }
     
    public void mostrarVentasEnTabla() {
@@ -71,17 +71,17 @@ public class ReporteStack extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblReporteStack = new javax.swing.JLabel();
+        lblReporteStock = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblReporteStack = new javax.swing.JTable();
+        tblReporteStock = new javax.swing.JTable();
         jScrollBar1 = new javax.swing.JScrollBar();
-        btnRegresarReporteStack = new javax.swing.JToggleButton();
+        btnRegresarReporteStock = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblReporteStack.setText("Reporte Stack de Productos:");
+        lblReporteStock.setText("Reporte Stack de Productos:");
 
-        tblReporteStack.setModel(new javax.swing.table.DefaultTableModel(
+        tblReporteStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -100,13 +100,13 @@ public class ReporteStack extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblReporteStack);
+        jScrollPane1.setViewportView(tblReporteStock);
 
-        btnRegresarReporteStack.setBackground(new java.awt.Color(247, 84, 73));
-        btnRegresarReporteStack.setText("Regresar");
-        btnRegresarReporteStack.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresarReporteStock.setBackground(new java.awt.Color(247, 84, 73));
+        btnRegresarReporteStock.setText("Regresar");
+        btnRegresarReporteStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarReporteStackActionPerformed(evt);
+                btnRegresarReporteStockActionPerformed(evt);
             }
         });
 
@@ -118,7 +118,7 @@ public class ReporteStack extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(lblReporteStack))
+                        .addComponent(lblReporteStock))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,16 +126,16 @@ public class ReporteStack extends javax.swing.JFrame {
                         .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnRegresarReporteStack)))
+                        .addComponent(btnRegresarReporteStock)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(btnRegresarReporteStack)
+                .addComponent(btnRegresarReporteStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblReporteStack)
+                .addComponent(lblReporteStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,19 +146,19 @@ public class ReporteStack extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegresarReporteStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReporteStackActionPerformed
+    private void btnRegresarReporteStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReporteStockActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnRegresarReporteStackActionPerformed
+    }//GEN-LAST:event_btnRegresarReporteStockActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnRegresarReporteStack;
+    private javax.swing.JToggleButton btnRegresarReporteStock;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblReporteStack;
-    private javax.swing.JTable tblReporteStack;
+    private javax.swing.JLabel lblReporteStock;
+    private javax.swing.JTable tblReporteStock;
     // End of variables declaration//GEN-END:variables
 }

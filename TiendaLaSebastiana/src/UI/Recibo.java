@@ -27,7 +27,8 @@ public class Recibo extends javax.swing.JFrame {
         mostrarEmpleado();
         this.total = venta.sumarColumnaDouble(venta.getTblProductosAgregados(), 4);
         String totalstr = String.valueOf(this.total);
-        txtPrecio.setText(totalstr);
+        txtTotal.setText(totalstr);
+        txtTotal.setEditable(false);
         
     }
     public void agregarFilaProducto(String descripcion, double cantidad, double precioUni, double precioTotal){
@@ -56,9 +57,9 @@ public class Recibo extends javax.swing.JFrame {
         }
   
     private void mostrarFecha(){
-        LocalDateTime ahora = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        txtFechaHoy.setText(ahora.format(formato));
+        LocalDateTime fecha = venta.capturarFecha();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy - HH:mm");
+        txtFechaHoy.setText(String.valueOf(fecha.format(formatter)));
     }
     private void mostrarEmpleado(){
         txtEmpleado.setText(parent.getUserAuth().getNombre());
@@ -84,7 +85,7 @@ public class Recibo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFactura = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel5.setText("La Sebastiana");
@@ -130,10 +131,9 @@ public class Recibo extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel7.setText("TOTAL :");
 
-        txtPrecio.setText("#Precio");
-        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioActionPerformed(evt);
+                txtTotalActionPerformed(evt);
             }
         });
 
@@ -170,7 +170,7 @@ public class Recibo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
@@ -198,16 +198,16 @@ public class Recibo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioActionPerformed
+    }//GEN-LAST:event_txtTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +225,6 @@ public class Recibo extends javax.swing.JFrame {
     private javax.swing.JTable tblFactura;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtFechaHoy;
-    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

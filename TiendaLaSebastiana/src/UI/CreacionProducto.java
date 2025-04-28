@@ -105,6 +105,12 @@ public class CreacionProducto extends javax.swing.JFrame {
 
         lblPrecio.setText("Precio Menor :");
 
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Tipo Producto :");
 
         txtTipoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aseo", "Bebida", "Mecato", "Granos", "Enlatado" }));
@@ -382,35 +388,32 @@ public class CreacionProducto extends javax.swing.JFrame {
         }
         switch(tipoSeleccionado){
             case "Aseo":
-               Aseo aseo = new Aseo (nombre, Id, precio, precioMayorista, fechaVencimiento, etiquetas);
+               Aseo aseo = new Aseo (nombre, Id, precioMayorista, precio, 
+                       fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(aseo);
                cantidades.put(Id, cantidad);
             case "Bebida":
-               Bebida bebida = new Bebida(nombre, Id, precio, precioMayorista, fechaVencimiento, etiquetas);
+               Bebida bebida = new Bebida(nombre, Id, precioMayorista, precio, 
+                       fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(bebida);
                cantidades.put(Id, cantidad);
             case "Mecato":
-               Mecato mecato = new Mecato (nombre, Id, precio, precioMayorista, fechaVencimiento, etiquetas);
+               Mecato mecato = new Mecato (nombre, Id, precioMayorista, precio, 
+                       fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(mecato);
                cantidades.put(Id, cantidad);
             case "Enlatado":
-                Enlatado enlatado = new Enlatado (nombre, Id, precio, precioMayorista, fechaVencimiento, etiquetas);
+                Enlatado enlatado = new Enlatado (nombre, Id, precioMayorista, precio, 
+                        fechaVencimiento, etiquetas);
                 parent.getCaja().getInventario().crearProductos(enlatado);
                 cantidades.put(Id, cantidad);
             case "Grano":
-               Granos granos = new Granos (nombre, Id, precio, precioMayorista, fechaVencimiento, etiquetas);
+               Granos granos = new Granos (nombre, Id, precioMayorista, precio, 
+                       fechaVencimiento, etiquetas);
                parent.getCaja().getInventario().crearProductos(granos);
                cantidades.put(Id, cantidad);
         }
-        
-        /*System.out.println("Producto creado correctamente.");
-        for (Producto p : parent.getCaja().getInventario().getProductos()) {
-            p.imprimirFicha();
-    }
-        for (Long idProd: cantidades.keySet()){
-            Double cantidadProd = cantidades.get(idProd);
-            System.out.println("ID Producto: " + idProd + ", Cantidad: " + cantidadProd);
-        }*/
+ 
         
         this.dispose();
         InventarioSistema inventarioSistema = new InventarioSistema(parent);
@@ -438,6 +441,10 @@ public class CreacionProducto extends javax.swing.JFrame {
     private void btnRegresarCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarCreacionActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnRegresarCreacionActionPerformed
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -564,7 +564,7 @@ public class MenuVenta extends javax.swing.JFrame {
 
     
    
-    private LocalDateTime capturarFecha(){
+    public LocalDateTime capturarFecha(){
         String diaStr = txtDia.getText().trim();
         String mesStr = txtMes.getText().trim();
         String anioStr = txtAnio.getText().trim();

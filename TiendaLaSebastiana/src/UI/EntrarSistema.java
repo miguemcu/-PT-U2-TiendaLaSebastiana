@@ -190,7 +190,7 @@ public class EntrarSistema extends javax.swing.JFrame {
                     if(this.getTienda() == null){
                     this.setTienda(new Tienda(parent));
                 }
-                
+                parent.setUserAuth(empleado);
                 this.getTienda().setVisible(true);
                 this.setVisible(false);
                 return;

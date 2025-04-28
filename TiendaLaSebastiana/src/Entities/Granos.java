@@ -16,9 +16,9 @@ public class Granos extends Producto {
     public Granos() {
     }
     
-    public Granos(String nombre, long id, double cantidad, double precio, double precioMayorista,
+    public Granos(String nombre, long id, double precioMenor, double precioMayor,
                   LocalDate fechaDeVencimiento, ArrayList<String> etiquetas) {
-        super(nombre,id,cantidad,precio, precioMayorista, EnumTipoProd.GRANOS);
+        super(nombre,id,precioMenor, precioMayor, EnumTipoProd.GRANOS);
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.etiquetas = etiquetas;
     }
@@ -44,9 +44,9 @@ public class Granos extends Producto {
         System.out.println("=== Ficha Granos ===");
         System.out.println("Nombre: " + getNombre());
         System.out.println("ID: " + getId());
-        System.out.println("Cantidad: " + getCantidad());
-        System.out.println("Precio Mayor: " + getPrecioMayorista());
-        System.out.println("Precio Menor: " + getPrecio());
+
+        System.out.println("Precio Mayor: " + getPrecioMayor());
+        System.out.println("Precio Menor: " + getPrecioMenor());
         System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());
         System.out.println("Etiquetas:");
         for (String etiqueta : etiquetas){

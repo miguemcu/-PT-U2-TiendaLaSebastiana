@@ -61,10 +61,7 @@
                               <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnAjustarCantidad" pref="124" max="32767" attributes="0"/>
-                          <Component id="btnCrearProducto" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnCrearProducto" min="-2" pref="124" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -82,7 +79,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                              <Component id="txtCantidadAjustar" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnAjustarCantidad" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="txtCantidadAjustar" min="-2" pref="124" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -175,14 +175,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearProductoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="btnAjustarCantidad">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ajustar cantidad"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjustarCantidadActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBuscar">
@@ -281,6 +273,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCantidadAjustarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="btnAjustarCantidad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ajustar cantidad"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjustarCantidadActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

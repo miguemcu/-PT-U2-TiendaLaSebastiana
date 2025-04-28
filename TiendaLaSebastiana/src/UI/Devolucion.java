@@ -1,17 +1,14 @@
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
 
+import Entities.DetalleVenta;
 import Entities.utilJtextField;
-import java.time.LocalDate;
 import javax.swing.text.AbstractDocument;
 import Gestión.Venta;
 import UI.Main;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,28 +16,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author DELL
  */
-
 public class Devolucion extends javax.swing.JFrame {
 
     /**
      * Creates new form Devoluciones
      */
     private Main parent;
+
     public Devolucion(Main parent) {
         this.parent = parent;
         initComponents();
+        ((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(5));
+        ((AbstractDocument) txtMes.getDocument()).setDocumentFilter(new utilJtextField(2));
+        ((AbstractDocument) txtDia.getDocument()).setDocumentFilter(new utilJtextField(2));
     }
-    public void llenarTablaVentas(ArrayList<Venta> ventas){
-    DefaultTableModel modelo =(DefaultTableModel)tableVentasDelDia.getModel();
-    modelo.setRowCount(0);
-    for (Venta v : ventas){
-        modelo.addRow(new Object[]
-        {v.getFecha(), 
-        v.getTotalBruto(),
-        v.getTotalVenta()});
-      
+
+    public void llenarTablaVentas(ArrayList<Venta> ventas) {
+        DefaultTableModel modelo = (DefaultTableModel) tableVentasDelDia.getModel();
+        modelo.setRowCount(0);
+        for (Venta v : ventas) {
+            modelo.addRow(new Object[]{v.getFecha(),
+                v.getID(),
+                v.getTotalBruto(),
+                v.getTotalVenta()});
+
+        }
     }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,27 +53,31 @@ public class Devolucion extends javax.swing.JFrame {
     private void initComponents() {
 
         lblPedirFecha = new javax.swing.JLabel();
-        lblFormatoFecha = new javax.swing.JLabel();
-        txtFechaVenta = new javax.swing.JTextField();
+        lblAnnio = new javax.swing.JLabel();
+        txtAnnio = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         scrollListaVentasDia = new javax.swing.JScrollPane();
         tableVentasDelDia = new javax.swing.JTable();
-        lblNoVentasEncontradas = new javax.swing.JLabel();
         btnDevolver = new javax.swing.JButton();
         lblPresioneVenta = new javax.swing.JLabel();
-        lblSeleccionarVenta = new javax.swing.JLabel();
+        txtDia = new javax.swing.JTextField();
+        txtMes = new javax.swing.JTextField();
+        lblFormatoFecha = new javax.swing.JLabel();
+        lblMM = new javax.swing.JLabel();
+        lblDD = new javax.swing.JLabel();
+        txtError = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblPedirFecha.setText("Ingrese la fecha en la que se realizo la venta");
 
-        lblFormatoFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFormatoFecha.setText("en formato AAAA-MM-DD");
+        lblAnnio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnnio.setText("AAAA");
 
-        ((AbstractDocument) txtFechaVenta.getDocument()).setDocumentFilter(new utilJtextField(10));
-        txtFechaVenta.addActionListener(new java.awt.event.ActionListener() {
+        ((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));
+        txtAnnio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaVentaActionPerformed(evt);
+                txtAnnioActionPerformed(evt);
             }
         });
 
@@ -98,10 +104,7 @@ public class Devolucion extends javax.swing.JFrame {
         tableVentasDelDia.setEnabled(false);
         scrollListaVentasDia.setViewportView(tableVentasDelDia);
 
-        lblNoVentasEncontradas.setVisible(false);
-        lblNoVentasEncontradas.setText("No se encontraron ventas en el día indicado.");
-        lblNoVentasEncontradas.setName(""); // NOI18N
-
+        btnDevolver.setVisible(false);
         btnDevolver.setBackground(new java.awt.Color(225, 10, 0));
         btnDevolver.setText("Hacer devolución");
         btnDevolver.addActionListener(new java.awt.event.ActionListener() {
@@ -114,10 +117,30 @@ public class Devolucion extends javax.swing.JFrame {
         lblPresioneVenta.setText("Presione la venta que quiera devolver y luego presione \"Hacer devolución\".");
         lblPresioneVenta.setName(""); // NOI18N
 
-        lblSeleccionarVenta.setVisible(false);
-        lblSeleccionarVenta.setText("No se encontraron ventas en el día indicado.");
-        lblSeleccionarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        lblSeleccionarVenta.setName(""); // NOI18N
+        ((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));
+        txtDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiaActionPerformed(evt);
+            }
+        });
+
+        ((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));
+        txtMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMesActionPerformed(evt);
+            }
+        });
+
+        lblFormatoFecha.setText("en formato AAAA-MM-DD");
+
+        lblMM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMM.setText("MM");
+
+        lblDD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDD.setText("DD");
+
+        txtError.setColumns(20);
+        txtError.setRows(5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,107 +150,160 @@ public class Devolucion extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(lblPresioneVenta)
                 .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnBuscar)
-                            .addGap(75, 75, 75))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtFechaVenta)
-                            .addComponent(lblFormatoFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPedirFecha, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addComponent(lblNoVentasEncontradas))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(scrollListaVentasDia, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(lblSeleccionarVenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(43, 329, Short.MAX_VALUE)
                 .addComponent(btnDevolver)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAnnio, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                            .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(lblMM, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscar)
+                            .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblFormatoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPedirFecha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(lblPedirFecha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFormatoFecha)
-                .addGap(18, 18, 18)
-                .addComponent(txtFechaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(lblNoVentasEncontradas, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnnio)
+                    .addComponent(lblMM)
+                    .addComponent(lblDD)
+                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(lblPresioneVenta)
                 .addGap(9, 9, 9)
                 .addComponent(scrollListaVentasDia, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSeleccionarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFechaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVentaActionPerformed
+    private void txtAnnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnnioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaVentaActionPerformed
+    }//GEN-LAST:event_txtAnnioActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String fechaString;
         ArrayList<Venta> ventasDelDia = null;
-        
-        fechaString = txtFechaVenta.getText().trim();
-        LocalDateTime fechaVenta = LocalDateTime.parse(fechaString);
-        for (Venta v : parent.getCaja().getVentas()) {
-            if (v.getFecha().equals(fechaVenta)) {
-                ventasDelDia.add(v);
-
+        String dia = txtDia.getText().trim();
+        String mes = txtMes.getText().trim();
+        String annio = txtAnnio.getText().trim();
+        try {
+            if(dia.isBlank() || mes.isBlank() || annio.isBlank()){
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
             }
-        
+            int Dia = Integer.parseInt(dia);
+            int Mes = Integer.parseInt(mes);
+            int Annio = Integer.parseInt(annio);
+
+            for (Venta v : parent.getCaja().getVentas()) {
+                if (v.getFecha().getDayOfMonth() == Dia) {
+                    if (v.getFecha().getMonthValue() == Mes) {
+                        if (v.getFecha().getYear() == Annio) {
+
+                            ventasDelDia.add(v);
+
+                        }
+                    }
+                }
+            }
+            if (ventasDelDia == null) {
+                throw new IllegalArgumentException("No se encontraron ventas en el día índicado");
+            } else {
+                this.llenarTablaVentas(ventasDelDia);
+                this.tableVentasDelDia.setVisible(true);
+                this.lblPresioneVenta.setVisible(true);
+                this.btnDevolver.setVisible(true);
+            }
+        } catch (IllegalArgumentException ex) {
+            txtError.setText(ex.getMessage());
         }
-        if (ventasDelDia == null)
-        {
-            this.lblNoVentasEncontradas.setVisible(true);
-        }
-        else{
-        this.llenarTablaVentas(ventasDelDia);
-        this.tableVentasDelDia.setVisible(true);
-        this.lblPresioneVenta.setVisible(true);
-        }
-        
+
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-    int ventaSeleccionada = this.tableVentasDelDia.getSelectedRow();
-    if (ventaSeleccionada == -1){
-        
-    }
-    
+        int ventaSeleccionada = this.tableVentasDelDia.getSelectedRow();
+        if (ventaSeleccionada == -1) {
+        }
+        else{
+            ArrayList<DetalleVenta> detalles = null;
+            int i = -1;
+            long idVenta = (long)this.tableVentasDelDia.getValueAt(ventaSeleccionada, 1);
+            for (Venta v : parent.getCaja().getVentas()) {
+                i += 1;
+                if(v.getID() == idVenta){
+                    detalles = v.getDetalles();
+                    break;
+                }
+            }
+            for(DetalleVenta d : detalles){
+                double cantidad = d.getCantidad()+parent.getCaja().getInventario().getCantidades().get(d.getProducto().getId());
+                parent.getCaja().getInventario().getCantidades().replace(d.getProducto().getId(), cantidad);
+            }
+            
+            parent.getCaja().getVentas().remove(i);
+        }
+
     }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void txtDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiaActionPerformed
+
+    private void txtMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMesActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDevolver;
+    private javax.swing.JLabel lblAnnio;
+    private javax.swing.JLabel lblDD;
     private javax.swing.JLabel lblFormatoFecha;
-    private javax.swing.JLabel lblNoVentasEncontradas;
+    private javax.swing.JLabel lblMM;
     private javax.swing.JLabel lblPedirFecha;
     private javax.swing.JLabel lblPresioneVenta;
-    private javax.swing.JLabel lblSeleccionarVenta;
     private javax.swing.JScrollPane scrollListaVentasDia;
     private javax.swing.JTable tableVentasDelDia;
-    private javax.swing.JTextField txtFechaVenta;
+    private javax.swing.JTextField txtAnnio;
+    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextArea txtError;
+    private javax.swing.JTextField txtMes;
     // End of variables declaration//GEN-END:variables
 }

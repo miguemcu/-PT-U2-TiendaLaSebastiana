@@ -4,20 +4,18 @@ package Entities;
 public abstract class Producto {
     private String nombre;
     private long id;
-    private double cantidad;
-    private double precioMayorista;
-    private double precio;
+    private double precioMayor;
+    private double precioMenor;
     private EnumTipoProd tipoProducto;
 
     public Producto() {
     }
 
-    public Producto(String nombre, long id, double cantidad, double precioMayorista, double precio, EnumTipoProd tipoProducto) {
+    public Producto(String nombre, long id, double precioMayor, double precioMenor, EnumTipoProd tipoProducto) {
         this.nombre = nombre;
         this.id = id;
-        this.cantidad = cantidad;
-        this.precioMayorista = precioMayorista;
-        this.precio = precio;
+        this.precioMayor = precioMayor;
+        this.precioMenor = precioMenor;
         this.tipoProducto = tipoProducto;
     }
 
@@ -45,28 +43,20 @@ public abstract class Producto {
         this.id = id;
     }
 
-    public double getCantidad() {
-        return cantidad;
+    public double getPrecioMayor() {
+        return precioMayor;
     }
 
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
+    public void setPrecioMayor(double precioMayor) {
+        this.precioMayor = precioMayor;
     }
 
-    public double getPrecioMayorista() {
-        return precioMayorista;
+    public double getPrecioMenor() {
+        return precioMenor;
     }
 
-    public void setPrecioMayorista(double precioMayorista) {
-        this.precioMayorista = precioMayorista;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecioMenor(double precioMenor) {
+        this.precioMenor = precioMenor;
     }
     
     public abstract void imprimirFicha();

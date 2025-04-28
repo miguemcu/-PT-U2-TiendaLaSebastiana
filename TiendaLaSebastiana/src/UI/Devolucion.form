@@ -28,57 +28,71 @@
               <Component id="lblPresioneVenta" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtFechaVenta" max="32767" attributes="0"/>
-                          <Component id="lblFormatoFecha" max="32767" attributes="0"/>
-                          <Component id="lblPedirFecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="lblNoVentasEncontradas" alignment="0" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Component id="scrollListaVentasDia" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="lblSeleccionarVenta" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="43" pref="329" max="32767" attributes="0"/>
               <Component id="btnDevolver" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblAnnio" pref="50" max="32767" attributes="0"/>
+                          <Component id="txtAnnio" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtMes" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblMM" min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblDD" max="32767" attributes="0"/>
+                          <Component id="txtDia" min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtError" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="lblFormatoFecha" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                  <Component id="lblPedirFecha" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="lblPedirFecha" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblFormatoFecha" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtFechaVenta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lblNoVentasEncontradas" min="-2" pref="16" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAnnio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblAnnio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMM" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtError" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="lblPresioneVenta" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Component id="scrollListaVentasDia" min="-2" pref="267" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnDevolver" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="lblSeleccionarVenta" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="btnDevolver" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,18 +103,18 @@
         <Property name="text" type="java.lang.String" value="Ingrese la fecha en la que se realizo la venta"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblFormatoFecha">
+    <Component class="javax.swing.JLabel" name="lblAnnio">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="en formato AAAA-MM-DD"/>
+        <Property name="text" type="java.lang.String" value="AAAA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFechaVenta">
+    <Component class="javax.swing.JTextField" name="txtAnnio">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFechaVentaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnnioActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((AbstractDocument) txtFechaVenta.getDocument()).setDocumentFilter(new utilJtextField(10));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
@@ -133,16 +147,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblNoVentasEncontradas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="No se encontraron ventas en el d&#xed;a indicado."/>
-        <Property name="name" type="java.lang.String" value="" noResource="true"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="lblNoVentasEncontradas.setVisible(false);&#xd;&#xa;"/>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Devolucion_lblNoVentasEncontradas"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JButton" name="btnDevolver">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -153,6 +157,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolverActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnDevolver.setVisible(false);&#xd;&#xa;"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPresioneVenta">
       <Properties>
@@ -164,18 +171,44 @@
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Devolucion_lblNoVentasEncontradas"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblSeleccionarVenta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="No se encontraron ventas en el d&#xed;a indicado."/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Texto"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="" noResource="true"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtDia">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiaActionPerformed"/>
+      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="lblSeleccionarVenta.setVisible(false);&#xd;&#xa;"/>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Devolucion_lblNoVentasEncontradas"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMes">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMesActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(10));"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormatoFecha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="en formato AAAA-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMM">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="MM"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDD">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextArea" name="txtError">
+      <Properties>
+        <Property name="columns" type="int" value="20"/>
+        <Property name="rows" type="int" value="5"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

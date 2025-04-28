@@ -58,7 +58,6 @@ public class InventarioSistema extends javax.swing.JFrame {
     private void initComponents() {
 
         btnCrearProducto = new javax.swing.JToggleButton();
-        btnAjustarCantidad = new javax.swing.JToggleButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -77,6 +76,7 @@ public class InventarioSistema extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JToggleButton();
         txtCantidadAjustar = new javax.swing.JTextField();
+        btnAjustarCantidad = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,13 +84,6 @@ public class InventarioSistema extends javax.swing.JFrame {
         btnCrearProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearProductoActionPerformed(evt);
-            }
-        });
-
-        btnAjustarCantidad.setText("Ajustar cantidad");
-        btnAjustarCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAjustarCantidadActionPerformed(evt);
             }
         });
 
@@ -148,6 +141,13 @@ public class InventarioSistema extends javax.swing.JFrame {
             }
         });
 
+        btnAjustarCantidad.setText("Ajustar cantidad");
+        btnAjustarCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjustarCantidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,9 +181,7 @@ public class InventarioSistema extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtID)
                                 .addGap(182, 182, 182)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAjustarCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .addComponent(btnCrearProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCrearProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(143, 143, 143))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -198,7 +196,9 @@ public class InventarioSistema extends javax.swing.JFrame {
                                 .addGap(85, 85, 85))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(173, 173, 173)
-                                .addComponent(txtCantidadAjustar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAjustarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCantidadAjustar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,21 +267,6 @@ public class InventarioSistema extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCrearProductoActionPerformed
 
-    private void btnAjustarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarCantidadActionPerformed
-
-        int i = -1;
-        for (Producto p : this.parent.getCaja().getInventario().getProductos()) {
-            i += 1;
-            if(p.getId() == this.productoBuscado.getId()){
-                
-
-            break;
-        }
-            double cantidadAjustar = Double.parseDouble(this.txtCantidadAjustar.getText().trim());
-        parent.getCaja().getInventario().getCantidades().replace(this.productoBuscado.getId(), cantidadAjustar);
-    }
-    }//GEN-LAST:event_btnAjustarCantidadActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -345,8 +330,28 @@ public class InventarioSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtCantidadAjustarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadAjustarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtCantidadAjustarActionPerformed
+
+    private void btnAjustarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjustarCantidadActionPerformed
+        String cantidad = txtCantidadAjustar.getText().trim();
+        try{
+        Double cantidadAjustar = Double.valueOf(cantidad);
+        parent.getCaja().getInventario().getCantidades().replace(this.productoBuscado.getId(), cantidadAjustar);
+        if(cantidad.isBlank()){
+            throw new IllegalArgumentException("Todos los campos son obligatorios.");
+            
+        }
+        if (this.productoBuscado == null) {
+                throw new IllegalArgumentException("Todos los campos son obligatorios.");
+        }
+        }
+         catch (IllegalArgumentException ex) {
+        txtErrorRegistro.setText(ex.getMessage());
+    } catch (Exception ex) {
+        txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_btnAjustarCantidadActionPerformed
 
     /**
      * @param args the command line arguments

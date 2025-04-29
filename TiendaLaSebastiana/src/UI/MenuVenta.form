@@ -30,17 +30,10 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblTtlVenta" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtTotalVenta" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblDescuentoVenta" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtDescuentoVenta" min="-2" pref="129" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblTtlVenta" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTotalVenta" min="-2" pref="158" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" alignment="0" min="-2" pref="365" max="-2" attributes="0"/>
                                   <Component id="lblIngresarFecha" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -119,11 +112,6 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="txtCantidadVender" min="-2" pref="129" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblDescuentoProducto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtDescuentoProducto" min="-2" pref="129" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtError" pref="0" max="32767" attributes="0"/>
@@ -190,17 +178,12 @@
                               <Component id="txtError" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCantidadAVender" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCantidadVender" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDescuentoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDescuentoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAgregarVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblInsucienteStock" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -209,17 +192,12 @@
                       <Component id="lblProductosAgregados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDescuentoVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDescuentoVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblTtlVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTotalVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="lblIngresarFecha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -314,16 +292,6 @@
         <Property name="text" type="java.lang.String" value="Productos Agregados:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblDescuentoProducto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Descuento Producto:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDescuentoProducto">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescuentoProductoActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -346,16 +314,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblDescuentoVenta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Descuento Venta:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDescuentoVenta">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescuentoVentaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblCantidadDisponible">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cantidad Disponible:"/>

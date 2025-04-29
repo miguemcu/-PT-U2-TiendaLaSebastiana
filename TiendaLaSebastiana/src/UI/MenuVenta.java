@@ -33,7 +33,6 @@ public class MenuVenta extends javax.swing.JFrame {
         txtCantidadDisponible.setEditable(false);
         txtPrecioUnitario.setEditable(false);
         txtCantidadVender.setEditable(true);
-        txtDescuentoProducto.setEditable(true);
         txtNombreProducto.setText(producto.getNombre());
         txtCantidadDisponible.setText(String.valueOf(parent.getCaja().getInventario().getCantidadProducto(producto.getId())));
         txtPrecioUnitario.setText(String.valueOf(producto.getPrecio()));
@@ -97,12 +96,8 @@ public class MenuVenta extends javax.swing.JFrame {
         txtCantidadDisponible = new javax.swing.JTextField();
         txtCantidadVender = new javax.swing.JTextField();
         lblProductosAgregados = new javax.swing.JLabel();
-        lblDescuentoProducto = new javax.swing.JLabel();
-        txtDescuentoProducto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductosAgregados = new javax.swing.JTable();
-        lblDescuentoVenta = new javax.swing.JLabel();
-        txtDescuentoVenta = new javax.swing.JTextField();
         lblCantidadDisponible = new javax.swing.JLabel();
         txtTotalVenta = new javax.swing.JTextField();
         btnCancelarVenta = new javax.swing.JButton();
@@ -163,14 +158,6 @@ public class MenuVenta extends javax.swing.JFrame {
 
         lblProductosAgregados.setText("Productos Agregados:");
 
-        lblDescuentoProducto.setText("Descuento Producto:");
-
-        txtDescuentoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescuentoProductoActionPerformed(evt);
-            }
-        });
-
         tblProductosAgregados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -188,14 +175,6 @@ public class MenuVenta extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblProductosAgregados);
-
-        lblDescuentoVenta.setText("Descuento Venta:");
-
-        txtDescuentoVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescuentoVentaActionPerformed(evt);
-            }
-        });
 
         lblCantidadDisponible.setText("Cantidad Disponible:");
 
@@ -274,15 +253,10 @@ public class MenuVenta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lblTtlVenta)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtTotalVenta))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(lblDescuentoVenta)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDescuentoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTtlVenta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblIngresarFecha)
                                     .addGroup(layout.createSequentialGroup()
@@ -340,11 +314,7 @@ public class MenuVenta extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblCantidadAVender)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtCantidadVender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblDescuentoProducto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDescuentoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtCantidadVender, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,15 +363,11 @@ public class MenuVenta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32)
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCantidadAVender)
                             .addComponent(txtCantidadVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDescuentoProducto)
-                            .addComponent(txtDescuentoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregarVenta)
                             .addComponent(lblInsucienteStock))
@@ -409,15 +375,11 @@ public class MenuVenta extends javax.swing.JFrame {
                         .addComponent(lblProductosAgregados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDescuentoVenta)
-                            .addComponent(txtDescuentoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTtlVenta)
                             .addComponent(txtTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
+                        .addGap(51, 51, 51)
                         .addComponent(lblIngresarFecha)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -448,10 +410,6 @@ public class MenuVenta extends javax.swing.JFrame {
     private void txtCantidadVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadVenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadVenderActionPerformed
-
-    private void txtDescuentoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescuentoProductoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.buscarAction();
@@ -535,7 +493,7 @@ public class MenuVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
     public double sumarColumnaDouble(JTable tabla, int columnIndex) {
-        double suma = 0.0;;
+        double suma = 0.0;
         int rowCount = modeloTabla.getRowCount();
 
         for (int i = 0; i < rowCount; i++) {
@@ -587,6 +545,42 @@ public class MenuVenta extends javax.swing.JFrame {
         int anio = Integer.parseInt(anioStr);
         int hora = Integer.parseInt(horaStr);
         int minutos = Integer.parseInt(minutosStr);
+          if (mes > 12) {
+                throw new IllegalArgumentException("El mes debe ser menor o igual a 12");
+            }
+            if ((anio % 100 == 0 && anio % 400 == 0)) {
+                if (mes == 2) {
+                    if (dia >= 30) {
+                        throw new IllegalArgumentException("El día debe ser menor o igual a 29");
+                    }
+
+                } else {
+                    if (anio % 4 == 0) {
+                        if (mes == 2) {
+                            if (dia > 29) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 29");
+                            }
+                        }
+                    } else {
+
+                        if (mes == 2) {
+                            if (dia > 28) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 28");
+                            }
+                        }
+                        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                            if (dia > 31) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 31");
+                            }
+                        }
+                        if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                            if (dia > 30) {
+                                throw new IllegalArgumentException("El día debe ser menor o igual a 30");
+                            }
+                        }
+                    }
+                }
+            }
         
         try {
             
@@ -603,6 +597,10 @@ public class MenuVenta extends javax.swing.JFrame {
             System.err.println("Debe ingresar valores numéricos válidos.");
         } catch (DateTimeException e) {
             System.err.println("Fecha inválida: " + e.getMessage());
+         } catch (IllegalArgumentException ex) {
+             System.err.println(ex.getMessage());
+        } catch (Exception ex) {
+             System.err.println("Error inesperado: " + ex.getMessage());
         }
         
         LocalDateTime fecha = LocalDateTime.of(anio, mes, dia, hora, minutos);
@@ -659,10 +657,6 @@ public class MenuVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalVentaActionPerformed
 
-    private void txtDescuentoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescuentoVentaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -677,8 +671,6 @@ public class MenuVenta extends javax.swing.JFrame {
     private javax.swing.JLabel lblBuscarProducto;
     private javax.swing.JLabel lblCantidadAVender;
     private javax.swing.JLabel lblCantidadDisponible;
-    private javax.swing.JLabel lblDescuentoProducto;
-    private javax.swing.JLabel lblDescuentoVenta;
     private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
@@ -696,8 +688,6 @@ public class MenuVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidadDisponible;
     private javax.swing.JTextField txtCantidadVender;
-    private javax.swing.JTextField txtDescuentoProducto;
-    private javax.swing.JTextField txtDescuentoVenta;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextArea txtError;
     private javax.swing.JTextField txtHora;

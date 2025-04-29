@@ -9,6 +9,7 @@ package Entities;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -45,17 +46,27 @@ public class Mecato extends Producto {
     }
 
     @Override
-      public void imprimirFicha() {
-        System.out.println("=== Ficha Mecato ===");
-        System.out.println("Nombre: " + getNombre());
-        System.out.println("ID: " + getId());
-        System.out.println("Precio Mayor: " + getPrecioMayorista());
-        System.out.println("Precio Menor: " + getPrecio());
-        System.out.println("Fecha Vencimiento: " + getFechaDeVencimiento());
-        System.out.println("Etiquetas:");
-        for (String etiqueta : etiquetas){
-            System.out.println("- " + etiqueta) ;
+    public String imprimirFicha() {
+        StringBuilder ficha = new StringBuilder();
+        ficha.append("=== Ficha Mecato ===\n");
+        ficha.append("Nombre: ").append(getNombre()).append("\n");
+        ficha.append("ID: ").append(getId()).append("\n");
+        ficha.append("Precio Mayor: ").append(getPrecioMayorista()).append("\n");
+        ficha.append("Precio Menor: ").append(getPrecio()).append("\n");
+
+        LocalDate fechaDeVencimiento = getFechaDeVencimiento();
+        if (fechaDeVencimiento != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
+            ficha.append("Fecha Vencimiento: ").append(fechaDeVencimiento.format(formatter)).append("\n");
+        } else {
+            ficha.append("Fecha Vencimiento: No especificada\n");
         }
+
+        ficha.append("Etiquetas:\n");
+        for (String etiqueta : getEtiquetas()) {
+            ficha.append("- ").append(etiqueta).append("\n");
+        }
+        return ficha.toString();
     }
 }
 

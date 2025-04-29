@@ -22,10 +22,10 @@ public class VentasPeriodo extends javax.swing.JFrame {
      * Creates new form VentasPeriodo
      */
     public VentasPeriodo(ArrayList<Venta> ventasAMotrar) {
+        initComponents();
         modeloTabla = (DefaultTableModel) tblVentasFiltradas.getModel();
         this.ventasAMostrar = ventasAMotrar;
         mostrarVentasEnTabla(ventasAMotrar);
-        initComponents();
     }
     
     public void agregarFilaVenta(Object fecha, Object productos, Double totalVentas){
@@ -73,7 +73,7 @@ public class VentasPeriodo extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Fecha", "Productos", "Total Ventas"
+                "Fecha", "Productos", "Total Venta"
             }
         ) {
             Class[] types = new Class [] {

@@ -59,5 +59,5 @@ public abstract class Producto {
         this.precio = precio;
     }
     
-    public abstract void imprimirFicha();
+    public abstract String imprimirFicha();
 }

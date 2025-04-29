@@ -238,42 +238,57 @@ public class ReporteVentas extends javax.swing.JFrame {
         String diaFinStr = txtDiaFin.getText().trim();
         String mesFinStr = txtMesFin.getText().trim();
         String anioFinStr = txtAnioFin.getText().trim();
-        int diaInicio = Integer.parseInt(diaInicioStr);
-        int mesInicio = Integer.parseInt(mesInicioStr);
-        int anioInicio = Integer.parseInt(anioInicioStr);
-        int diaFin = Integer.parseInt(diaFinStr);
-        int mesFin = Integer.parseInt(mesFinStr);
-        int anioFin = Integer.parseInt(anioFinStr);
-        
+
+        LocalDate fechaInicio = null;
+        LocalDate fechaFin = null;
+
+        lblFechaInicio.setText("");
+        lblFechaFin.setText("");
+
         try {
-            
-            if (diaInicioStr.isBlank() || mesInicioStr.isBlank() || anioInicioStr.isBlank() 
+
+            if (diaInicioStr.isBlank() || mesInicioStr.isBlank() || anioInicioStr.isBlank()
                     || diaFinStr.isBlank() || mesFinStr.isBlank() || anioFinStr.isBlank()){
                 throw new IllegalArgumentException("Todos los campos son obligatorios.");
             }
 
-            LocalDate fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
-            LocalDate fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
-            
+            int diaInicio = Integer.parseInt(diaInicioStr);
+            int mesInicio = Integer.parseInt(mesInicioStr);
+            int anioInicio = Integer.parseInt(anioInicioStr);
+            int diaFin = Integer.parseInt(diaFinStr);
+            int mesFin = Integer.parseInt(mesFinStr);
+            int anioFin = Integer.parseInt(anioFinStr);
+
+            fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
+            fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
+
             lblFechaInicio.setText("Fecha de inicio: "+ fechaInicio);
             lblFechaFin.setText("Fecha de fin: "+ fechaFin);
 
+            var ventasAMostrar = this.parent.getCaja().obtenerVentasSegunPeriodo(fechaInicio, fechaFin);
+            var ventasPeriodo = new VentasPeriodo(ventasAMostrar);
+            ventasPeriodo.setVisible(true);
+            ventasPeriodo.mostrarVentasEnTabla(ventasAMostrar);
+
         } catch (NumberFormatException e) {
-            System.err.println("Debe ingresar valores numéricos válidos.");
+            System.err.println("Error de formato numérico.");
+            lblFechaInicio.setText("Error: Ingrese números válidos.");
+            lblFechaFin.setText("Error: Ingrese números válidos.");
         } catch (DateTimeException e) {
-            System.err.println("Fecha inválida: " + e.getMessage());
+            System.err.println("Error de fecha: " + e.getMessage());
+            if (e.getMessage().contains("inicio")) {
+                lblFechaInicio.setText("Error en Fecha Inicio: " + e.getMessage());
+            } else if (e.getMessage().contains("fin")) {
+                lblFechaFin.setText("Error en Fecha Fin: " + e.getMessage());
+            } else {
+                lblFechaInicio.setText("Error de fecha.");
+                lblFechaFin.setText("Error de fecha.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            lblFechaInicio.setText("Error: " + e.getMessage());
+            lblFechaFin.setText("Error: " + e.getMessage());
         }
-        
-        LocalDate fechaInicio = LocalDate.of(anioInicio, mesInicio, diaInicio);
-        LocalDate fechaFin = LocalDate.of(anioFin, mesFin, diaFin);
-        
-        var ventasAMostrar = this.parent.getCaja().obtenerVentasSegunPeriodo(fechaInicio, fechaFin);
-        
-        var ventasPeriodo = new VentasPeriodo(ventasAMostrar);
-        ventasPeriodo.setVisible(true);
-        ventasPeriodo.mostrarVentasEnTabla(ventasAMostrar);
-        
-        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

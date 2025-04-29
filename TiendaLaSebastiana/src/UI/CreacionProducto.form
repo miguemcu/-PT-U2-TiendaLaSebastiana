@@ -35,12 +35,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCantidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblID" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="lblTipoProd" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                           <Component id="lblPrecio" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFechaVencimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPrecioMayorista" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
                                           <Component id="txtDay" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="lblDia" min="-2" pref="37" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -75,9 +75,9 @@
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="jLabel7" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="lblMes" min="-2" pref="37" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                              <Component id="jLabel8" min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="lblAño" min="-2" pref="37" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -86,10 +86,10 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
+                  <Component id="ScrollMensajesProductos" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel9" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="lblEtiqueta" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="btnGuardar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -100,7 +100,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel10" min="-2" pref="272" max="-2" attributes="0"/>
+                              <Component id="lblIndicacionEtiquetas" min="-2" pref="272" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -124,13 +124,13 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -144,26 +144,26 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTipoProd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTipoProd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFechaVencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDay" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtMonth" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtYear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAño" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEtiqueta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -171,11 +171,11 @@
                       <Component id="txtEtiquetas" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIndicacionEtiquetas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="ScrollMensajesProductos" min="-2" pref="76" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnRegresarCreacion" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -196,7 +196,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblNombre">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre : "/>
       </Properties>
@@ -206,7 +206,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblCantidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cantidad :"/>
       </Properties>
@@ -230,7 +230,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblTipoProd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tipo Producto :"/>
       </Properties>
@@ -262,7 +262,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+    <Container class="javax.swing.JScrollPane" name="ScrollMensajesProductos">
       <Properties>
         <Property name="horizontalScrollBarPolicy" type="int" value="32"/>
         <Property name="verticalScrollBarPolicy" type="int" value="22"/>
@@ -279,7 +279,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblFechaVencimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fecha de Vencimiento : "/>
       </Properties>
@@ -296,17 +296,17 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtYear">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lblDia">
       <Properties>
         <Property name="text" type="java.lang.String" value="DD"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblMes">
       <Properties>
         <Property name="text" type="java.lang.String" value="MM"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="lblA&#xf1;o">
       <Properties>
         <Property name="text" type="java.lang.String" value="YYYY"/>
       </Properties>
@@ -316,12 +316,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEtiquetasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="lblEtiqueta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Etiqueta :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="lblIndicacionEtiquetas">
       <Properties>
         <Property name="text" type="java.lang.String" value="#Escriba asi: etiqueta1,etiqueta2,...,etiquetak"/>
       </Properties>

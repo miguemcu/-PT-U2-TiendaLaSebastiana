@@ -29,8 +29,6 @@ public class Caja {
         this.ventas = new ArrayList<>();
     }
 
-    // Getters y Setters
-
     public Empleado getCajero() {
         return cajero;
     }
@@ -63,11 +61,6 @@ public class Caja {
         this.inventario = inventario;
     }
 
-    public Venta vender() {
-        // Lógica pendiente: realizar una venta, registrar, restar stock
-        return null;
-    }
-    
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
     }

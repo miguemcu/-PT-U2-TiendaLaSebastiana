@@ -117,6 +117,7 @@ public class MenuVenta extends javax.swing.JFrame {
         lblHora = new javax.swing.JLabel();
         lblMinutos = new javax.swing.JLabel();
         txtError = new javax.swing.JTextArea();
+        lblErrorFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -263,36 +264,39 @@ public class MenuVenta extends javax.swing.JFrame {
                                         .addGap(8, 8, 8)
                                         .addComponent(lblFecha)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(lblDia)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(lblMes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(lblDia)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(lblAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(lblHora)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(lblMinutos))
-                                            .addComponent(txtMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(lblMes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(20, 20, 20)
+                                                        .addComponent(lblAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(lblHora)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(lblMinutos))
+                                                    .addComponent(txtMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lblErrorFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(lblProductosAgregados)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
@@ -342,6 +346,13 @@ public class MenuVenta extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(scrollVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelarVenta)
+                            .addComponent(btnVender))
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
@@ -379,7 +390,7 @@ public class MenuVenta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTtlVenta)
                             .addComponent(txtTotalVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
+                        .addGap(35, 35, 35)
                         .addComponent(lblIngresarFecha)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -395,13 +406,10 @@ public class MenuVenta extends javax.swing.JFrame {
                             .addComponent(lblMes)
                             .addComponent(lblAnio)
                             .addComponent(lblHora)
-                            .addComponent(lblMinutos)))
-                    .addComponent(scrollVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarVenta)
-                    .addComponent(btnVender))
-                .addGap(19, 19, 19))
+                            .addComponent(lblMinutos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblErrorFecha)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -482,7 +490,7 @@ public class MenuVenta extends javax.swing.JFrame {
                 precio = producto.getPrecio();
             }
             
-            total = precio*cantidadVender;
+            total = (precio*cantidadVender);
             
             this.agregarFilaProducto(producto.getId(), producto.getNombre(),
                     precio, cantidadVender, total);
@@ -512,6 +520,11 @@ public class MenuVenta extends javax.swing.JFrame {
         Long id = generarIdUnico();
         LocalDateTime fecha = capturarFecha();
         
+        if (fecha == null) {
+            lblErrorFecha.setText("Fecha inválida, ingrese de nuevo.");
+            return;
+        }
+        
         var venta = new Venta(detalles, totalVenta, totalVenta, 0, 0, fecha, id);
         this.dispose();
         
@@ -520,7 +533,7 @@ public class MenuVenta extends javax.swing.JFrame {
         
         for (DetalleVenta detalle: detalles){
             producto = detalle.getProducto();
-            ajuste = detalle.getCantidad()*(-1);
+            ajuste = (detalle.getCantidad()*(-1));
             parent.getCaja().getInventario().ajustarCantidadProducto(producto.getId(), ajuste);
         }
         
@@ -532,88 +545,54 @@ public class MenuVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVenderActionPerformed
 
     
-   
-    public LocalDateTime capturarFecha(){
+   public LocalDateTime capturarFecha() {
         String diaStr = txtDia.getText().trim();
         String mesStr = txtMes.getText().trim();
         String anioStr = txtAnio.getText().trim();
         String horaStr = txtHora.getText().trim();
         String minutosStr = txtMinuto.getText().trim();
-        
-        int dia = Integer.parseInt(diaStr);
-        int mes = Integer.parseInt(mesStr);
-        int anio = Integer.parseInt(anioStr);
-        int hora = Integer.parseInt(horaStr);
-        int minutos = Integer.parseInt(minutosStr);
-          if (mes > 12) {
-                throw new IllegalArgumentException("El mes debe ser menor o igual a 12");
-            }
-            if ((anio % 100 == 0 && anio % 400 == 0)) {
-                if (mes == 2) {
-                    if (dia >= 30) {
-                        throw new IllegalArgumentException("El día debe ser menor o igual a 29");
-                    }
 
-                } else {
-                    if (anio % 4 == 0) {
-                        if (mes == 2) {
-                            if (dia > 29) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 29");
-                            }
-                        }
-                    } else {
+        LocalDateTime fecha = null;
 
-                        if (mes == 2) {
-                            if (dia > 28) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 28");
-                            }
-                        }
-                        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
-                            if (dia > 31) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 31");
-                            }
-                        }
-                        if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
-                            if (dia > 30) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 30");
-                            }
-                        }
-                    }
-                }
-            }
-        
         try {
-            
-            if (diaStr.isBlank() || mesStr.isBlank() || anioStr.isBlank()
-                    || horaStr.isBlank() || minutosStr.isBlank()){
-                throw new IllegalArgumentException("Todos los campos son obligatorios.");
-            }
+             if (diaStr.isBlank() || mesStr.isBlank() || anioStr.isBlank()
+                     || horaStr.isBlank() || minutosStr.isBlank()) {
+                 throw new IllegalArgumentException("Todos los campos de fecha y hora son obligatorios.");
+             }
 
-            LocalDateTime fecha = LocalDateTime.of(anio, mes, dia, hora, minutos);
-            
-            lblFecha.setText("Fecha de inicio: "+ fecha);
+             int dia = Integer.parseInt(diaStr);
+             int mes = Integer.parseInt(mesStr);
+             int anio = Integer.parseInt(anioStr);
+             int hora = Integer.parseInt(horaStr);
+             int minutos = Integer.parseInt(minutosStr);
 
-        } catch (NumberFormatException e) {
-            System.err.println("Debe ingresar valores numéricos válidos.");
-        } catch (DateTimeException e) {
-            System.err.println("Fecha inválida: " + e.getMessage());
-         } catch (IllegalArgumentException ex) {
-             System.err.println(ex.getMessage());
-        } catch (Exception ex) {
-             System.err.println("Error inesperado: " + ex.getMessage());
+             fecha = LocalDateTime.of(anio, mes, dia, hora, minutos);
+             lblErrorFecha.setText("");
+
+            } catch (NumberFormatException e) {
+                System.err.println("Error: Debe ingresar valores numéricos válidos para la fecha y hora.");
+                fecha = null;
+            } catch (DateTimeException e) {
+                System.err.println("Fecha y hora inválida: " + e.getMessage());
+                fecha = null;
+         } catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+                fecha = null;
+         } catch (Exception ex) {
+                System.err.println("Error inesperado: " + ex.getMessage());
+                fecha = null;
+         }
+
+            return fecha;
         }
-        
-        LocalDateTime fecha = LocalDateTime.of(anio, mes, dia, hora, minutos);
-        return fecha;
-    }
-    
+   
     public Long generarIdUnico() {
         Long nuevoId;
         boolean existe;
 
         do {
             nuevoId = random.nextLong();
-            if (nuevoId < 0) { // Asegurarse de que el ID no sea negativo (opcional)
+            if (nuevoId < 0) { // Por si me generó un número Negativo
                 nuevoId = -nuevoId;
             }
 
@@ -672,6 +651,7 @@ public class MenuVenta extends javax.swing.JFrame {
     private javax.swing.JLabel lblCantidadAVender;
     private javax.swing.JLabel lblCantidadDisponible;
     private javax.swing.JLabel lblDia;
+    private javax.swing.JLabel lblErrorFecha;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblIngresarFecha;

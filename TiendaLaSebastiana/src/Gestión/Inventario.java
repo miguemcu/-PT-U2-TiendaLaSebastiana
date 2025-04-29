@@ -76,9 +76,9 @@ public class Inventario {
     }
     
     public double ajustarCantidadProducto(Long idProd, double ajuste){
-            double cantidadActual = cantidades.get(idProd);
-            double nuevaCantidad = cantidadActual + ajuste;
-            cantidades.put(idProd, nuevaCantidad);
-            return nuevaCantidad;
+        double cantidadActual = cantidades.get(idProd);
+        double nuevaCantidad = cantidadActual + ajuste;
+        cantidades.put(idProd, nuevaCantidad);
+        return nuevaCantidad;
     }
 }

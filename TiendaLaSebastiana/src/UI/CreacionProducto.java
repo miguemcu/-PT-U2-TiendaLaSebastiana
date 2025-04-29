@@ -14,6 +14,7 @@ import Entities.Granos;
 import Entities.Mecato;
 import Entities.utilJtextField;
 import Gestión.Inventario;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
@@ -63,29 +64,29 @@ public class CreacionProducto extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         lblPrecioMayorista = new javax.swing.JLabel();
         txtPrecioMayorista = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblTipoProd = new javax.swing.JLabel();
         txtTipoProd = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JToggleButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        ScrollMensajesProductos = new javax.swing.JScrollPane();
         txtErrorRegistro = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        lblFechaVencimiento = new javax.swing.JLabel();
         txtDay = new javax.swing.JTextField();
         txtMonth = new javax.swing.JTextField();
         txtYear = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblDia = new javax.swing.JLabel();
+        lblMes = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
         txtEtiquetas = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblEtiqueta = new javax.swing.JLabel();
+        lblIndicacionEtiquetas = new javax.swing.JLabel();
         btnRegresarCreacion = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
@@ -100,7 +101,7 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre : ");
+        lblNombre.setText("Nombre : ");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +109,7 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Cantidad :");
+        lblCantidad.setText("Cantidad :");
 
         lblPrecioMayorista.setText("Precio Mayorista :");
 
@@ -120,7 +121,7 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Tipo Producto :");
+        lblTipoProd.setText("Tipo Producto :");
 
         txtTipoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aseo", "Bebida", "Mecato", "Granos", "Enlatado" }));
         txtTipoProd.addActionListener(new java.awt.event.ActionListener() {
@@ -136,15 +137,15 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane4.setAutoscrolls(true);
+        ScrollMensajesProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ScrollMensajesProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        ScrollMensajesProductos.setAutoscrolls(true);
 
         txtErrorRegistro.setColumns(20);
         txtErrorRegistro.setRows(5);
-        jScrollPane4.setViewportView(txtErrorRegistro);
+        ScrollMensajesProductos.setViewportView(txtErrorRegistro);
 
-        jLabel3.setText("Fecha de Vencimiento : ");
+        lblFechaVencimiento.setText("Fecha de Vencimiento : ");
 
         txtDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,11 +159,11 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("DD");
+        lblDia.setText("DD");
 
-        jLabel7.setText("MM");
+        lblMes.setText("MM");
 
-        jLabel8.setText("YYYY");
+        lblAño.setText("YYYY");
 
         txtEtiquetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,9 +171,9 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Etiqueta :");
+        lblEtiqueta.setText("Etiqueta :");
 
-        jLabel10.setText("#Escriba asi: etiqueta1,etiqueta2,...,etiquetak");
+        lblIndicacionEtiquetas.setText("#Escriba asi: etiqueta1,etiqueta2,...,etiquetak");
 
         btnRegresarCreacion.setBackground(new java.awt.Color(247, 84, 73));
         btnRegresarCreacion.setText("Regresar");
@@ -191,12 +192,12 @@ public class CreacionProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
+                            .addComponent(lblCantidad)
+                            .addComponent(lblNombre)
                             .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
+                            .addComponent(lblFechaVencimiento)
                             .addComponent(lblPrecioMayorista))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +217,7 @@ public class CreacionProducto extends javax.swing.JFrame {
                                             .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(lblDia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -225,14 +226,14 @@ public class CreacionProducto extends javax.swing.JFrame {
                                                 .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblMes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(lblAño, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ScrollMensajesProductos, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEtiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -241,7 +242,7 @@ public class CreacionProducto extends javax.swing.JFrame {
                                 .addGap(0, 9, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblIndicacionEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,12 +258,12 @@ public class CreacionProducto extends javax.swing.JFrame {
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblCantidad))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrecioMayorista)
@@ -273,33 +274,33 @@ public class CreacionProducto extends javax.swing.JFrame {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblTipoProd)
                     .addComponent(txtTipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblFechaVencimiento)
                     .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(lblDia)
+                    .addComponent(lblMes)
+                    .addComponent(lblAño))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(lblEtiqueta)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txtEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                            .addComponent(lblIndicacionEtiquetas)
                             .addComponent(btnGuardar))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ScrollMensajesProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegresarCreacion)))
                 .addContainerGap())
@@ -347,17 +348,17 @@ public class CreacionProducto extends javax.swing.JFrame {
                 throw new IllegalArgumentException("El ID solo debe contener números.");
             }
 
-            // Validar que Cantidad solo contenga números (y opcionalmente punto decimal)
+            // Verificamos que Cantidad solo contenga números (y opcionalmente punto decimal)
             if (!Cantidad.matches("\\d+(\\.\\d+)?")) {
                 throw new IllegalArgumentException("La cantidad debe ser un número válido.");
             }
 
-            // Validar que Precio Mayor solo contenga números (y opcionalmente punto decimal)
+            // Verificamos que Precio Mayor solo contenga números (y opcionalmente punto decimal)
             if (!PrecioMayorista.matches("\\d+(\\.\\d+)?")) {
                 throw new IllegalArgumentException("El precio mayor debe ser un número válido.");
             }
 
-            // Validar que Precio Menor solo contenga números (y opcionalmente punto decimal)
+            // Verificamos que Precio Menor solo contenga números (y opcionalmente punto decimal)
             if (!Precio.matches("\\d+(\\.\\d+)?")) {
                 throw new IllegalArgumentException("El precio menor debe ser un número válido.");
             }
@@ -379,46 +380,14 @@ public class CreacionProducto extends javax.swing.JFrame {
             double precio = Double.parseDouble(Precio);
             double precioMayorista = Double.parseDouble(PrecioMayorista);
             EnumTipoProd tiposeleccionado = EnumTipoProd.ASEO;
-            int Dia = Integer.parseInt(dia);
-            int Mes = Integer.parseInt(mes);
-            int Annio = Integer.parseInt(annio);
-            if (Mes > 12) {
-                throw new IllegalArgumentException("El mes debe ser menor o igual a 12");
+            
+            if (this.capturarFechaVencimiento() == null){
+                txtErrorRegistro.setText("Fecha inválida. Por favor ingrese de nuevo.");
+                return;
             }
-            if ((Annio % 100 == 0 && Annio % 400 == 0)) {
-                if (Mes == 2) {
-                    if (Dia >= 30) {
-                        throw new IllegalArgumentException("El día debe ser menor o igual a 29");
-                    }
-
-                } else {
-                    if (Annio % 4 == 0) {
-                        if (Mes == 2) {
-                            if (Dia > 29) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 29");
-                            }
-                        }
-                    } else {
-
-                        if (Mes == 2) {
-                            if (Dia > 28) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 28");
-                            }
-                        }
-                        if (Mes == 1 || Mes == 3 || Mes == 5 || Mes == 7 || Mes == 8 || Mes == 10 || Mes == 12) {
-                            if (Dia > 31) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 31");
-                            }
-                        }
-                        if (Mes == 4 || Mes == 6 || Mes == 9 || Mes == 11) {
-                            if (Dia > 30) {
-                                throw new IllegalArgumentException("El día debe ser menor o igual a 30");
-                            }
-                        }
-                    }
-                }
-            }
-            LocalDate fechaVencimiento = LocalDate.of(Annio, Mes, Dia);
+            
+            LocalDate fechaVencimiento = this.capturarFechaVencimiento();
+            
             ArrayList<String> etiquetas = new ArrayList<>();
             String[] etiquetasArray = textoEtiquetas.split(",");
             for (String etiqueta : etiquetasArray) {
@@ -428,7 +397,7 @@ public class CreacionProducto extends javax.swing.JFrame {
                 throw new IllegalArgumentException("El precio por mayor debe ser menor o igual al precio por menor.");
             }
 
-            if (Annio < Year.now().getValue()) {
+            if (Integer.parseInt(txtYear.getText().trim()) < Year.now().getValue()) {
                 throw new IllegalArgumentException("La fecha de vencimiento es incorrecta.");
             }
             switch (tipoSeleccionado) {
@@ -469,7 +438,39 @@ public class CreacionProducto extends javax.swing.JFrame {
             txtErrorRegistro.setText("Error inesperado: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+    
+    public LocalDate capturarFechaVencimiento() {
+        String yearStr = txtYear.getText().trim();
+        String monthStr = txtMonth.getText().trim();
+        String dayStr = txtDay.getText().trim();
 
+        LocalDate fechaVencimiento = null;
+
+        try {
+            if (yearStr.isBlank() || monthStr.isBlank() || dayStr.isBlank()) {
+                throw new IllegalArgumentException("Todos los campos de la fecha de vencimiento son obligatorios.");
+            }
+
+            int year = Integer.parseInt(yearStr);
+            int month = Integer.parseInt(monthStr);
+            int day = Integer.parseInt(dayStr);
+
+            fechaVencimiento = LocalDate.of(year, month, day);
+            txtErrorRegistro.setText(""); // Limpiamos cualquier error anterior
+
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Debe ingresar valores numéricos válidos para la fecha de vencimiento.");
+        } catch (DateTimeException e) {
+            System.err.println("Fecha de vencimiento inválida: " + e.getMessage());
+            txtErrorRegistro.setText("Error: Fecha de vencimiento inválida - " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception ex) {
+            System.err.println("Error inesperado al capturar la fecha de vencimiento: " + ex.getMessage());
+        }
+
+    return fechaVencimiento;
+}
     private void txtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDayActionPerformed
@@ -495,22 +496,22 @@ public class CreacionProducto extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollMensajesProductos;
     private javax.swing.JToggleButton btnGuardar;
     private javax.swing.JButton btnRegresarCreacion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblAño;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblDia;
+    private javax.swing.JLabel lblEtiqueta;
+    private javax.swing.JLabel lblFechaVencimiento;
     private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblIndicacionEtiquetas;
+    private javax.swing.JLabel lblMes;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblPrecioMayorista;
+    private javax.swing.JLabel lblTipoProd;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDay;
     private javax.swing.JTextArea txtErrorRegistro;

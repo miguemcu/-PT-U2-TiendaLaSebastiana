@@ -25,7 +25,7 @@ public class Recibo extends javax.swing.JFrame {
         modeloTabla = (DefaultTableModel)tblFactura.getModel();
         mostrarFecha();
         mostrarEmpleado();
-        this.total = venta.sumarColumnaDouble(venta.getTblProductosAgregados(), 4);
+        this.total = venta.sumarColumnaTotales(venta.getTblProductosAgregados(), 4);
         String totalstr = String.valueOf(this.total);
         txtTotal.setText(totalstr);
         txtTotal.setEditable(false);

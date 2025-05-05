@@ -45,7 +45,7 @@ public class Aseo extends Producto {
     @Override
     public String imprimirFicha() {
         StringBuilder ficha = new StringBuilder();
-        ficha.append("=== Ficha Mecato ===\n");
+        ficha.append("=== Ficha Producto Aseo ===\n");
         ficha.append("Nombre: ").append(getNombre()).append("\n");
         ficha.append("ID: ").append(getId()).append("\n");
         ficha.append("Precio Mayor: ").append(getPrecioMayorista()).append("\n");

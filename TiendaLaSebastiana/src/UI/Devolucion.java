@@ -9,7 +9,9 @@ import Entities.utilJtextField;
 import javax.swing.text.AbstractDocument;
 import Gestión.Venta;
 import UI.Main;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,24 +24,43 @@ public class Devolucion extends javax.swing.JFrame {
      * Creates new form Devoluciones
      */
     private Main parent;
+    private ArrayList<Venta> ventas;
+    private DefaultTableModel modeloTabla;
 
     public Devolucion(Main parent) {
         this.parent = parent;
+        this.ventas = new ArrayList<>();
         initComponents();
         ((AbstractDocument) txtAnnio.getDocument()).setDocumentFilter(new utilJtextField(5));
         ((AbstractDocument) txtMes.getDocument()).setDocumentFilter(new utilJtextField(2));
         ((AbstractDocument) txtDia.getDocument()).setDocumentFilter(new utilJtextField(2));
     }
 
-    public void llenarTablaVentas(ArrayList<Venta> ventas) {
-        DefaultTableModel modelo = (DefaultTableModel) tableVentasDelDia.getModel();
-        modelo.setRowCount(0);
-        for (Venta v : ventas) {
-            modelo.addRow(new Object[]{v.getFecha(),
-                v.getID(),
-                v.getTotalBruto(),
-                v.getTotalVenta()});
+   public void ventasDelDia(ArrayList<Venta> ventas) {
+        initComponents();
+        modeloTabla = (DefaultTableModel) tableVentasDelDia.getModel();
+        this.ventas = ventas;
+        mostrarVentasEnTabla(ventas);
+    }
+   
+       public void agregarFilaVenta(Object fecha, Object productos, Double totalVentas, long id){
+        Object[] nuevaFila = {fecha, productos, totalVentas, id};
+        modeloTabla.addRow(nuevaFila);
+    }
+   public void mostrarVentasEnTabla(ArrayList<Venta> ventasAMostrar) {
+        modeloTabla.setRowCount(0);
+        
+        for (Venta venta : ventasAMostrar) {
+            LocalDateTime fechaVenta = venta.getFecha();
+            double totalVenta = venta.getTotalVenta();
 
+            String productosVendidos = venta.getDetalles().stream()
+                    .map(detalle -> detalle.getProducto().getNombre() 
+                            + " x" + detalle.getCantidad())
+                    .collect(Collectors.joining(", "));
+            long Id = venta.getID();
+
+            agregarFilaVenta(fechaVenta, productosVendidos, totalVenta, Id);
         }
     }
 
@@ -56,8 +77,6 @@ public class Devolucion extends javax.swing.JFrame {
         lblAnnio = new javax.swing.JLabel();
         txtAnnio = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        scrollListaVentasDia = new javax.swing.JScrollPane();
-        tableVentasDelDia = new javax.swing.JTable();
         btnDevolver = new javax.swing.JButton();
         lblPresioneVenta = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
@@ -67,6 +86,8 @@ public class Devolucion extends javax.swing.JFrame {
         lblDD = new javax.swing.JLabel();
         txtError = new javax.swing.JTextArea();
         btnRegresar = new javax.swing.JButton();
+        scrollPanelVentasFiltradas1 = new javax.swing.JScrollPane();
+        tableVentasDelDia = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,22 +109,6 @@ public class Devolucion extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-
-        scrollListaVentasDia.setVisible(false);
-
-        tableVentasDelDia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tableVentasDelDia.setEnabled(false);
-        scrollListaVentasDia.setViewportView(tableVentasDelDia);
 
         btnDevolver.setVisible(false);
         btnDevolver.setBackground(new java.awt.Color(225, 10, 0));
@@ -150,11 +155,30 @@ public class Devolucion extends javax.swing.JFrame {
             }
         });
 
+        tableVentasDelDia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Fecha", "Productos", "Total Venta", "Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        scrollPanelVentasFiltradas1.setViewportView(tableVentasDelDia);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollListaVentasDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +204,7 @@ public class Devolucion extends javax.swing.JFrame {
                             .addComponent(lblPedirFecha))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 32, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnDevolver)
@@ -188,7 +212,8 @@ public class Devolucion extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnRegresar)
-                                    .addComponent(lblPresioneVenta))
+                                    .addComponent(lblPresioneVenta)
+                                    .addComponent(scrollPanelVentasFiltradas1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25))))))
         );
         layout.setVerticalGroup(
@@ -215,9 +240,9 @@ public class Devolucion extends javax.swing.JFrame {
                     .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(lblPresioneVenta)
-                .addGap(9, 9, 9)
-                .addComponent(scrollListaVentasDia, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPanelVentasFiltradas1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
                 .addComponent(btnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -231,7 +256,7 @@ public class Devolucion extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String fechaString;
-        ArrayList<Venta> ventasDelDia = null;
+        ArrayList<Venta> ventasDelDia = new ArrayList<>();
         String dia = txtDia.getText().trim();
         String mes = txtMes.getText().trim();
         String annio = txtAnnio.getText().trim();
@@ -257,8 +282,7 @@ public class Devolucion extends javax.swing.JFrame {
             if (ventasDelDia == null) {
                 throw new IllegalArgumentException("No se encontraron ventas en el día índicado");
             } else {
-                this.llenarTablaVentas(ventasDelDia);
-                this.tableVentasDelDia.setVisible(true);
+                this.ventasDelDia(ventasDelDia);
                 this.lblPresioneVenta.setVisible(true);
                 this.btnDevolver.setVisible(true);
             }
@@ -272,11 +296,12 @@ public class Devolucion extends javax.swing.JFrame {
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         int ventaSeleccionada = this.tableVentasDelDia.getSelectedRow();
         if (ventaSeleccionada == -1) {
+            lblPresioneVenta.setText("Error, seleccione una venta.");
         }
         else{
-            ArrayList<DetalleVenta> detalles = null;
+            ArrayList<DetalleVenta> detalles = new ArrayList<>();
             int i = -1;
-            long idVenta = (long)this.tableVentasDelDia.getValueAt(ventaSeleccionada, 1);
+            long idVenta = (long)this.tableVentasDelDia.getValueAt(ventaSeleccionada, 3);
             for (Venta v : parent.getCaja().getVentas()) {
                 i += 1;
                 if(v.getID() == idVenta){
@@ -285,8 +310,7 @@ public class Devolucion extends javax.swing.JFrame {
                 }
             }
             for(DetalleVenta d : detalles){
-                double cantidad = d.getCantidad()+parent.getCaja().getInventario().getCantidades().get(d.getProducto().getId());
-                parent.getCaja().getInventario().getCantidades().replace(d.getProducto().getId(), cantidad);
+                parent.getCaja().getInventario().ajustarCantidadProducto(d.getProducto().getId(), d.getCantidad());
             }
             
             parent.getCaja().getVentas().remove(i);
@@ -320,7 +344,7 @@ public class Devolucion extends javax.swing.JFrame {
     private javax.swing.JLabel lblMM;
     private javax.swing.JLabel lblPedirFecha;
     private javax.swing.JLabel lblPresioneVenta;
-    private javax.swing.JScrollPane scrollListaVentasDia;
+    private javax.swing.JScrollPane scrollPanelVentasFiltradas1;
     private javax.swing.JTable tableVentasDelDia;
     private javax.swing.JTextField txtAnnio;
     private javax.swing.JTextField txtDia;

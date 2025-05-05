@@ -402,27 +402,27 @@ public class CreacionProducto extends javax.swing.JFrame {
             }
             switch (tipoSeleccionado) {
                 case "Aseo":
-                    Aseo aseo = new Aseo(nombre, Id, precioMayorista, precio,
+                    Producto aseo = new Aseo(nombre, Id, precioMayorista, precio,
                             fechaVencimiento, etiquetas);
                     parent.getCaja().getInventario().crearProductos(aseo);
                     cantidades.put(Id, cantidad);
                 case "Bebida":
-                    Bebida bebida = new Bebida(nombre, Id, precioMayorista, precio,
+                    Producto bebida = new Bebida(nombre, Id, precioMayorista, precio,
                             fechaVencimiento, etiquetas);
                     parent.getCaja().getInventario().crearProductos(bebida);
                     cantidades.put(Id, cantidad);
                 case "Mecato":
-                    Mecato mecato = new Mecato(nombre, Id, precioMayorista, precio,
+                    Producto mecato = new Mecato(nombre, Id, precioMayorista, precio,
                             fechaVencimiento, etiquetas);
                     parent.getCaja().getInventario().crearProductos(mecato);
                     cantidades.put(Id, cantidad);
                 case "Enlatado":
-                    Enlatado enlatado = new Enlatado(nombre, Id, precioMayorista, precio,
+                    Producto enlatado = new Enlatado(nombre, Id, precioMayorista, precio,
                             fechaVencimiento, etiquetas);
                     parent.getCaja().getInventario().crearProductos(enlatado);
                     cantidades.put(Id, cantidad);
                 case "Grano":
-                    Granos granos = new Granos(nombre, Id, precioMayorista, precio,
+                    Producto granos = new Granos(nombre, Id, precioMayorista, precio,
                             fechaVencimiento, etiquetas);
                     parent.getCaja().getInventario().crearProductos(granos);
                     cantidades.put(Id, cantidad);

@@ -40,7 +40,8 @@ public class Inventario {
         productos.add(producto);
     }
     
-    public Map<Long, Double> filtrarStack() {
+    public Map<Long, Double> filtrarStock() // Filtrar los cantidades/id de los productos para el reporte de Stock
+    { 
         Map<Long, Double> cantidadesFiltradas = new HashMap<>();
 
         for (Map.Entry<Long, Double> acceso : this.cantidades.entrySet()) {
@@ -54,7 +55,8 @@ public class Inventario {
         return cantidadesFiltradas;
     }
     
-    public ArrayList<Producto> filtrarProductos(Map<Long, Double> cantidadesFiltradas) {
+    public ArrayList<Producto> filtrarProductos(Map<Long, Double> cantidadesFiltradas) // Filtrar los productos para el Reporte de Stock
+    {
         ArrayList<Producto> productosFiltrados = new ArrayList<>();
 
         for (Producto producto : this.productos) {
@@ -67,7 +69,8 @@ public class Inventario {
         return productosFiltrados;
     }
     
-    public double getCantidadProducto(Long idProd) {
+    public double getCantidadProducto(Long idProd) // Obtener las cantidad disponible de los productos
+    {
         if (this.cantidades.containsKey(idProd)) {
             return this.cantidades.get(idProd);
         } else {
@@ -75,7 +78,8 @@ public class Inventario {
         }
     }
     
-    public double ajustarCantidadProducto(Long idProd, double ajuste){
+    public double ajustarCantidadProducto(Long idProd, double ajuste) // Ajustar el stock de un producto despues de haberlo movido
+    {
         double cantidadActual = cantidades.get(idProd);
         double nuevaCantidad = cantidadActual + ajuste;
         cantidades.put(idProd, nuevaCantidad);

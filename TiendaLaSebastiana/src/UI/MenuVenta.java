@@ -466,7 +466,7 @@ public class MenuVenta extends javax.swing.JFrame {
         return null;
     }
     
-    public void agregarFilaProducto(Long id,String nombre, double precioUni, double cantidad, double total){
+    public void agregarFilaProducto(Long id, String nombre, double precioUni, double cantidad, double total){
         Object[] nuevaFila = {id, nombre, precioUni, cantidad, total};
         modeloTabla.addRow(nuevaFila);
     }
@@ -498,9 +498,14 @@ public class MenuVenta extends javax.swing.JFrame {
         
         var detalleVenta = new DetalleVenta(producto, cantidadVender, precio, total, 0, 0);
         detalles.add(detalleVenta);
+        
+        double totalVenta = sumarColumnaTotales(tblProductosAgregados, 4);
+        txtTotalVenta.setText(String.valueOf(totalVenta));
+        
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
-    public double sumarColumnaDouble(JTable tabla, int columnIndex) {
+    public double sumarColumnaTotales(JTable tabla, int columnIndex) // Sumar los totales de los productos
+    {
         double suma = 0.0;
         int rowCount = modeloTabla.getRowCount();
 
@@ -515,7 +520,7 @@ public class MenuVenta extends javax.swing.JFrame {
     
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
 
-        double totalVenta = sumarColumnaDouble(tblProductosAgregados, 4);
+        double totalVenta = sumarColumnaTotales(tblProductosAgregados, 4);
         txtTotalVenta.setText(String.valueOf(totalVenta));
         Long id = generarIdUnico();
         LocalDateTime fecha = capturarFecha();
@@ -571,20 +576,16 @@ public class MenuVenta extends javax.swing.JFrame {
 
             } catch (NumberFormatException e) {
                 System.err.println("Error: Debe ingresar valores numéricos válidos para la fecha y hora.");
-                fecha = null;
             } catch (DateTimeException e) {
                 System.err.println("Fecha y hora inválida: " + e.getMessage());
-                fecha = null;
-         } catch (IllegalArgumentException e) {
-                System.err.println(e.getMessage());
-                fecha = null;
-         } catch (Exception ex) {
-                System.err.println("Error inesperado: " + ex.getMessage());
-                fecha = null;
-         }
+            } catch (IllegalArgumentException e) {
+                   System.err.println(e.getMessage());
+            } catch (Exception ex) {
+                   System.err.println("Error inesperado: " + ex.getMessage());
+            }
 
-            return fecha;
-        }
+        return fecha;
+    }
    
     public Long generarIdUnico() {
         Long nuevoId;
@@ -597,7 +598,8 @@ public class MenuVenta extends javax.swing.JFrame {
             }
 
             existe = false;
-            for (Venta venta : parent.getCaja().getVentas()) {
+            for (Venta venta : parent.getCaja().getVentas()) // Verificamos que no exista ya ese ID
+            {
                 if (venta.getID() == nuevoId) {
                     existe = true;
                     break;

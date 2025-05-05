@@ -28,7 +28,7 @@ public class ReporteStock extends javax.swing.JFrame {
     }
     
    public void mostrarVentasEnTabla() {
-        Map<Long, Double> cantidades = parent.getCaja().getInventario().filtrarStack();
+        Map<Long, Double> cantidades = parent.getCaja().getInventario().filtrarStock();
         ArrayList<Producto> productos = parent.getCaja().getInventario().filtrarProductos(cantidades);
 
         modeloTabla.setRowCount(0);

@@ -28,15 +28,17 @@
               <Component id="lblNombre" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="txtNombre" min="-2" pref="200" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Component id="txtBuscar" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txtNombre" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnAjustarCantidad" min="-2" pref="143" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -81,7 +83,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnAjustarCantidad" min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="txtCantidadAjustar" min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="btnCrearProducto" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
                               </Group>
@@ -278,7 +279,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnAjustarCantidad">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajustar cantidad"/>
+        <Property name="text" type="java.lang.String" value="Ajuste de cantidad"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjustarCantidadActionPerformed"/>

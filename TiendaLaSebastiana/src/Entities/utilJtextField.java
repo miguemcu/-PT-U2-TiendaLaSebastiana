@@ -8,7 +8,7 @@ package Entities;
  *
  * @author DELL
  */
-    import javax.swing.text.*;
+import javax.swing.text.*;
 
 public class utilJtextField extends DocumentFilter {
     private final int maxChars;

@@ -44,7 +44,7 @@ public class SistemaReportes extends javax.swing.JFrame {
             }
         });
 
-        btnReporteStock.setText("Reporte de Stack");
+        btnReporteStock.setText("Reporte de Stock");
         btnReporteStock.setToolTipText("");
         btnReporteStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
